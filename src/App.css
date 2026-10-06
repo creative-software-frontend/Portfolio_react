@@ -744,7 +744,7 @@ a {
   position: relative;
 
   min-height: 100vh;
-  padding: 100px 60px;
+  padding: 40px 60px;
 
   background: var(--color-bg);
 
@@ -753,7 +753,7 @@ a {
 
 .journey-timeline-wrapper {
   position: relative;
-  max-height: 420px;
+  max-height: 200px;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 }
@@ -1172,8 +1172,8 @@ a {
 
 /* ==================== SKILLS SECTION ==================== */
 .skills-section {
-  padding: 80px 20px;
-  background-color: var(--color-bg, #f4eeff);
+  padding: 70px 20px;
+  background-color: var(--color-white, #ffffff);
   text-align: center;
 }
 
@@ -1184,18 +1184,57 @@ a {
 
 /* Section Ribbon */
 .skills-ribbon {
+  position: relative;
   display: inline-block;
-  padding: 4px 14px;
-  border-radius: 20px;
-  background-color: var(--color-surface-soft, #dcd6f7);
-  margin-bottom: 12px;
+
+  margin-left: -500px;
+  padding: 12px 45px;
+
+  background: var(--color-primary);
+  color: var(--color-white);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  z-index: 5;
+}
+
+.skills-ribbon::before,
+.skills-ribbon::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  width: 30px;
+  height: 100%;
+
+  background: var(--color-primary-light);
+}
+
+.skills-ribbon::before {
+  left: -30px;
+
+  clip-path: polygon(
+    100% 0,
+    100% 100%,
+    0 50%
+  );
+}
+
+.skills-ribbon::after {
+  right: -30px;
+
+  clip-path: polygon(
+    0 0,
+    100% 50%,
+    0 100%
+  );
 }
 
 .skills-ribbon span {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--color-primary, #424874);
+  color: var(--color-white);
   text-transform: uppercase;
 }
 
@@ -1232,7 +1271,7 @@ a {
   font-weight: 600;
   border: 1px solid var(--color-border, #dcd6f7);
   border-radius: 20px;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface-soft);
   color: var(--color-text, #424874);
   cursor: pointer;
   transition: all 0.25s ease;
@@ -1250,7 +1289,6 @@ a {
   box-shadow: 0 4px 12px rgba(66, 72, 116, 0.2);
 }
 
-/* Skills Grid */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -1259,7 +1297,7 @@ a {
 
 .skill-card {
   padding: 16px 20px;
-  background-color: var(--color-surface, #ffffff);
+  background-color:#fdd3ff49;
   border: 1px solid var(--color-border, #dcd6f7);
   border-radius: 14px;
   display: flex;
@@ -1283,7 +1321,7 @@ a {
 
 /* ==================== PROJECTS SECTION ==================== */
 .projects-section {
-  padding: 80px 20px;
+  padding: 40px 20px;
   background-color: var(--color-bg, #f4eeff);
   text-align: center;
 }
@@ -1295,18 +1333,57 @@ a {
 
 /* Section Ribbon */
 .projects-ribbon {
+  position: relative;
   display: inline-block;
-  padding: 4px 14px;
-  border-radius: 20px;
-  background-color: var(--color-surface-soft, #dcd6f7);
-  margin-bottom: 12px;
+
+  margin-left: -500px;
+  padding: 12px 45px;
+
+  background: var(--color-primary);
+  color: var(--color-white);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  z-index: 5;
+}
+
+.projects-ribbon::before,
+.projects-ribbon::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  width: 30px;
+  height: 100%;
+
+  background: var(--color-primary-light);
+}
+
+.projects-ribbon::before {
+  left: -30px;
+
+  clip-path: polygon(
+    100% 0,
+    100% 100%,
+    0 50%
+  );
+}
+
+.projects-ribbon::after {
+  right: -30px;
+
+  clip-path: polygon(
+    0 0,
+    100% 50%,
+    0 100%
+  );
 }
 
 .projects-ribbon span {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--color-primary, #424874);
+  color: var(--color-white);
   text-transform: uppercase;
 }
 
@@ -1314,7 +1391,7 @@ a {
 .projects-header p {
   font-size: 14px;
   color: var(--color-text-secondary, #5a618f);
-  margin: 0 0 6px;
+  margin: 15px auto;
 }
 
 .projects-header h2 {
@@ -1697,7 +1774,7 @@ a {
     font-size: 26px;
   }
 
-    .skills-grid {
+  .skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 12px;
   }
