@@ -303,7 +303,7 @@ a {
 /* ==================== LINKEDIN SIDEBAR ==================== */
 
 .linkedin-sidebar {
-  background: #ffffffff;
+  background: var(--color-surface);
   position: sticky;
   top: 75px;
   height: calc(100vh - 75px);
@@ -321,7 +321,7 @@ a {
 
   margin-right: 6px;
 
-  background: #ffffff;
+  background: var(--color-surface);
   color: var(--color-linkedin);
 
   border-radius: 2px;
@@ -451,13 +451,13 @@ a {
 /* SERVICES */
 .linkedin-services {
   padding: 20px 18px;
-  background: #A6B1E1;
+  background: #b3cfeb6d;
   border-top: 1px solid var(--color-border);
 }
 
 .linkedin-services h3 {
   font-size: 18px;
-  color: var(--color-text);
+  color: #000000;
   margin-bottom: 15px;
 }
 
@@ -504,7 +504,7 @@ a {
   text-align: center;
   border-radius: 25px;
 
-  background: linear-gradient(135deg, #8f3d31, #e29683);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   color: var(--color-surface);
 
   font-size: 13px;
@@ -515,7 +515,7 @@ a {
 
 .linkedin-work-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(169, 75, 60, 0.2);
+  box-shadow: 0 6px 15px rgba(66, 72, 116, 0.25);
 }
 
 .about-section {
@@ -676,6 +676,53 @@ a {
   background: var(--color-bg);
 
   scroll-margin-top: 75px;
+}
+
+.journey-timeline-wrapper {
+  position: relative;
+  max-height: 420px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.journey-timeline-wrapper.expanded {
+  max-height: 2000px;
+}
+
+.journey-fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  pointer-events: none;
+}
+
+.journey-action {
+  text-align: center;
+  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.journey-see-more-btn {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.journey-see-more-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: 0 4px 12px rgba(66, 72, 116, 0.15);
+  transform: translateY(-2px);
 }
 
 .journey-ribbon {
