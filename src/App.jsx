@@ -7,6 +7,8 @@ import About from "./components/About";
 import Journey from "./components/Journey";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import ContactModal from "./components/ContactModal";
+import Skills from "./components/Skills";
+import Footer from "./components/Footer";
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -20,11 +22,12 @@ function App() {
           <Hero />
           <About />
           <Journey />
+          <Skills />
         </main>
 
         <LinkedInSidebar />
       </div>
-
+      <Footer onTalkClick={() => setIsContactOpen(true)} />
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
