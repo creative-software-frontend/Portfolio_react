@@ -1187,7 +1187,7 @@ a {
   position: relative;
   display: inline-block;
 
-  margin-left: -500px;
+  margin-left: -750px;
   padding: 12px 45px;
 
   background: var(--color-primary);
@@ -1336,7 +1336,7 @@ a {
   position: relative;
   display: inline-block;
 
-  margin-left: -500px;
+  margin-left: -750px;
   padding: 12px 45px;
 
   background: var(--color-primary);
