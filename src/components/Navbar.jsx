@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar({ onTalkClick }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -16,9 +16,13 @@ function Navbar() {
           <a href="#contact">Contact</a>
         </div>
 
-        <a href="#contact" className="nav-button">
+        <button
+          type="button"
+          className="nav-button"
+          onClick={onTalkClick}
+        >
           Let's Talk
-        </a>
+        </button>
       </div>
     </nav>
   );
