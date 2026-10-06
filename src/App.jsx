@@ -9,6 +9,7 @@ import LinkedInSidebar from "./components/LinkedInSidebar";
 import ContactModal from "./components/ContactModal";
 import Skills from "./components/Skills";
 import Footer from "./components/Footer";
+import Projects from "./components/Projects";
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -23,6 +24,7 @@ function App() {
           <About />
           <Journey />
           <Skills />
+          <Projects />
         </main>
 
         <LinkedInSidebar />

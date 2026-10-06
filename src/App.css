@@ -1281,6 +1281,163 @@ a {
   color: var(--color-text, #424874);
 }
 
+/* ==================== PROJECTS SECTION ==================== */
+.projects-section {
+  padding: 80px 20px;
+  background-color: var(--color-bg, #f4eeff);
+  text-align: center;
+}
+
+.projects-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Section Ribbon */
+.projects-ribbon {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background-color: var(--color-surface-soft, #dcd6f7);
+  margin-bottom: 12px;
+}
+
+.projects-ribbon span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-primary, #424874);
+  text-transform: uppercase;
+}
+
+/* Header */
+.projects-header p {
+  font-size: 14px;
+  color: var(--color-text-secondary, #5a618f);
+  margin: 0 0 6px;
+}
+
+.projects-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text, #424874);
+  margin: 0 0 44px;
+}
+
+.projects-header h2 span {
+  color: var(--color-primary-light, #a6b1e1);
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+/* Card Container */
+.project-card {
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #dcd6f7);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(66, 72, 116, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary-light, #a6b1e1);
+  box-shadow: 0 12px 30px rgba(66, 72, 116, 0.15);
+}
+
+.project-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary-light, #a6b1e1);
+  letter-spacing: 0.5px;
+}
+
+.project-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text, #424874);
+  margin: 4px 0 14px;
+}
+
+.project-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #5a618f);
+  margin-bottom: 20px;
+}
+
+/* Tech Stack Badges */
+.project-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tech-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background-color: var(--color-bg, #f4eeff);
+  color: var(--color-primary, #424874);
+  border: 1px solid var(--color-border, #dcd6f7);
+}
+
+/* Project Action Links */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.project-btn {
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 18px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-btn {
+  background: linear-gradient(135deg, #424874, #635bff);
+  color: var(--color-white, #ffffff);
+  box-shadow: 0 4px 10px rgba(66, 72, 116, 0.2);
+}
+
+.live-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(99, 91, 255, 0.35);
+}
+
+.github-btn {
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-text, #424874);
+  border: 1px solid var(--color-border, #dcd6f7);
+}
+
+.github-btn:hover {
+  background-color: var(--color-bg, #f4eeff);
+  border-color: var(--color-primary, #424874);
+  transform: translateY(-2px);
+}
+
 /* ==================== FOOTER CONTAINER ==================== */
 .footer {
   /* Rich deep blue-purple background with subtle dark violet ambient glow */
@@ -1328,7 +1485,6 @@ a {
 .footer-logo {
   font-size: 22px;
   font-weight: 700;
-  /* Radiant blue to soft purple gradient text */
   background: linear-gradient(135deg, #ffffff 0%, #dcd6f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1548,6 +1704,10 @@ a {
 
   .skills-header h2 {
     font-size: 26px;
+  }
+
+    .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 

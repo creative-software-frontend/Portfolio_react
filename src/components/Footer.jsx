@@ -48,7 +48,7 @@ function Footer({ onTalkClick }) {
             <h4 className="footer-heading">Connect</h4>
             <div className="footer-socials">
               <a 
-                href="https://github.com" 
+                href="https://github.com/ZarinTasnim75" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="social-btn" 
@@ -57,7 +57,7 @@ function Footer({ onTalkClick }) {
                 GitHub
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/zarin-tasnim-tsm15/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="social-btn" 
