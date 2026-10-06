@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import About from "./components/About";
+import Journey from "./components/Journey";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <main className="main-content">
           <Hero />
           <About />
+          <Journey />
         </main>
 
         <LinkedInSidebar />
