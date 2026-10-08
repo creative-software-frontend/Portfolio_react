@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -13,6 +14,8 @@ import Ebooks from "./pages/Ebooks";
 import Training from "./pages/Training";
 
 function Home() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="page-layout">
       <main className="main-content">
@@ -23,7 +26,25 @@ function Home() {
         <Projects />
         <Experience />
       </main>
-      <LinkedInSidebar />
+          {/* Mobile-only tab on the right edge */}
+      <button
+        type="button"
+        className={`sidebar-toggle ${isSidebarOpen ? "open" : ""}`}
+        onClick={() => setIsSidebarOpen((prev) => !prev)}
+        aria-label={isSidebarOpen ? "Close profile panel" : "Open profile panel"}
+        aria-expanded={isSidebarOpen}
+      >
+        {isSidebarOpen ? "›" : "‹"}
+      </button>
+
+      <div
+        className={`sidebar-backdrop ${isSidebarOpen ? "open" : ""}`}
+        onClick={() => setIsSidebarOpen(false)}
+      />
+
+      <div className={`sidebar-wrapper ${isSidebarOpen ? "open" : ""}`}>
+        <LinkedInSidebar />
+      </div>
     </div>
   );
 }

@@ -1,32 +1,40 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
+const sections = [
+  ["home", "Home"],
+  ["about", "About"],
+  ["journey", "Journey"],
+  ["skills", "Skills"],
+  ["projects", "Projects"],
+  ["experience", "Experience"],
+];
+
 function Navbar({ onTalkClick }) {
   const [isPublicationsOpen, setIsPublicationsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsPublicationsOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Scroll to landing page sections
-  const scrollToSection = (sectionId) => {
+  const closeAll = () => {
+    setIsMenuOpen(false);
     setIsPublicationsOpen(false);
+  };
+
+  const scrollToSection = (sectionId) => {
+    closeAll();
 
     if (pathname !== "/") {
       navigate("/", { state: { scrollTo: sectionId } });
@@ -41,66 +49,22 @@ function Navbar({ onTalkClick }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-
         {/* Logo */}
-        <Link
-          to="/"
-          className="logo"
-          onClick={() => setIsPublicationsOpen(false)}
-        >
+        <Link to="/" className="logo" onClick={closeAll}>
           Zarin Tasnim
         </Link>
 
-        <div className="nav-links">
-
-          {/* Landing Page Sections */}
-          <button
-            type="button"
-            onClick={() => scrollToSection("home")}
-          >
-            Home
-          </button>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("about")}
-          >
-            About
-          </button>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("journey")}
-          >
-            Journey
-          </button>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("skills")}
-          >
-            Skills
-          </button>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("projects")}
-          >
-            Projects
-          </button>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("experience")}
-          >
-            Experience
-          </button>
+        {/* Links (the "open" class shows them on mobile) */}
+        <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+          {sections.map(([id, label]) => (
+            <button key={id} type="button" onClick={() => scrollToSection(id)}>
+              {label}
+            </button>
+          ))}
 
           {/* Publications */}
           <div
-            className={`nav-item-dropdown ${
-              isPublicationsOpen ? "active" : ""
-            }`}
+            className={`nav-item-dropdown ${isPublicationsOpen ? "active" : ""}`}
             ref={dropdownRef}
             onMouseEnter={() => setIsPublicationsOpen(true)}
             onMouseLeave={() => setIsPublicationsOpen(false)}
@@ -108,9 +72,7 @@ function Navbar({ onTalkClick }) {
             <button
               type="button"
               className="dropdown-toggle"
-              onClick={() =>
-                setIsPublicationsOpen((prev) => !prev)
-              }
+              onClick={() => setIsPublicationsOpen((prev) => !prev)}
               aria-expanded={isPublicationsOpen}
             >
               Publications
@@ -118,23 +80,12 @@ function Navbar({ onTalkClick }) {
             </button>
 
             <div className="dropdown-menu">
-
-              {/* Separate Ebook Page */}
-              <Link
-                to="/ebooks"
-                onClick={() => setIsPublicationsOpen(false)}
-              >
+              <Link to="/ebooks" onClick={closeAll}>
                 Ebook
               </Link>
-
-              {/* Separate Training Page */}
-              <Link
-                to="/training"
-                onClick={() => setIsPublicationsOpen(false)}
-              >
+              <Link to="/training" onClick={closeAll}>
                 Training
               </Link>
-
             </div>
           </div>
         </div>
@@ -143,11 +94,24 @@ function Navbar({ onTalkClick }) {
         <button
           type="button"
           className="nav-button"
-          onClick={onTalkClick}
+          onClick={() => {
+            closeAll();
+            onTalkClick();
+          }}
         >
           Let's Talk
         </button>
 
+        {/* Hamburger (visible only under 900px via CSS) */}
+        <button
+          type="button"
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? "✕" : "☰"}
+        </button>
       </div>
     </nav>
   );

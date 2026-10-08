@@ -1,4 +1,5 @@
 import zarinPhoto from "../assets/zarin-photo.png";
+
 function Hero() {
   return (
     <section id="home" className="hero">
