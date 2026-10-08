@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Journey from "./components/Journey";
+import Experience from "./components/Experience";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import ContactModal from "./components/ContactModal";
-import Skills from "./components/Skills";
-import Footer from "./components/Footer";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
+import Ebooks from "./pages/Ebooks";
 
-function App() {
+function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
@@ -24,19 +24,28 @@ function App() {
           <Hero />
           <About />
           <Journey />
-          <Skills />
-          <Projects />
           <Experience />
         </main>
 
         <LinkedInSidebar />
       </div>
-      <Footer onTalkClick={() => setIsContactOpen(true)} />
+
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ebooks" element={<Ebooks />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

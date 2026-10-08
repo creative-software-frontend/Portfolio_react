@@ -1,38 +1,73 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar({ onTalkClick }) {
   const [isPublicationsOpen, setIsPublicationsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Close dropdown if user clicks anywhere outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setIsPublicationsOpen(false);
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <a href="/" className="logo">
+
+        {/* Logo */}
+        <Link to="/" className="logo">
           Zarin Tasnim
-        </a>
+        </Link>
 
         <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#journey">Journey</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
 
-          {/* Publications Dropdown */}
+          {/* Home */}
+          <Link to="/#home">
+            Home
+          </Link>
+
+          {/* About */}
+          <Link to="/#about">
+            About
+          </Link>
+
+          {/* Journey */}
+          <Link to="/#journey">
+            Journey
+          </Link>
+
+          {/* Skills */}
+          <Link to="/#skills">
+            Skills
+          </Link>
+
+          {/* Projects */}
+          <Link to="/#projects">
+            Projects
+          </Link>
+
+          {/* Experience */}
+          <Link to="/#experience">
+            Experience
+          </Link>
+
+          {/* Publications */}
           <div
-            className={`nav-item-dropdown ${isPublicationsOpen ? "active" : ""}`}
+            className={`nav-item-dropdown ${
+              isPublicationsOpen ? "active" : ""
+            }`}
             ref={dropdownRef}
             onMouseEnter={() => setIsPublicationsOpen(true)}
             onMouseLeave={() => setIsPublicationsOpen(false)}
@@ -40,23 +75,38 @@ function Navbar({ onTalkClick }) {
             <button
               type="button"
               className="dropdown-toggle"
-              onClick={() => setIsPublicationsOpen((prev) => !prev)}
+              onClick={() =>
+                setIsPublicationsOpen((prev) => !prev)
+              }
               aria-expanded={isPublicationsOpen}
             >
-              Publications <span className="dropdown-arrow">▾</span>
+              Publications
+              <span className="dropdown-arrow">▾</span>
             </button>
 
             <div className="dropdown-menu">
-              <a href="#ebook" onClick={() => setIsPublicationsOpen(false)}>
+
+              {/* eBook */}
+              <Link
+                to="/ebooks"
+                onClick={() => setIsPublicationsOpen(false)}
+              >
                 Ebook
-              </a>
-              <a href="#training" onClick={() => setIsPublicationsOpen(false)}>
+              </Link>
+
+              {/* Training */}
+              <Link
+                to="/#training"
+                onClick={() => setIsPublicationsOpen(false)}
+              >
                 Training
-              </a>
+              </Link>
+
             </div>
           </div>
         </div>
 
+        {/* Let's Talk */}
         <button
           type="button"
           className="nav-button"
@@ -64,6 +114,7 @@ function Navbar({ onTalkClick }) {
         >
           Let's Talk
         </button>
+
       </div>
     </nav>
   );
