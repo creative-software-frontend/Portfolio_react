@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar({ onTalkClick }) {
   const [isPublicationsOpen, setIsPublicationsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -22,46 +24,77 @@ function Navbar({ onTalkClick }) {
     };
   }, []);
 
+  // Scroll to landing page sections
+  const scrollToSection = (sectionId) => {
+    setIsPublicationsOpen(false);
+
+    if (pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
 
         {/* Logo */}
-        <Link to="/" className="logo">
+        <Link
+          to="/"
+          className="logo"
+          onClick={() => setIsPublicationsOpen(false)}
+        >
           Zarin Tasnim
         </Link>
 
         <div className="nav-links">
 
-          {/* Home */}
-          <Link to="/#home">
+          {/* Landing Page Sections */}
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+          >
             Home
-          </Link>
+          </button>
 
-          {/* About */}
-          <Link to="/#about">
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
+          >
             About
-          </Link>
+          </button>
 
-          {/* Journey */}
-          <Link to="/#journey">
+          <button
+            type="button"
+            onClick={() => scrollToSection("journey")}
+          >
             Journey
-          </Link>
+          </button>
 
-          {/* Skills */}
-          <Link to="/#skills">
+          <button
+            type="button"
+            onClick={() => scrollToSection("skills")}
+          >
             Skills
-          </Link>
+          </button>
 
-          {/* Projects */}
-          <Link to="/#projects">
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
+          >
             Projects
-          </Link>
+          </button>
 
-          {/* Experience */}
-          <Link to="/#experience">
+          <button
+            type="button"
+            onClick={() => scrollToSection("experience")}
+          >
             Experience
-          </Link>
+          </button>
 
           {/* Publications */}
           <div
@@ -86,7 +119,7 @@ function Navbar({ onTalkClick }) {
 
             <div className="dropdown-menu">
 
-              {/* eBook */}
+              {/* Separate Ebook Page */}
               <Link
                 to="/ebooks"
                 onClick={() => setIsPublicationsOpen(false)}
@@ -94,7 +127,7 @@ function Navbar({ onTalkClick }) {
                 Ebook
               </Link>
 
-              {/* Training */}
+              {/* Separate Training Page */}
               <Link
                 to="/training"
                 onClick={() => setIsPublicationsOpen(false)}

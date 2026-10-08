@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import Navbar from "../components/Navbar";
+
 import ContactModal from "../components/ContactModal";
-import Footer from "../components/Footer";
 import beginnerAlgo from "../assets/beginners-algorithm_training.jpg";
 import basicCProg from "../assets/basic-c-programming_training.jpg";
 
@@ -30,7 +29,6 @@ function Training() {
 
   return (
     <div className="training-page">
-      <Navbar onTalkClick={() => setIsContactOpen(true)} />
 
       <main>
         {/* Hero Section */}
@@ -124,8 +122,6 @@ function Training() {
           </div>
         </section>
       </main>
-
-      <Footer />
 
       <ContactModal
         isOpen={isContactOpen}

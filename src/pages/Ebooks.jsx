@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import ContactModal from "../components/ContactModal";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import beginnerAlgorithm from "../assets/beginners-algorithm.jpg";
 import basicCProgramming from "../assets/basic-c-programming.jpg";
 
@@ -32,8 +32,8 @@ function Ebooks() {
     <div className="ebooks-page">
 
       {/* Navbar */}
-      <Navbar
-        onTalkClick={() => setIsContactOpen(true)} />
+      {/* <Navbar
+        onTalkClick={() => setIsContactOpen(true)} /> */}
 
       <main>
 
@@ -154,7 +154,7 @@ function Ebooks() {
           </div>
 
         </section>
-        <Footer />
+        {/* <Footer /> */}
 
       </main>
 
@@ -163,7 +163,6 @@ function Ebooks() {
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
-
     </div>
   );
 }
