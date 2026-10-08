@@ -11,6 +11,7 @@ import Experience from "./components/Experience";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import ContactModal from "./components/ContactModal";
 import Ebooks from "./pages/Ebooks";
+import Training from "./pages/Training";
 
 function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -44,6 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ebooks" element={<Ebooks />} />
+          <Route path="/training" element={<Training />} />
       </Routes>
     </BrowserRouter>
   );

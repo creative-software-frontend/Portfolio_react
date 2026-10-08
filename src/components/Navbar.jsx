@@ -96,7 +96,7 @@ function Navbar({ onTalkClick }) {
 
               {/* Training */}
               <Link
-                to="/#training"
+                to="/training"
                 onClick={() => setIsPublicationsOpen(false)}
               >
                 Training

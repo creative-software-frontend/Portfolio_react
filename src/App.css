@@ -1981,6 +1981,270 @@ a {
   line-height: 1.8;
 }
 
+/* =========================
+   TRAINING PAGE
+========================= */
+
+.training-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* Hero */
+
+.training-hero {
+  padding: 100px 8% 90px;
+  background: var(--color-surface-soft);
+}
+
+.training-hero-content {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.training-label {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.training-hero h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 52px;
+  line-height: 1.15;
+}
+
+.training-hero h1 span {
+  color: var(--color-primary);
+}
+
+.training-hero p {
+  max-width: 650px;
+  margin: 25px auto 0;
+  color: var(--color-text-muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* Training Section */
+
+.training-section {
+  padding: 90px 8%;
+  background: var(--color-white);
+}
+
+.training-section-heading {
+  max-width: 850px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.training-section-heading p {
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.training-section-heading h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 38px;
+}
+
+.training-section-heading h2 span {
+  color: var(--color-primary);
+}
+
+.training-heading-line {
+  width: 55px;
+  height: 3px;
+  margin: 20px auto 0;
+  background: var(--color-primary);
+}
+
+
+/* Cards */
+
+.training-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.training-card {
+  overflow: hidden;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: 0.3s ease;
+}
+
+.training-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.training-image {
+  height: 230px;
+  overflow: hidden;
+  /* background: var(--color-accent-bg); */
+}
+
+.training-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.training-info {
+  padding: 28px;
+}
+
+.training-category {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--color-accent-bg);
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.training-info h3 {
+  margin: 0 0 12px;
+  color: var(--color-text);
+  font-size: 24px;
+}
+
+.training-info p {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.training-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.training-year {
+  color: var(--color-text-light);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.training-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.training-button:hover {
+  background: var(--color-primary-dark);
+}
+
+
+/* Message */
+
+.training-message {
+  padding: 100px 8%;
+  background: var(--color-surface-soft);
+}
+
+.training-message-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.training-message-inner > span {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.training-message-inner h2 {
+  margin: 18px 0;
+  color: var(--color-text);
+  font-size: 38px;
+  line-height: 1.3;
+}
+
+.training-message-inner h2 strong {
+  color: var(--color-primary);
+}
+
+.training-message-inner p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .training-hero h1 {
+    font-size: 42px;
+  }
+
+  .training-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .training-hero {
+    padding: 70px 6%;
+  }
+
+  .training-section {
+    padding: 70px 6%;
+  }
+
+  .training-hero h1 {
+    font-size: 34px;
+  }
+
+  .training-section-heading h2 {
+    font-size: 30px;
+  }
+
+  .training-message {
+    padding: 70px 6%;
+  }
+
+  .training-message-inner h2 {
+    font-size: 30px;
+  }
+}
+
 /* ==================== FOOTER CONTAINER ==================== */
 .footer {
   /* Rich deep blue-purple background with subtle dark violet ambient glow */
