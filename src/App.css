@@ -1019,6 +1019,8 @@ outline-offset: 3px;
   line-height: 1.7;
 }
 
+/* ==================== CONTACT MODAL ==================== */
+ 
 .contact-modal-overlay {
   position: fixed;
   inset: 0;
@@ -1027,174 +1029,226 @@ outline-offset: 3px;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgba(66, 72, 116, 0.4);
+  background-color: rgba(20, 20, 58, 0.55);
   backdrop-filter: blur(6px);
   animation: fadeIn 0.25s ease-out forwards;
 }
-
+ 
 .contact-modal {
   position: relative;
   width: 100%;
-  max-width: 580px;
+  max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
-  background-color: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #dcd6f7);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-primary-light);   /* gold accent edge */
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(66, 72, 116, 0.2);
+  box-shadow: 0 24px 50px rgba(20, 20, 58, 0.35);
   padding: 36px 32px;
   animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
+ 
+/* ---------- Close button ---------- */
 .contact-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--color-border, #dcd6f7);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
-  background: var(--color-bg, #f4eeff);
-  color: var(--color-text, #424874);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
+ 
 .contact-close:hover {
-  background-color: var(--color-primary, #424874);
-  color: var(--color-white, #ffffff);
-  border-color: var(--color-primary, #424874);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
   transform: rotate(90deg);
 }
-
+ 
+.contact-close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+ 
+/* ---------- Heading ---------- */
 .contact-modal-heading {
   margin-bottom: 28px;
+  padding-right: 40px;        
   text-align: left;
 }
-
+ 
 .contact-modal-label {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 5px 14px;
+  margin-bottom: 12px;
   border-radius: 20px;
-  background-color: var(--color-surface-soft, #dcd6f7);
-  color: var(--color-primary, #424874);
-  font-size: 15px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 10px;
 }
-
+ 
 .contact-modal-heading p {
-  color: var(--color-text-secondary, #5a618f);
+  color: var(--color-text-secondary);
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
-
+ 
+/* ---------- Form layout ---------- */
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
+ 
 .contact-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-
+ 
 .contact-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
+  min-width: 0;             
   text-align: left;
 }
-
+ 
 .contact-field label {
-  color: var(--color-text, #424874);
+  color: var(--color-text);
   font-size: 13px;
   font-weight: 600;
 }
-
+ 
+.contact-optional {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+ 
+/* ---------- Inputs ---------- */
 .contact-field input,
 .contact-field select,
 .contact-field textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid var(--color-border, #dcd6f7);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  background-color: var(--color-bg, #f4eeff);
-  color: var(--color-text, #424874);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-main, inherit);
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
+ 
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
-  color: var(--color-text-muted, #7e85b0);
+  color: var(--color-text-muted);
+  opacity: 0.8;
 }
-
+ 
 .contact-field input:hover,
 .contact-field select:hover,
 .contact-field textarea:hover {
-  border-color: var(--color-primary-light, #a6b1e1);
+  border-color: var(--color-primary-light);
 }
-
+ 
 .contact-field input:focus,
 .contact-field select:focus,
 .contact-field textarea:focus {
-  background-color: var(--color-surface, #ffffff);
-  border-color: var(--color-primary, #424874);
-  box-shadow: 0 0 0 3px rgba(66, 72, 116, 0.15);
+  background-color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(33, 33, 77, 0.15);
 }
 
+.contact-field input:not(:placeholder-shown):invalid,
+.contact-field textarea:not(:placeholder-shown):invalid {
+  border-color: var(--color-danger);
+}
+ 
 .contact-field textarea {
   resize: vertical;
   min-height: 110px;
 }
-
+ 
 .contact-field select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23424874' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2321214D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 40px;
   cursor: pointer;
 }
-
+ 
+/* ---------- Submit ---------- */
 .contact-submit {
   width: 100%;
   margin-top: 8px;
   padding: 14px;
   border: none;
   border-radius: 25px;
-  background: linear-gradient(135deg, var(--color-primary, #424874), var(--color-primary-light, #a6b1e1));
-  color: var(--color-white, #ffffff);
+  background: linear-gradient(135deg, var(--color-primary), #3B3B87);
+  color: var(--color-white);
   font-family: var(--font-main, inherit);
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(66, 72, 116, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 15px rgba(33, 33, 77, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
+ 
 .contact-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(66, 72, 116, 0.3);
+  box-shadow: 0 8px 20px rgba(33, 33, 77, 0.35);
 }
-
+ 
 .contact-submit:active {
   transform: translateY(0);
 }
+ 
+.contact-submit:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 3px;
+}
+ 
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .contact-modal-overlay {
+    padding: 15px;
+  }
+ 
+  .contact-modal {
+    max-height: 88vh;
+    padding: 32px 22px 24px;
+  }
+ 
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+ 
+  .contact-close {
+    top: 12px;
+    right: 12px;
+  }
+}
+ 
 
 /* ==================== SKILLS SECTION ==================== */
 .skills-section {

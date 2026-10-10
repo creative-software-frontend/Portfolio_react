@@ -5,6 +5,8 @@ function ContactModal({ isOpen, onClose }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Form values (including phone) are available here:
+    // const data = Object.fromEntries(new FormData(event.target));
   };
 
   return (
@@ -32,14 +34,17 @@ function ContactModal({ isOpen, onClose }) {
           </div>
 
           <form onSubmit={handleSubmit} className="contact-form">
+            {/* Row 1: Name + Email */}
             <div className="contact-form-row">
               <div className="contact-field">
                 <label htmlFor="fullName">Full Name</label>
 
                 <input
                   id="fullName"
+                  name="fullName"
                   type="text"
                   placeholder="Your full name"
+                  autoComplete="name"
                   required
                 />
               </div>
@@ -49,23 +54,45 @@ function ContactModal({ isOpen, onClose }) {
 
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="your@email.com"
+                  autoComplete="email"
                   required
                 />
               </div>
             </div>
 
-            <div className="contact-field">
-              <label htmlFor="purpose">Purpose</label>
+            {/* Row 2: Phone + Purpose */}
+            <div className="contact-form-row">
+              <div className="contact-field">
+                <label htmlFor="phone">
+                  Phone Number <span className="contact-optional">(optional)</span>
+                </label>
 
-              <select id="purpose">
-                <option value="project">Project Collaboration</option>
-                <option value="job">Job Opportunity</option>
-                <option value="freelance">Freelance Work</option>
-                <option value="internship">Internship Opportunity</option>
-                <option value="other">Other</option>
-              </select>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputMode="tel"
+                  placeholder="+880 1XXX-XXXXXX"
+                  autoComplete="tel"
+                  pattern="[0-9+\-\s()]{7,20}"
+                  title="Use digits, spaces, + or - (7 to 20 characters)"
+                />
+              </div>
+
+              <div className="contact-field">
+                <label htmlFor="purpose">Purpose</label>
+
+                <select id="purpose" name="purpose">
+                  <option value="project">Project Collaboration</option>
+                  <option value="job">Job Opportunity</option>
+                  <option value="freelance">Freelance Work</option>
+                  <option value="internship">Internship Opportunity</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
             </div>
 
             <div className="contact-field">
@@ -73,6 +100,7 @@ function ContactModal({ isOpen, onClose }) {
 
               <textarea
                 id="message"
+                name="message"
                 rows="5"
                 placeholder="Tell me about your idea, project, or opportunity..."
                 required
