@@ -1,3 +1,33 @@
+import { useState } from "react";
+
+const dev = (name) =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${name}/${name}-original.svg`;
+
+const experienceTech = [
+  { name: "React", logo: dev("react") },
+  { name: "Next.js", logo: dev("nextjs") },
+  { name: "TypeScript", logo: dev("typescript") },
+  { name: "Tailwind CSS", logo: dev("tailwindcss") },
+];
+
+function TechLogo({ tech }) {
+  const [failed, setFailed] = useState(false);
+ if (failed) {
+    return <span className="exp-tech-fallback">{tech.name}</span>;
+  }
+
+  return (
+    <img
+      className="exp-tech-logo"
+      src={tech.logo}
+      alt={tech.name}
+      title={tech.name}
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 function Experience() {
   return (
     <section id="experience" className="experience-section">
@@ -24,9 +54,7 @@ function Experience() {
               <h4>Creative Software Bangladesh</h4>
             </div>
 
-            <span className="experience-date">
-              2026 — Present
-            </span>
+            <span className="experience-date">2026 — Present</span>
           </div>
 
           <div className="experience-divider"></div>
@@ -38,10 +66,9 @@ function Experience() {
           </p>
 
           <div className="experience-skills">
-            <span>React</span>
-            <span>Next.js</span>
-            <span>TypeScript</span>
-            <span>Tailwind CSS</span>
+            {experienceTech.map((tech) => (
+              <TechLogo key={tech.name} tech={tech} />
+            ))}
           </div>
         </div>
       </div>
