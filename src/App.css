@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap");
+
 :root {
   /* ==================== FONTS ==================== */
   --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -65,7 +67,6 @@ a {
 }
 
 /* ==================== NAVBAR ==================== */
-
 .navbar {
   width: 100%;
   background: var(--color-bg);
@@ -74,32 +75,36 @@ a {
   top: 0;
   z-index: 1000;
 }
-
+ 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 18px 30px;
-
+ 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
 }
-
+ 
+/* Name as logo */
 .logo {
-  font-size: 24px;
+  font-family: "Dancing Script", cursive;
+  font-size: 32px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   color: var(--color-primary);
   white-space: nowrap;
 }
-
+ 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 28px;
 }
-
-.nav-links > button {
+ 
+.nav-links > button,
+.nav-links > .nav-page-link {
   background: none;
   border: none;
   font-family: inherit;
@@ -110,11 +115,42 @@ a {
   padding: 8px 0;
   transition: color 0.3s ease;
 }
-
-.nav-links > button:hover {
+ 
+.nav-links > button:hover,
+.nav-links > .nav-page-link:hover,
+.nav-links > .nav-page-link.active {
   color: var(--color-primary);
 }
-
+ 
+.nav-links > .nav-page-link.active {
+  font-weight: 600;
+}
+ 
+/* Right side: GitHub + Let's Talk + hamburger */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+ 
+.nav-github {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+ 
+.nav-github:hover {
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+ 
+.nav-github:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+ 
 .nav-button {
   padding: 11px 22px;
   border: none;
@@ -129,12 +165,12 @@ a {
   box-shadow: 0 4px 12px rgba(66, 72, 116, 0.25);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
+ 
 .nav-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(99, 91, 255, 0.35);
 }
-
+ 
 .nav-button:active {
   transform: translateY(0);
 }
@@ -2658,8 +2694,6 @@ a {
     transform: translateY(0) scale(1);
   }
 }
-
-/* ==================== RESPONSIVE ==================== */
 
 @media (max-width: 900px) {
   .nav-links {
