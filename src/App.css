@@ -3,46 +3,49 @@
 :root {
   /* ==================== FONTS ==================== */
   --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
+ 
   /* ==================== PRIMARY COLORS ==================== */
-  --color-primary: #424874;
-  --color-primary-dark: #2A2F4C;
-  --color-primary-light: #A6B1E1;
-  --color-primary-subtle: #F4EEFF;
-
+  --color-primary: #21214D;          
+  --color-primary-dark: #14143A;    
+  --color-primary-light: #C9A66B;    
+  --color-primary-subtle: #FAF0E1;
+ 
   /* ==================== BACKGROUNDS ==================== */
-  --color-bg: #F4EEFF;
-  --color-surface: #FFFFFF;
-  --color-surface-soft: #DCD6F7;
-  --color-accent-bg: #DCD6F7;
-
-  /* ==================== TEXT ==================== */
-  --color-text: #000000;
-  --color-text-secondary: #5A618F;
-  --color-text-muted: #7E85B0;
-  --color-text-light: #4a4a4a;
-
+  --color-bg: #FAF0E1;              
+  --color-surface: #FFFAF1;         
+  --color-surface-soft: #F0E2C8;     
+  --color-accent-bg: #F0E2C8;
+ 
+  /* ==================== TEXT (all pass WCAG AA on cream) ==================== */
+  --color-text: #14143A;             
+  --color-text-secondary: #33336B;   
+  --color-text-muted: #4B4B78;     
+  --color-text-light: #4A4A6A;      
+ 
+  /* NEW: readable gold for text accents (use instead of primary-light for text) */
+  --color-accent-text: #8A6420;      
+ 
   /* ==================== BORDERS ==================== */
-  --color-border: #DCD6F7;
-  --color-border-light: #EAE6FF;
-
+  --color-border: #E3D3B4;
+  --color-border-light: #EEE2CA;
+ 
   /* ==================== COMMON ==================== */
   --color-white: #FFFFFF;
-
+ 
   /* ==================== LINKEDIN ==================== */
   --color-linkedin: #0A66C2;
   --color-linkedin-dark: #004182;
   --color-linkedin-light: #378FE9;
-
+ 
   /* ==================== STATUS ACCENTS ==================== */
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
-
-  /* ==================== SHADOWS ==================== */
-  --shadow-sm: 0 1px 3px rgba(66, 72, 116, 0.08);
-  --shadow-soft: 0 10px 25px -5px rgba(66, 72, 116, 0.12), 0 4px 12px -2px rgba(66, 72, 116, 0.06);
-  --shadow-medium: 0 20px 30px -5px rgba(66, 72, 116, 0.18), 0 8px 16px -4px rgba(66, 72, 116, 0.08);
+ 
+  /* ==================== SHADOWS (navy-tinted) ==================== */
+  --shadow-sm: 0 1px 3px rgba(33, 33, 77, 0.10);
+  --shadow-soft: 0 10px 25px -5px rgba(33, 33, 77, 0.14), 0 4px 12px -2px rgba(33, 33, 77, 0.07);
+  --shadow-medium: 0 20px 30px -5px rgba(33, 33, 77, 0.20), 0 8px 16px -4px rgba(33, 33, 77, 0.09);
 }
 
 * {
@@ -105,21 +108,44 @@ a {
  
 .nav-links > button,
 .nav-links > .nav-page-link {
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  padding: 8px 0;
-  transition: color 0.3s ease;
+background: none;
+border: none;
+font-family: inherit;
+font-size: 15px;
+font-weight: 650;
+color: var(--color-text-secondary);
+cursor: pointer;
+padding: 8px 0;
+position: relative;
+text-decoration: none;
+transition: color 0.3s ease, transform 0.3s ease;
 }
- 
+
+.nav-links > button::after,
+.nav-links > .nav-page-link::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 2px;
+width: 100%;
+height: 2px;
+background: var(--color-accent-text);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
 .nav-links > button:hover,
 .nav-links > .nav-page-link:hover,
 .nav-links > .nav-page-link.active {
-  color: var(--color-primary);
+color: var(--color-accent-text);
+transform: translateY(-2px);
+}
+
+.nav-links > button:hover::after,
+.nav-links > .nav-page-link:hover::after,
+.nav-links > .nav-page-link.active::after {
+transform: scaleX(1);
 }
  
 .nav-links > .nav-page-link.active {
@@ -136,134 +162,61 @@ a {
 .nav-github {
   display: inline-flex;
   align-items: center;
-  color: var(--color-primary);
   transition: color 0.25s ease, transform 0.25s ease;
 }
  
 .nav-github:hover {
-  color: var(--color-primary-dark);
   transform: translateY(-2px);
-}
- 
-.nav-github:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-  border-radius: 4px;
 }
  
 .nav-button {
-  padding: 11px 22px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, var(--color-primary), #635bff);
-  color: var(--color-white);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(66, 72, 116, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
- 
-.nav-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(99, 91, 255, 0.35);
-}
- 
-.nav-button:active {
-  transform: translateY(0);
+padding: 7px 13px;
+border: 1px solid var(--color-primary);
+border-radius: 6px;
+background: var(--color-primary);
+color: #ffffff;
+font-family: inherit;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 0.3px;
+white-space: nowrap;
+cursor: pointer;
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+transition: background 0.25s ease, color 0.25s ease,
+transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.skills-section,
+.nav-button:hover {
+background: var(--color-white);
+color: var(--color-primary);
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+.nav-button:active {
+transform: translateY(0);
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.nav-button:focus-visible {
+outline: 3px solid var(--color-primary);
+outline-offset: 3px;
+}
+
 .projects-section,
-.journey-section,
 .experience-section,
 .about-section,
 .hero {
   scroll-margin-top: 75px;
 }
 
-.nav-item-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  color: var(--color-text-secondary);
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s ease;
-}
-
-.dropdown-toggle:hover {
-  color: var(--color-primary-light, #a6b1e1);
-}
-
-.dropdown-arrow {
-  font-size: 10px;
-  transition: transform 0.2s ease;
-}
-
-.nav-item-dropdown.active .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 150px;
-  background-color: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #dcd6f7);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px -5px rgba(66, 72, 116, 0.15);
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 100;
-}
-
-.nav-item-dropdown:hover .dropdown-menu,
-.nav-item-dropdown.active .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.dropdown-menu a {
-  padding: 10px 16px;
-  color: var(--color-text, #424874);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.dropdown-menu a:hover {
-  background-color: var(--color-bg, #f4eeff);
-  color: var(--color-primary-dark, #2a2f4c);
-}
-
 /* ==================== HERO ==================== */
 
 .hero {
   max-width: 1100px;
-  min-height: calc(100vh - 75px);
+  min-height: calc(50vh - 75px);
   margin: 0 auto;
-  padding: 70px 30px;
+  padding: 50px 30px;
   scroll-margin-top: 75px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -317,7 +270,7 @@ a {
   max-width: 560px;
   font-size: 17px;
   line-height: 1.8;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   margin-bottom: 32px;
 }
 
