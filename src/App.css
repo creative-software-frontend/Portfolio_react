@@ -7,27 +7,23 @@
   /* ==================== PRIMARY COLORS ==================== */
   --color-primary: #21214D;          
   --color-primary-dark: #14143A;    
-  --color-primary-light: #C9A66B;    
-  --color-primary-subtle: #FAF0E1;
+  --color-primary-light: #67d5c8;
  
   /* ==================== BACKGROUNDS ==================== */
-  --color-bg: #FAF0E1;              
-  --color-surface: #FFFAF1;         
-  --color-surface-soft: #F0E2C8;     
-  --color-accent-bg: #F0E2C8;
+  --color-bg: #eef7f797;              
+  --color-surface: #ffffff;     
+  --color-navbar: rgba(255, 255, 255, 0.966);
  
   /* ==================== TEXT (all pass WCAG AA on cream) ==================== */
-  --color-text: #14143A;             
-  --color-text-secondary: #33336B;   
-  --color-text-muted: #4B4B78;     
-  --color-text-light: #4A4A6A;      
+  --color-black: #000000;             
+  --color-text-secondary: #33336B;  
  
   /* NEW: readable gold for text accents (use instead of primary-light for text) */
-  --color-accent-text: #8A6420;      
+  --color-accent-text: #22054b;      
  
   /* ==================== BORDERS ==================== */
-  --color-border: #E3D3B4;
-  --color-border-light: #EEE2CA;
+  --color-border: #0a7a9a;
+  --color-border-light: #cee9f7;
  
   /* ==================== COMMON ==================== */
   --color-white: #FFFFFF;
@@ -46,6 +42,27 @@
   --shadow-sm: 0 1px 3px rgba(33, 33, 77, 0.10);
   --shadow-soft: 0 10px 25px -5px rgba(33, 33, 77, 0.14), 0 4px 12px -2px rgba(33, 33, 77, 0.07);
   --shadow-medium: 0 20px 30px -5px rgba(33, 33, 77, 0.20), 0 8px 16px -4px rgba(33, 33, 77, 0.09);
+
+   /* radius + motion */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --ease: 0.25s ease;
+ 
+  /* text scale */
+  --fs-h1-page: clamp(34px, 5vw, 52px);   /* Ebook / Training page titles */
+  --fs-h2: clamp(26px, 3.4vw, 36px);      /* every section heading */
+  --fs-h3: 21px;                          /* card titles */
+  --fs-lead: 17px;                        /* intro paragraphs */
+  --fs-body: 15px;                        /* normal paragraphs */
+  --fs-small: 13px;                       /* small paragraphs / meta */
+  --lh-heading: 1.25;
+  --lh-body: 1.75;
+ 
+  /* accent color inside headings, e.g. "Things I Have <span>Built</span>"
+     (change once here; use var(--color-primary) for navy instead of gold-brown) */
+  --heading-accent: var(--color-accent-text);
 }
 
 * {
@@ -61,7 +78,7 @@ html {
 body {
   font-family: var(--font-main);
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-black);
 }
 
 a {
@@ -69,11 +86,168 @@ a {
   color: inherit;
 }
 
+ 
+/* =====================================================================
+   COMMON BUTTONS
+   ===================================================================== */
+ 
+/* ---- 1. Base: every button/link-button ---- */
+.primary-button,
+.secondary-button,
+.nav-button,
+.contact-submit,
+.linkedin-work-button,
+.linkedin-follow,
+.ebook-read-button,
+.training-button,
+.journey-see-more-btn,
+.skills-tab-btn,
+.project-link {
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background var(--ease),
+    color var(--ease),
+    border-color var(--ease),
+    transform var(--ease),
+    box-shadow var(--ease);
+}
+ 
+/* ---- 2. Solid (navy) buttons ---- */
+.primary-button,
+.nav-button,
+.contact-submit,
+.linkedin-work-button,
+.ebook-read-button,
+.training-button,
+.project-link.live-link {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+}
+ 
+/* hover (.nav-button keeps its own white hover, so it is not listed) */
+.primary-button:hover,
+.contact-submit:hover,
+.linkedin-work-button:hover,
+.ebook-read-button:hover,
+.training-button:hover,
+.project-link.live-link:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(33, 33, 77, 0.25);
+}
+ 
+/* ---- 3. Outline buttons ---- */
+.secondary-button,
+.journey-see-more-btn {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+ 
+.secondary-button:hover,
+.journey-see-more-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(33, 33, 77, 0.2);
+}
+ 
+/* ---- 4. Pressed + keyboard focus for all ---- */
+.primary-button:active,
+.secondary-button:active,
+.nav-button:active,
+.contact-submit:active,
+.linkedin-work-button:active,
+.ebook-read-button:active,
+.training-button:active,
+.journey-see-more-btn:active {
+  transform: translateY(0);
+}
+ 
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.nav-button:focus-visible,
+.contact-submit:focus-visible,
+.linkedin-work-button:focus-visible,
+.linkedin-follow:focus-visible,
+.ebook-read-button:focus-visible,
+.training-button:focus-visible,
+.journey-see-more-btn:focus-visible,
+.skills-tab-btn:focus-visible,
+.project-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+ 
+ 
+/* =====================================================================
+   COMMON TEXT
+   ===================================================================== */
+ 
+/* ---- Section headings (h2) ---- */
+.skills-header h2,
+.projects-header h2,
+.journey-header h2,
+.experience-header h2,
+.about-heading h2,
+.ebooks-section-heading h2,
+.training-section-heading h2,
+.ebooks-message h2,
+.training-message-inner h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  color: var(--color-black);
+}
+ 
+/* accent word inside headings */
+.skills-header h2 span,
+.projects-header h2 span,
+.journey-header h2 span,
+.experience-header h2 span,
+.ebooks-section-heading h2 span,
+.training-section-heading h2 span,
+.ebooks-message h2 strong,
+.training-message-inner h2 strong {
+  color: var(--heading-accent);
+}
+ 
+/* ---- Page titles (h1) on Ebook / Training pages ---- */
+.ebooks-hero h1,
+.training-hero h1 {
+  font-size: var(--fs-h1-page);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-black);
+}
+ 
+.ebooks-hero h1 span,
+.training-hero h1 span {
+  color: var(--heading-accent);
+}
+ 
+/* ---- Small line above a heading: normal case ---- */
+.skills-header p,
+.projects-header p,
+.journey-header p,
+.experience-header p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
 /* ==================== NAVBAR ==================== */
 .navbar {
   width: 100%;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-navbar);
+  border-bottom: 2px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -113,7 +287,7 @@ border: none;
 font-family: inherit;
 font-size: 15px;
 font-weight: 650;
-color: var(--color-text-secondary);
+color: black;
 cursor: pointer;
 padding: 8px 0;
 position: relative;
@@ -129,7 +303,7 @@ left: 0;
 bottom: 2px;
 width: 100%;
 height: 2px;
-background: var(--color-accent-text);
+background: #127883;
 transform: scaleX(0);
 transform-origin: left;
 transition: transform 0.3s ease;
@@ -138,7 +312,7 @@ transition: transform 0.3s ease;
 .nav-links > button:hover,
 .nav-links > .nav-page-link:hover,
 .nav-links > .nav-page-link.active {
-color: var(--color-accent-text);
+color: #127883;
 transform: translateY(-2px);
 }
 
@@ -171,19 +345,11 @@ transform: scaleX(1);
  
 .nav-button {
 padding: 7px 13px;
-border: 1px solid var(--color-primary);
-border-radius: 6px;
-background: var(--color-primary);
-color: #ffffff;
-font-family: inherit;
 font-size: 15px;
 font-weight: 700;
 letter-spacing: 0.3px;
 white-space: nowrap;
-cursor: pointer;
 box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-transition: background 0.25s ease, color 0.25s ease,
-transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .nav-button:hover {
@@ -191,16 +357,6 @@ background: var(--color-white);
 color: var(--color-primary);
 transform: translateY(-2px);
 box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
-}
-
-.nav-button:active {
-transform: translateY(0);
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-}
-
-.nav-button:focus-visible {
-outline: 3px solid var(--color-primary);
-outline-offset: 3px;
 }
 
 .projects-section,
@@ -236,10 +392,10 @@ outline-offset: 3px;
   padding: 9px 16px;
   margin-bottom: 20px;
 
-  border: 1px solid var(--color-primary-light);
+  border: 1px solid var(--color-border);
   border-radius: 30px;
 
-  background: var(--color-surface);
+  background: var(--color-white);
   color: var(--color-primary);
 
   font-size: 13px;
@@ -258,7 +414,7 @@ outline-offset: 3px;
 .hero h1 {
   font-size: 72px;
   line-height: 1;
-  color: var(--color-text);
+  color: var(--color-black);
   margin-bottom: 20px;
 }
 
@@ -269,8 +425,9 @@ outline-offset: 3px;
 .hero-description {
   max-width: 560px;
   font-size: 17px;
+  font-weight:500;
   line-height: 1.8;
-  color: var(--color-text-secondary);
+  color: var(--color-black);
   margin-bottom: 32px;
 }
 
@@ -285,36 +442,12 @@ outline-offset: 3px;
   padding: 13px 24px;
   border-radius: 30px;
   font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.primary-button {
-  background: var(--color-primary);
-  color: var(--color-surface);
-}
-
-.primary-button:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-2px);
-}
-
-.secondary-button {
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  background: transparent;
-}
-
-.secondary-button:hover {
-  background: var(--color-primary);
-  color: var(--color-surface);
 }
 
 /* ==================== HERO IMAGE ==================== */
 
 .hero-image-wrapper {
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -325,7 +458,7 @@ outline-offset: 3px;
   height: 400px;
   padding: 20px;
 
-  background: var(--color-primary-light);
+  background: var(--color-border-light);
   border-radius: 160px 160px 25px 25px;
 
   position: relative;
@@ -347,7 +480,6 @@ outline-offset: 3px;
   height: 100%;
 
   border-radius: 180px 180px 18px 18px;
-  background: var(--color-accent-bg);
 
   display: flex;
   align-items: center;
@@ -361,7 +493,7 @@ outline-offset: 3px;
   width: 320px;
   height: 400px;
 
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-border);
   border-radius: 160px 160px 25px 25px;
 
   position: absolute;
@@ -404,7 +536,6 @@ outline-offset: 3px;
 .linkedin-cover {
   height: 104px;
   overflow: hidden;
-  background: var(--color-primary);
 }
  
 .linkedin-cover img {
@@ -429,7 +560,6 @@ outline-offset: 3px;
   border: 4px solid var(--color-surface);
   border-radius: 50%;
   overflow: hidden;
-  background: var(--color-surface-soft);
   box-shadow: var(--shadow-sm);
  
   position: relative;
@@ -450,7 +580,7 @@ outline-offset: 3px;
   margin-bottom: 4px;
   font-size: 20px;
   line-height: 1.25;
-  color: var(--color-text);
+  color: var(--color-black);
 }
  
 .linkedin-role {
@@ -466,7 +596,6 @@ outline-offset: 3px;
   gap: 5px;
   margin-bottom: 18px;
   font-size: 12.5px;
-  color: var(--color-text-light);
 }
  
 /* ---------- Stats ---------- */
@@ -475,27 +604,21 @@ outline-offset: 3px;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 16px;
  
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
   text-align: center;
 }
  
 .linkedin-stats div {
   padding: 11px 4px;
-  border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border-light);
 }
  
 .linkedin-stats div:last-child {
   border-right: none;
 }
- 
-.linkedin-stats strong {
-  display: block;
-  font-size: 16px;
-  color: var(--color-text);
-}
- 
+
 .linkedin-stats span {
   display: block;
   margin-top: 3px;
@@ -503,7 +626,6 @@ outline-offset: 3px;
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--color-text-muted);
 }
  
 /* ---------- Follow button (LinkedIn brand blue) ---------- */
@@ -516,17 +638,13 @@ outline-offset: 3px;
   padding: 11px 16px;
   border-radius: 999px;
  
-  background: var(--color-linkedin);
+  background: var(--color-linkedin-dark);
   color: var(--color-white);
- 
   font-size: 13.5px;
-  font-weight: 600;
- 
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
  
 .linkedin-follow:hover {
-  background: var(--color-linkedin-dark);
+  background: var(--color-linkedin);
   transform: translateY(-1px);
   box-shadow: 0 6px 14px rgba(10, 102, 194, 0.3);
 }
@@ -542,7 +660,7 @@ outline-offset: 3px;
 .linkedin-section-title h3 {
   font-size: 15px;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-black);
 }
  
 .linkedin-section-title a {
@@ -558,6 +676,7 @@ outline-offset: 3px;
 /* ---------- Posts ---------- */
 .linkedin-posts {
   padding: 22px 20px 8px;
+  background: #F5FAFA;
 }
  
 .linkedin-post-card {
@@ -574,7 +693,7 @@ outline-offset: 3px;
  
 .linkedin-post-card:hover {
   transform: translateY(-2px);
-  border-color: var(--color-primary-light);
+  border-color: var(--color-border-light);
   box-shadow: var(--shadow-soft);
 }
  
@@ -597,7 +716,7 @@ outline-offset: 3px;
   display: block;
   font-size: 13px;
   line-height: 1.2;
-  color: var(--color-text);
+  color: var(--color-black);
 }
  
 .linkedin-post-head div span {
@@ -702,22 +821,9 @@ outline-offset: 3px;
  
   text-align: center;
   border-radius: 999px;
- 
-  background: var(--color-primary);
-  color: var(--color-white);
- 
   font-size: 13.5px;
-  font-weight: 600;
- 
-  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
  
-.linkedin-work-button:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(33, 33, 77, 0.28);
-}
-
 .about-section {
   position: relative;
 
@@ -801,15 +907,6 @@ outline-offset: 3px;
 
 .about-heading h2 {
   max-width: 450px;
-
-  font-size: 42px;
-  line-height: 1.2;
-
-  color: var(--color-primary-light);
-}
-
-.about-heading h2 span {
-  color: var(--color-primary);
 }
 
 .about-text {
@@ -911,20 +1008,7 @@ outline-offset: 3px;
 .journey-see-more-btn {
   padding: 10px 24px;
   font-size: 14px;
-  font-weight: 600;
   border-radius: 25px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.journey-see-more-btn:hover {
-  background: var(--color-primary);
-  color: var(--color-surface);
-  box-shadow: 0 4px 12px rgba(66, 72, 116, 0.15);
-  transform: translateY(-2px);
 }
 
 .journey-ribbon {
@@ -991,17 +1075,6 @@ outline-offset: 3px;
 
   font-size: 14px;
   font-weight: 600;
-}
-
-.journey-header h2 {
-  font-size: 42px;
-  line-height: 1.2;
-
-  color: var(--color-text);
-}
-
-.journey-header h2 span {
-  color: var(--color-primary);
 }
 
 .journey-timeline {
@@ -1100,7 +1173,7 @@ outline-offset: 3px;
 .journey-card h3 {
   margin-bottom: 7px;
 
-  color: var(--color-text);
+  color: var(--color-black);
 
   font-size: 19px;
   line-height: 1.35;
@@ -1165,7 +1238,7 @@ outline-offset: 3px;
   border: 1px solid var(--color-border);
   border-radius: 50%;
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-black);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -1233,7 +1306,7 @@ outline-offset: 3px;
 }
  
 .contact-field label {
-  color: var(--color-text);
+  color: var(--color-black);
   font-size: 13px;
   font-weight: 600;
 }
@@ -1253,7 +1326,7 @@ outline-offset: 3px;
   border: 1px solid var(--color-border);
   border-radius: 12px;
   background-color: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-black);
   font-family: var(--font-main, inherit);
   font-size: 14px;
   outline: none;
@@ -1305,30 +1378,7 @@ outline-offset: 3px;
   width: 100%;
   margin-top: 8px;
   padding: 14px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg, var(--color-primary), #3B3B87);
-  color: var(--color-white);
-  font-family: var(--font-main, inherit);
   font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(33, 33, 77, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
- 
-.contact-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(33, 33, 77, 0.35);
-}
- 
-.contact-submit:active {
-  transform: translateY(0);
-}
- 
-.contact-submit:focus-visible {
-  outline: 2px solid var(--color-primary-light);
-  outline-offset: 3px;
 }
  
 /* ---------- Mobile ---------- */
@@ -1407,21 +1457,13 @@ outline-offset: 3px;
  
 /* Header */
 .skills-header p {
-  font-size: 14px;
-  color: var(--color-text-secondary);
   margin: 0 0 6px;
 }
  
 .skills-header h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--color-text);
   margin: 0 0 36px;
 }
  
-.skills-header h2 span {
-  color: var(--color-accent-text, var(--color-primary));
-}
  
 /* Filter Tabs */
 .skills-tabs {
@@ -1435,14 +1477,10 @@ outline-offset: 3px;
 .skills-tab-btn {
   padding: 8px 18px;
   font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  background-color: var(--color-surface-soft);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: all 0.25s ease;
+  background-color: var(--color-surface);
+  color: var(--color-black);
 }
  
 .skills-tab-btn:hover {
@@ -1507,7 +1545,7 @@ outline-offset: 3px;
   font-size: 12px;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--color-text);
+  color: var(--color-black);
 }
  
 /* Name tooltip on hover */
@@ -1638,20 +1676,11 @@ outline-offset: 3px;
 
 /* Header */
 .projects-header p {
-  font-size: 14px;
-  color: var(--color-text-secondary, #5a618f);
   margin: 15px auto;
 }
 
 .projects-header h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--color-text, #424874);
   margin: 0 0 44px;
-}
-
-.projects-header h2 span {
-  color: var(--color-primary-light, #a6b1e1);
 }
 
 /* Projects Grid Layout */
@@ -1751,14 +1780,11 @@ outline-offset: 3px;
   border-radius: 999px;
  
   font-size: 12.5px;
-  font-weight: 600;
   white-space: nowrap;
  
   color: var(--color-primary);
   background: transparent;
   border: 1px solid transparent;
- 
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
  
 .project-link svg {
@@ -1767,25 +1793,14 @@ outline-offset: 3px;
 }
  
 .project-link:hover {
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
   border-color: var(--color-border);
 }
  
 .project-link:hover svg {
   transform: translateY(-1px);
 }
- 
-/* Live link stands out: filled navy */
-.project-link.live-link {
-  background: var(--color-primary);
-  color: var(--color-white);
-}
- 
-.project-link.live-link:hover {
-  background: var(--color-primary-dark);
-  border-color: transparent;
-}
- 
+
 .project-link.live-link:hover svg {
   transform: translate(2px, -2px);
 }
@@ -1854,7 +1869,7 @@ outline-offset: 3px;
 
 .experience-section {
   padding: 40px 50px;
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
   scroll-margin-top: 75px;
 }
 
@@ -1872,16 +1887,6 @@ outline-offset: 3px;
   color: var(--color-primary);
   font-size: 13px;
   font-weight: 600;
-}
-
-.experience-header h2 {
-  color: var(--color-text);
-  font-size: 34px;
-  line-height: 1.3;
-}
-
-.experience-header h2 span {
-  color: var(--color-primary);
 }
 
 .experience-card {
@@ -1904,7 +1909,7 @@ outline-offset: 3px;
   margin-bottom: 10px;
   padding: 5px 10px;
   border-radius: 20px;
-  background: var(--color-accent-bg);
+  background: var(--color-surface);
   color: var(--color-primary);
   font-size: 10px;
   font-weight: 700;
@@ -1913,7 +1918,7 @@ outline-offset: 3px;
 
 .experience-top h3 {
   margin-bottom: 7px;
-  color: var(--color-text);
+  color: var(--color-black);
   font-size: 22px;
 }
 
@@ -1991,7 +1996,7 @@ outline-offset: 3px;
 
   padding: 90px 40px;
 
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
 
   text-align: center;
 }
@@ -2008,7 +2013,7 @@ outline-offset: 3px;
 
   border-radius: 20px;
 
-  background: var(--color-accent-bg);
+  background: var(--color-surface);
   color: var(--color-primary);
 
   font-size: 11px;
@@ -2018,15 +2023,6 @@ outline-offset: 3px;
 
 .ebooks-hero h1 {
   margin-bottom: 18px;
-
-  color: var(--color-text);
-
-  font-size: 56px;
-  line-height: 1.1;
-}
-
-.ebooks-hero h1 span {
-  color: var(--color-primary);
 }
 
 .ebooks-hero p {
@@ -2061,17 +2057,6 @@ outline-offset: 3px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-}
-
-.ebooks-section-heading h2 {
-  color: var(--color-text);
-
-  font-size: 34px;
-  line-height: 1.3;
-}
-
-.ebooks-section-heading h2 span {
-  color: var(--color-primary);
 }
 
 .ebooks-heading-line {
@@ -2129,7 +2114,7 @@ outline-offset: 3px;
 .ebook-cover {
   min-height: 300px;
 
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
 
   overflow: hidden;
 }
@@ -2176,7 +2161,7 @@ outline-offset: 3px;
 .ebook-info h3 {
   margin-bottom: 13px;
 
-  color: var(--color-text);
+  color: var(--color-black);
 
   font-size: 22px;
   line-height: 1.3;
@@ -2209,27 +2194,9 @@ outline-offset: 3px;
 .ebook-read-button {
   padding: 9px 15px;
 
-  border: none;
   border-radius: 8px;
 
-  background: var(--color-primary);
-
-  color: var(--color-white);
-
   font-size: 11px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease;
-}
-
-.ebook-read-button:hover {
-  background: var(--color-primary-dark);
-
-  transform: translateY(-2px);
 }
 
 /* ==================== WRITING MESSAGE ==================== */
@@ -2237,7 +2204,7 @@ outline-offset: 3px;
 .ebooks-message {
   padding: 90px 40px;
 
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
 
   text-align: center;
 }
@@ -2258,11 +2225,6 @@ outline-offset: 3px;
 
 .ebooks-message h2 {
   margin: 15px 0;
-
-  color: var(--color-text);
-
-  font-size: 34px;
-  line-height: 1.35;
 }
 
 .ebooks-message h2 strong {
@@ -2289,7 +2251,7 @@ outline-offset: 3px;
 
 .training-hero {
   padding: 100px 8% 90px;
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
 }
 
 .training-hero-content {
@@ -2309,13 +2271,6 @@ outline-offset: 3px;
 
 .training-hero h1 {
   margin: 0;
-  color: var(--color-text);
-  font-size: 52px;
-  line-height: 1.15;
-}
-
-.training-hero h1 span {
-  color: var(--color-primary);
 }
 
 .training-hero p {
@@ -2350,12 +2305,6 @@ outline-offset: 3px;
 
 .training-section-heading h2 {
   margin: 0;
-  color: var(--color-text);
-  font-size: 38px;
-}
-
-.training-section-heading h2 span {
-  color: var(--color-primary);
 }
 
 .training-heading-line {
@@ -2378,7 +2327,7 @@ outline-offset: 3px;
 
 .training-card {
   overflow: hidden;
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 16px;
   box-shadow: var(--shadow-soft);
@@ -2393,7 +2342,7 @@ outline-offset: 3px;
 .training-image {
   height: 230px;
   overflow: hidden;
-  /* background: var(--color-accent-bg); */
+  /* background: var(--color-surface); */
 }
 
 .training-image img {
@@ -2411,7 +2360,7 @@ outline-offset: 3px;
   margin-bottom: 12px;
   padding: 6px 12px;
   border-radius: 20px;
-  background: var(--color-accent-bg);
+  background: var(--color-surface);
   color: var(--color-primary-dark);
   font-size: 12px;
   font-weight: 700;
@@ -2419,7 +2368,7 @@ outline-offset: 3px;
 
 .training-info h3 {
   margin: 0 0 12px;
-  color: var(--color-text);
+  color: var(--color-black);
   font-size: 24px;
 }
 
@@ -2447,26 +2396,14 @@ outline-offset: 3px;
 
 .training-button {
   padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  background: var(--color-primary);
-  color: var(--color-white);
   font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s ease;
 }
-
-.training-button:hover {
-  background: var(--color-primary-dark);
-}
-
 
 /* Message */
 
 .training-message {
   padding: 100px 8%;
-  background: var(--color-surface-soft);
+  background: var(--color-surface);
 }
 
 .training-message-inner {
@@ -2484,9 +2421,6 @@ outline-offset: 3px;
 
 .training-message-inner h2 {
   margin: 18px 0;
-  color: var(--color-text);
-  font-size: 38px;
-  line-height: 1.3;
 }
 
 .training-message-inner h2 strong {
@@ -2543,18 +2477,18 @@ outline-offset: 3px;
 /* ==================== FOOTER CONTAINER ==================== */
 .footer {
   --footer-bg: linear-gradient(135deg, #14143A 0%, #21214D 50%, #14143A 100%);
-  --footer-heading: #FAF0E1;
-  --footer-text: #E8D9BE;
+  --footer-heading: #ffffff;
+  --footer-text: #ffffff;
   --footer-text-hover: #FFFFFF;
-  --footer-line: rgba(232, 217, 190, 0.25);
-  --footer-top-line: linear-gradient(90deg, #21214D, #C9A66B, #FAF0E1, #C9A66B);
+  --footer-line: rgba(123, 123, 123, 0.25);
+  --footer-top-line: linear-gradient(90deg, #2a32a4, #c0ddf7, #dffffd, #21bcce);
   --footer-icon-bg: rgba(250, 240, 225, 0.08);
   --footer-icon-border: rgba(232, 217, 190, 0.3);
-  --footer-icon-color: #FAF0E1;
-  --footer-icon-hover-bg: #C9A66B;
+  --footer-icon-color: #ffffff;
+  --footer-icon-hover-bg: #ffffff;
   --footer-icon-hover-color: #14143A;
 }
-
+ 
 .footer {
   background: var(--footer-bg);
   color: var(--footer-text);
@@ -2695,7 +2629,7 @@ outline-offset: 3px;
   height: 44px;
   padding: 0;
  
-  border-radius: 50%;
+  border-radius: 10%;
   background: var(--footer-icon-bg);
   border: 1px solid var(--footer-icon-border);
   color: var(--footer-icon-color);
