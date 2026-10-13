@@ -1,9 +1,40 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const YOUTUBE_URL = "https://www.youtube.com/@your-channel";
-const LINKEDIN_URL = "https://www.linkedin.com/in/zarin-tasnim-tsm15/";
 const EMAIL = "zarintsm15@gmail.com";
 
+/* ------------------------------------------------------------------
+   SOCIAL LINKS — all icons always show in the footer.
+   Replace each url with your real profile link when you have it.
+   To add another network later, add one line here + one icon below.
+   ------------------------------------------------------------------ */
+const SOCIAL_LINKS = [
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/zarin-tasnim-tsm15/",
+    Icon: LinkedInIcon,
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    url: "https://www.youtube.com/@your-channel", // replace
+    Icon: YouTubeIcon,
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    url: "https://www.instagram.com/your-username", // replace
+    Icon: InstagramIcon,
+  },
+  {
+    id: "x",
+    label: "X (Twitter)",
+    url: "https://x.com/your-username", // replace
+    Icon: XIcon,
+  },
+];
+
+/* ---------- Icons (all 20px, colored by CSS via currentColor) ---------- */
 function LinkedInIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -16,6 +47,24 @@ function YouTubeIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
     </svg>
   );
 }
@@ -116,30 +165,23 @@ function Footer({ onTalkClick }) {
             </ul>
           </div>
 
-          {/* Social: LinkedIn + YouTube icons only */}
+          {/* Social icons */}
           <div className="footer-links-group">
             <h4 className="footer-heading">Connect</h4>
             <div className="footer-socials">
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href={YOUTUBE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="YouTube"
-                title="YouTube"
-              >
-                <YouTubeIcon />
-              </a>
+              {SOCIAL_LINKS.map(({ id, label, url, Icon }) => (
+                <a
+                  key={id}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                  aria-label={label}
+                  title={label}
+                >
+                  <Icon />
+                </a>
+              ))}
             </div>
           </div>
         </div>

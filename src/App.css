@@ -2483,7 +2483,7 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
   --footer-line: rgba(123, 123, 123, 0.25);
   --footer-top-line: linear-gradient(90deg, #2a32a4, #c0ddf7, #dffffd, #21bcce);
   --footer-icon-bg: rgba(250, 240, 225, 0.08);
-  --footer-icon-border: rgba(232, 217, 190, 0.3);
+  --footer-icon-border: rgba(190, 232, 227, 0.3);
   --footer-icon-color: #ffffff;
   --footer-icon-hover-bg: #ffffff;
   --footer-icon-hover-color: #14143A;
@@ -2518,7 +2518,7 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
  
 .footer-content {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -2618,6 +2618,7 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
   flex-direction: row;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap; gap: 10px;
 }
  
 .social-btn {
@@ -2625,8 +2626,8 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
   align-items: center;
   justify-content: center;
  
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   padding: 0;
  
   border-radius: 10%;
