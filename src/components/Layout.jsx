@@ -23,7 +23,7 @@ function Layout() {
   return (
     <div className="app">
       <Navbar onTalkClick={() => setIsContactOpen(true)} />
-      <Outlet />
+      <Outlet context={{ onTalkClick: () => setIsContactOpen(true) }} />
       <Footer />
       <ContactModal
         isOpen={isContactOpen}

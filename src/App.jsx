@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useOutletContext } from "react-router-dom";
 import "./App.css";
 
 import Layout from "./components/Layout";
@@ -15,11 +15,12 @@ import Training from "./pages/Training";
 
 function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { onTalkClick } = useOutletContext();
 
   return (
     <div className="page-layout">
       <main className="main-content">
-        <Hero />
+        <Hero onTalkClick={onTalkClick} />
         <About />
         <Journey />
         <Skills />
