@@ -192,8 +192,17 @@ function Footer({ onTalkClick }) {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <p>© {currentYear} Zarin Tasnim. All rights reserved.</p>
+
+          <div className="footer-legal-links">
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <span>|</span>
+            <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+          </div>
+
           <p className="footer-location">Based in Dhaka, Bangladesh</p>
         </div>
+
+
       </div>
     </footer>
   );

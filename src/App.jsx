@@ -12,6 +12,8 @@ import Experience from "./components/Experience";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import Ebooks from "./pages/Ebooks";
 import Training from "./pages/Training";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -58,6 +60,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/training" element={<Training />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+<Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
       </Routes>
     </BrowserRouter>
