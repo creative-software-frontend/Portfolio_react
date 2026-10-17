@@ -1,19 +1,41 @@
-function ContactModal({ isOpen, onClose }) {
-  if (!isOpen) {
-    return null;
-  }
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Form values (including phone) are available here:
-    // const data = Object.fromEntries(new FormData(event.target));
+function ContactModal({ isOpen, onClose }) {
+  const form = useRef(null);
+  const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("");
+    setIsSending(true);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus("success");
+      form.current.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error.status, error.text);
+      setStatus("error");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="contact-modal-overlay" onClick={onClose}>
       <div
         className="contact-modal"
-        onClick={(event) => event.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
@@ -24,94 +46,93 @@ function ContactModal({ isOpen, onClose }) {
           ×
         </button>
 
-        <div className="contact-modal-content">
-          <div className="contact-modal-heading">
-            <span className="contact-modal-label">LET'S CONNECT</span>
+        <h2>Let's Connect</h2>
+        <p>Have a project or opportunity in mind? Send me a message.</p>
 
-            <p>
-              Have an idea, project or opportunity? I'd love to hear from you.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="contact-form">
-            {/* Row 1: Name + Email */}
-            <div className="contact-form-row">
-              <div className="contact-field">
-                <label htmlFor="fullName">Full Name</label>
-
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  placeholder="Your full name"
-                  autoComplete="name"
-                  required
-                />
-              </div>
-
-              <div className="contact-field">
-                <label htmlFor="email">Email Address</label>
-
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  autoComplete="email"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Row 2: Phone + Purpose */}
-            <div className="contact-form-row">
-              <div className="contact-field">
-                <label htmlFor="phone">
-                  Phone Number <span className="contact-optional">(optional)</span>
-                </label>
-
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  inputMode="tel"
-                  placeholder="+880 1XXX-XXXXXX"
-                  autoComplete="tel"
-                  pattern="[0-9+\-\s()]{7,20}"
-                  title="Use digits, spaces, + or - (7 to 20 characters)"
-                />
-              </div>
-
-              <div className="contact-field">
-                <label htmlFor="purpose">Purpose</label>
-
-                <select id="purpose" name="purpose">
-                  <option value="project">Project Collaboration</option>
-                  <option value="job">Job Opportunity</option>
-                  <option value="freelance">Freelance Work</option>
-                  <option value="internship">Internship Opportunity</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+        <form
+          ref={form}
+          className="contact-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="contact-form-row">
+            <div className="contact-field">
+              <label htmlFor="fullName">Full Name</label>
+              <input
+                id="fullName"
+                type="text"
+                name="fullName"
+                placeholder="Your name"
+                required
+              />
             </div>
 
             <div className="contact-field">
-              <label htmlFor="message">Message</label>
-
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Tell me about your idea, project, or opportunity..."
+              <label htmlFor="email">Email Address</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
                 required
-              ></textarea>
+              />
             </div>
+            <div className="contact-field">
+              <label htmlFor="phone">Phone Number (Optional)</label>
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                placeholder="Your phone number"
+              />
+            </div>
+          </div>
 
-            <button type="submit" className="contact-submit">
-              Send Message
-            </button>
-          </form>
-        </div>
+          <div className="contact-field">
+            <label htmlFor="purpose">Purpose</label>
+            <select id="purpose" name="purpose" required defaultValue="">
+              <option value="" disabled>
+                Select a purpose
+              </option>
+              <option value="Project Collaboration">
+                Project Collaboration
+              </option>
+              <option value="Job Opportunity">Job Opportunity</option>
+              <option value="Freelance Work">Freelance Work</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div className="contact-field">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Write your message..."
+              required
+            />
+          </div>
+
+          {status === "success" && (
+            <p className="contact-feedback success" role="status">
+              Message sent successfully! Thank you for contacting me.
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="contact-feedback error" role="alert">
+              Sorry, your message could not be sent. Please try again.
+            </p>
+          )}
+
+          <button
+            type="submit"
+            className="contact-submit"
+            disabled={isSending}
+          >
+            {isSending ? "Sending..." : "Send Message"}
+          </button>
+        </form>
       </div>
     </div>
   );
