@@ -3,19 +3,6 @@ import linkedinCover from "../assets/ln-cover.jpg";
 
 const PROFILE_URL = "https://www.linkedin.com/in/zarin-tasnim-0a7a47354";
 
-/* ------------------------------------------------------------------
-   YOUR POSTS — edit this list.
-   LinkedIn does not let a normal website read your posts automatically
-   (that API is restricted to approved partners), so you paste the
-   details of 2–3 posts here. To add a new post, copy one block to the
-   TOP of the list. Only the first MAX_POSTS are shown.
-
-   url   : open your post on LinkedIn → ••• → "Copy link to post"
-   date  : YYYY-MM-DD
-   text  : the post text (long text is cut to 3 lines automatically)
-   image : optional – import an image and put it here, or leave null
-   likes / comments : numbers from your post
-   ------------------------------------------------------------------ */
 const MAX_POSTS = 2;
 
 const posts = [
@@ -53,6 +40,30 @@ const services = [
     text: "Turning ideas and designs into functional interfaces.",
   },
 ];
+
+
+const ebooks = [
+  {
+    title: "Beginner's Algorithm",
+    text: "Learn algorithm fundamentals and build problem-solving skills.",
+  },
+  {
+    title: "Basic C Programming",
+    text: "Explore C programming basics, syntax, and core concepts.",
+  },
+];
+
+const training = [
+  {
+    title: "Frontend Development",
+    text: "Learn to build responsive websites with modern frontend tools.",
+  },
+  {
+    title: "Programming Fundamentals",
+    text: "Strengthen logical thinking and programming skills.",
+  },
+];
+
 
 /* ---------- small inline icons ---------- */
 function LinkedInLogo({ size = 16 }) {
@@ -207,6 +218,47 @@ function LinkedInSidebar() {
             </li>
           ))}
         </ul>
+      </div>
+
+
+      {/* Ebooks */}
+      <div className="linkedin-extra-section">
+        <div className="linkedin-section-title">
+          <h3>Ebooks</h3>
+          <a href="/ebooks">See all</a>
+        </div>
+
+        <div className="linkedin-summary-list">
+          {ebooks.map((ebook) => (
+            <a href="/ebooks" className="linkedin-summary-card" key={ebook.title}>
+              <span className="linkedin-summary-icon">📚</span>
+              <div>
+                <strong>{ebook.title}</strong>
+                <p>{ebook.text}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Training */}
+      <div className="linkedin-extra-section">
+        <div className="linkedin-section-title">
+          <h3>Training</h3>
+          <a href="/training">See all</a>
+        </div>
+
+        <div className="linkedin-summary-list">
+          {training.map((item) => (
+            <a href="/training" className="linkedin-summary-card" key={item.title}>
+              <span className="linkedin-summary-icon">🎓</span>
+              <div>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
 
       <a
