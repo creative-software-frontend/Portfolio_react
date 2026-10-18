@@ -29,7 +29,7 @@ function Home() {
         <Projects />
         <Experience />
       </main>
-          {/* Mobile-only tab on the right edge */}
+      {/* Mobile-only tab on the right edge */}
       <button
         type="button"
         className={`sidebar-toggle ${isSidebarOpen ? "open" : ""}`}
@@ -61,7 +61,7 @@ function App() {
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/training" element={<Training />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-<Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
       </Routes>
     </BrowserRouter>
