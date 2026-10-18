@@ -52,7 +52,7 @@
  
   /* text scale */
   --fs-h1-page: clamp(34px, 5vw, 52px);   /* Ebook / Training page titles */
-  --fs-h2: clamp(26px, 3.4vw, 36px);      /* every section heading */
+  --fs-h2: clamp(30px, 3.4vw, 36px);      /* every section heading */
   --fs-h3: 21px;                          /* card titles */
   --fs-lead: 17px;                        /* intro paragraphs */
   --fs-body: 15px;                        /* normal paragraphs */
@@ -1976,266 +1976,855 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
   color: var(--color-text-secondary);
 }
 
-/* ==================================================
-   EBOOK PAGE
-   ================================================== */
+/* ==========================================
+   EBOOK MARKETPLACE
+   Navy + Mint Portfolio Theme
+========================================== */
 
 .ebooks-page {
+  --book-primary: var(--color-primary);
+  --book-primary-dark: var(--color-primary-dark);
+  --book-mint: var(--color-primary-light);
+  --book-text: var(--color-black);
+  --book-muted: var(--color-text-secondary);
+  --book-border: var(--color-border-light);
+  --book-surface: var(--color-surface);
+
   min-height: 100vh;
+  color: var(--book-text);
   background: var(--color-bg);
 }
 
-/* ==================== HERO ==================== */
+.ebooks-page * {
+  box-sizing: border-box;
+}
 
-.ebooks-hero {
-  min-height: 200px;
+.ebooks-page button,
+.ebooks-page input {
+  font-family: var(--font-main);
+}
 
+/* HERO */
+
+.ebook-market-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 35px;
+  min-height: 450px;
+  padding: 45px max(7%, calc((100% - 1180px) / 2));
+  overflow: hidden;
+  background: linear-gradient(120deg, #f3f5ff, #edf8f6);
+}
+
+.ebook-market-hero-content {
+  max-width: 540px;
+}
+
+.ebook-market-eyebrow,
+.ebook-market-section-label {
+  display: inline-block;
+  color: var(--book-primary);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.ebook-market-hero h1 {
+  margin: 15px 0;
+  color: var(--book-primary);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.13;
+  letter-spacing: -1.8px;
+}
+
+.ebook-market-hero h1 span {
+  color: var(--book-primary);
+}
+
+.ebook-market-hero-content > p {
+  max-width: 450px;
+  margin: 18px 0 24px;
+  color: #55566f;
+  line-height: var(--lh-body);
+}
+
+.ebook-market-hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 14px 22px;
+  border: 1px solid var(--book-primary);
+  border-radius: var(--radius-sm);
+  background: var(--book-primary);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--ease);
+}
+
+.ebook-market-hero-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--book-primary-dark);
+  background: var(--book-primary-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.ebook-market-hero-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--book-muted);
+  font-size: 14px;
+}
+
+.ebook-market-hero-note span {
+  color: var(--book-primary);
+  font-size: 17px;
+}
+
+/* HERO BOOK ILLUSTRATION */
+
+.ebook-market-hero-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 340px;
+}
+
+.ebook-market-book {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 185px;
+  height: 255px;
+  padding: 20px 18px;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: 8px 14px 30px #21214d20;
+}
+
+.book-back {
+  transform: translate(-45px, 12px) rotate(-12deg);
+  border-left: 7px solid #9ccdc6;
+  background: #c7e5df;
+  color: #244c51;
+}
+
+.book-back > span {
+  margin-top: 35px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.book-back > strong {
+  font-size: 27px;
+  line-height: 1.1;
+}
+
+.book-back > small {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.book-front {
+  z-index: 1;
+  transform: translate(38px, 0) rotate(7deg);
+  border-left: 7px solid #14143a;
+  background: linear-gradient(150deg, #33346f, #21214d 75%);
+  color: white;
+}
+
+.ebook-market-book-top {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+
+.ebook-market-book-symbol {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 8px auto;
+  border: 1px solid #67d5c8;
+  border-radius: 50%;
+  color: #a0eee4;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.book-front > strong {
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.book-front > span {
+  color: #a0eee4;
+  font-size: 7px;
+  letter-spacing: 0.8px;
+}
+
+.ebook-market-floating {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #e2e6f0;
+  border-radius: var(--radius-md);
+  background: white;
+  box-shadow: var(--shadow-soft);
+}
+
+.ebook-market-float-top {
+  top: 20px;
+  right: 0;
+}
+
+.ebook-market-float-bottom {
+  bottom: 13px;
+  left: 0;
+}
+
+.ebook-market-floating > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: #e9f5f5;
+  color: var(--book-primary);
+  font-size: 19px;
+}
+
+.ebook-market-floating strong,
+.ebook-market-floating small {
+  display: block;
+}
+
+.ebook-market-floating strong {
+  color: var(--book-primary);
+  font-size: 11px;
+}
+
+.ebook-market-floating small {
+  margin-top: 4px;
+  color: var(--book-muted);
+  font-size: 10px;
+}
+
+.ebook-market-orbit {
+  position: absolute;
+  width: 310px;
+  height: 270px;
+  border: 1px solid #c5e5df;
+  border-radius: 50%;
+  transform: rotate(25deg);
+}
+
+/* BENEFITS */
+
+.ebook-market-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 27px max(7%, calc((100% - 1180px) / 2));
+  border-bottom: 1px solid var(--book-border);
+  background: var(--book-surface);
+}
+
+.ebook-market-benefits > div {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 90px 40px;
-
-  background: var(--color-surface);
-
-  text-align: center;
+  gap: 13px;
 }
 
-.ebooks-hero-content {
-  max-width: 500px;
-}
-
-.ebooks-label {
-  display: inline-block;
-
-  margin-bottom: 18px;
-  padding: 7px 15px;
-
-  border-radius: 20px;
-
-  background: var(--color-surface);
-  color: var(--color-primary);
-
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-.ebooks-hero h1 {
-  margin-bottom: 18px;
-}
-
-.ebooks-hero p {
-  max-width: 600px;
-  margin: 0 auto;
-
-  color: var(--color-text-muted);
-
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-
-/* ==================== BOOK SECTION ==================== */
-
-.ebooks-section {
-  max-width: 1150px;
-
-  margin: 0 auto;
-  padding: 90px 40px;
-}
-
-.ebooks-section-heading {
-  margin-bottom: 45px;
-}
-
-.ebooks-section-heading > p {
-  margin-bottom: 8px;
-
-  color: var(--color-primary);
-
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-.ebooks-heading-line {
-  width: 55px;
-  height: 3px;
-
-  margin-top: 15px;
-
-  background: var(--color-primary);
-}
-
-/* ==================== BOOK GRID ==================== */
-
-.ebooks-grid {
+.ebook-market-benefit-icon {
   display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 30px;
+  place-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  border-radius: var(--radius-md);
+  background: #e9f5f5;
+  color: var(--book-primary);
+  font-size: 21px;
 }
 
-/* ==================== BOOK CARD ==================== */
-
-.ebook-card {
-  display: grid;
-
-  grid-template-columns: 190px 1fr;
-
-  min-height: 300px;
-
-  overflow: hidden;
-
-  background: var(--color-surface);
-
-  border: 1px solid var(--color-border);
-
-  border-radius: 18px;
-
-  box-shadow: var(--shadow-soft);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+.ebook-market-benefits strong {
+  color: var(--book-primary);
+  font-size: 15px;
 }
 
-.ebook-card:hover {
-  transform: translateY(-5px);
-
-  box-shadow: var(--shadow-medium);
-}
-
-
-/* ==================== BOOK COVER ==================== */
-
-.ebook-cover {
-  min-height: 300px;
-
-  background: var(--color-surface);
-
-  overflow: hidden;
-}
-
-.ebook-cover img {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  transition: transform 0.4s ease;
-}
-
-.ebook-card:hover .ebook-cover img {
-  transform: scale(1.04);
-}
-
-
-/* ==================== BOOK INFO ==================== */
-
-.ebook-info {
-  display: flex;
-  flex-direction: column;
-
-  padding: 28px;
-}
-
-.ebook-category {
-  display: inline-block;
-
-  margin-bottom: 12px;
-
-  color: var(--color-primary);
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-
-.ebook-info h3 {
-  margin-bottom: 13px;
-
-  color: var(--color-black);
-
-  font-size: 22px;
-  line-height: 1.3;
-}
-
-.ebook-info p {
-  color: var(--color-text-muted);
-
+.ebook-market-benefits p {
+  margin-top: 5px;
+  color: var(--book-muted);
   font-size: 13px;
-  line-height: 1.7;
 }
 
-.ebook-card-bottom {
+/* CATALOG */
+
+.ebook-market-catalog {
+  max-width: 1180px;
+  padding: 70px 25px;
+  margin: auto;
+  scroll-margin-top: 30px;
+}
+
+.ebook-market-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ebook-market-section-heading h2 {
+  margin: 12px 0 8px;
+  color: var(--book-primary);
+  font-size: 35px;
+  line-height: 35px;
+}
+
+.ebook-market-section-heading p {
+  margin: 0;
+  color: var(--book-muted);
+  font-size: 15px;
+  line-height: var(--lh-body);
+}
+
+.ebook-market-count {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border-radius: var(--radius-sm);
+  background: #e9effb;
+  color: var(--book-primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* SEARCH + CATEGORY FILTERS */
+
+.ebook-market-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  gap: 15px;
-
-  margin-top: auto;
-  padding-top: 25px;
+  gap: 18px;
+  margin: 30px 0 25px;
 }
 
-.ebook-year {
-  color: var(--color-text-light);
+.ebook-market-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 360px);
+  padding: 0 14px;
+  border: 1px solid var(--book-border);
+  border-radius: var(--radius-sm);
+  background: white;
+  transition: var(--ease);
+}
 
+.ebook-market-search:focus-within {
+  border-color: var(--book-primary);
+  box-shadow: 0 0 0 3px #21214d12;
+}
+
+.ebook-market-search > span {
+  color: var(--book-primary);
+  font-size: 23px;
+}
+
+.ebook-market-search input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--book-text);
+  font-size: 15px;
+}
+
+.ebook-market-search input::placeholder {
+  color: #898aa1;
+}
+
+.ebook-market-search button {
+  border: 0;
+  background: transparent;
+  color: var(--book-muted);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.ebook-market-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ebook-market-categories button {
+  padding: 10px 14px;
+  border: 1px solid var(--book-border);
+  border-radius: var(--radius-sm);
+  background: white;
+  color: var(--book-muted);
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--ease);
+}
+
+.ebook-market-categories button:hover,
+.ebook-market-categories button.active {
+  border-color: var(--book-primary);
+  background: var(--book-primary);
+  color: white;
+}
+
+/* BOOK CARDS */
+
+.ebook-market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.ebook-market-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--book-border);
+  border-radius: var(--radius-lg);
+  background: var(--book-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.ebook-market-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.ebook-market-cover {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  background: #edf0f8;
+}
+
+.ebook-market-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.ebook-market-card:hover .ebook-market-cover img {
+  transform: scale(1.035);
+}
+
+.ebook-market-level,
+.ebook-market-type {
+  position: absolute;
+  top: 14px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  background: white;
+  color: var(--book-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ebook-market-level {
+  left: 14px;
+}
+
+.ebook-market-type {
+  right: 14px;
+  background: var(--book-primary);
+  color: white;
+}
+
+.ebook-market-info {
+  padding: 21px;
+}
+
+.ebook-market-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--book-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ebook-market-year {
+  color: var(--book-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ebook-market-info h3 {
+  margin: 13px 0 9px;
+  color: var(--book-primary);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.ebook-market-info > p {
+  min-height: 66px;
+  margin: 0;
+  color: #55566f;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.ebook-market-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 17px;
+  margin-top: 15px;
+  border-top: 1px solid var(--book-border);
+}
+
+.ebook-market-card-footer small,
+.ebook-market-card-footer strong {
+  display: block;
+}
+
+.ebook-market-card-footer small {
+  margin-bottom: 5px;
+  color: var(--book-muted);
   font-size: 12px;
 }
 
-.ebook-read-button {
-  padding: 9px 15px;
-
-  border-radius: 8px;
-
-  font-size: 11px;
+.ebook-market-card-footer strong {
+  color: #18765e;
+  font-size: 15px;
 }
 
-/* ==================== WRITING MESSAGE ==================== */
+.ebook-market-card-footer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--book-primary);
+  border-radius: var(--radius-sm);
+  background: var(--book-primary);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--ease);
+}
 
-.ebooks-message {
-  padding: 90px 40px;
+.ebook-market-card-footer button:hover {
+  transform: translateY(-2px);
+  background: var(--book-primary-dark);
+}
 
-  background: var(--color-surface);
+/* EMPTY STATE */
 
+.ebook-market-empty {
+  padding: 60px 20px;
+  border: 1px dashed var(--book-border);
+  border-radius: var(--radius-lg);
+  background: white;
   text-align: center;
 }
 
-.ebooks-message-inner {
-  max-width: 650px;
-  margin: 0 auto;
+.ebook-market-empty > span {
+  color: var(--book-primary);
+  font-size: 35px;
 }
 
-.ebooks-message-inner > span {
-  color: var(--color-primary);
-
-  font-size: 11px;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
+.ebook-market-empty h3 {
+  margin: 12px 0;
+  color: var(--book-primary);
 }
 
-.ebooks-message h2 {
-  margin: 15px 0;
+.ebook-market-empty p {
+  color: var(--book-muted);
+  font-size: 15px;
 }
 
-.ebooks-message h2 strong {
-  color: var(--color-primary);
+.ebook-market-empty button {
+  padding: 10px 15px;
+  margin-top: 15px;
+  border: 1px solid var(--book-primary);
+  border-radius: var(--radius-sm);
+  background: var(--book-primary);
+  color: white;
+  cursor: pointer;
 }
 
-.ebooks-message p {
-  color: var(--color-text-muted);
+/* BOTTOM CTA */
 
-  font-size: 14px;
+.ebook-market-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1130px;
+  padding: 38px 40px;
+  margin: 0 auto 70px;
+  overflow: hidden;
+  border: 1px solid #dce8f3;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(110deg, #eef1fc, #e9f7f4);
+}
+
+.ebook-market-cta-symbol {
+  position: absolute;
+  top: -36px;
+  right: 230px;
+  color: #21214d0b;
+  font-family: Georgia, serif;
+  font-size: 200px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.ebook-market-cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ebook-market-cta-content > span {
+  color: var(--book-primary);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.ebook-market-cta h2 {
+  margin: 10px 0;
+  color: var(--book-primary);
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+.ebook-market-cta p {
+  max-width: 520px;
+  margin: 0;
+  color: #55566f;
+  font-size: 15px;
   line-height: 1.8;
+}
+
+.ebook-market-cta > button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 15px;
+  padding: 14px 21px;
+  border: 1px solid var(--book-primary);
+  border-radius: var(--radius-sm);
+  background: var(--book-primary);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--ease);
+}
+
+.ebook-market-cta > button:hover {
+  transform: translateY(-2px);
+  background: var(--book-primary-dark);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .ebook-market-hero {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 10px;
+    padding: 40px 5%;
+  }
+
+  .ebook-market-hero h1 {
+    font-size: 42px;
+  }
+
+  .ebook-market-floating {
+    padding: 10px;
+  }
+
+  .ebook-market-benefits {
+    padding: 25px 4%;
+    gap: 10px;
+  }
+
+  .ebook-market-benefits > div {
+    justify-content: flex-start;
+  }
+
+  .ebook-market-cover {
+    height: 235px;
+  }
+
+  .ebook-market-cta {
+    margin-right: 22px;
+    margin-left: 22px;
+  }
+}
+
+@media (max-width: 650px) {
+  .ebook-market-hero {
+    grid-template-columns: 1fr;
+    padding: 28px 22px 35px;
+  }
+
+  .ebook-market-breadcrumb {
+    margin-bottom: 24px;
+  }
+
+  .ebook-market-hero h1 {
+    font-size: 39px;
+  }
+
+  .ebook-market-hero-content > p {
+    font-size: 13px;
+  }
+
+  .ebook-market-hero-art {
+    min-height: 330px;
+    margin-top: 5px;
+  }
+
+  .ebook-market-book {
+    width: 165px;
+    height: 235px;
+  }
+
+  .ebook-market-float-top {
+    top: 10px;
+    right: 0;
+  }
+
+  .ebook-market-float-bottom {
+    bottom: 8px;
+    left: 0;
+  }
+
+  .ebook-market-benefits {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 25px 22px;
+  }
+
+  .ebook-market-catalog {
+    padding: 45px 18px;
+  }
+
+  .ebook-market-section-heading h2 {
+    font-size: 27px;
+  }
+
+  .ebook-market-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ebook-market-search {
+    width: 100%;
+  }
+
+  .ebook-market-categories {
+    gap: 7px;
+  }
+
+  .ebook-market-categories button {
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+
+  .ebook-market-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ebook-market-cover {
+    height: 255px;
+  }
+
+  .ebook-market-info > p {
+    min-height: 0;
+  }
+
+  .ebook-market-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+    padding: 28px 23px;
+    margin: 0 18px 45px;
+  }
+
+  .ebook-market-cta h2 {
+    font-size: 23px;
+  }
+
+  .ebook-market-cta-symbol {
+    right: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ebook-market-hero h1 {
+    font-size: 34px;
+  }
+
+  .ebook-market-floating {
+    padding: 8px;
+  }
+
+  .ebook-market-floating strong {
+    font-size: 10px;
+  }
+
+  .ebook-market-floating small {
+    font-size: 9px;
+  }
+
+  .ebook-market-book {
+    width: 145px;
+    height: 215px;
+    padding: 16px;
+  }
+
+  .book-front > strong {
+    font-size: 19px;
+  }
+
+  .ebook-market-info {
+    padding: 16px;
+  }
+
+  .ebook-market-info h3 {
+    font-size: 19px;
+  }
+
+  .ebook-market-card-footer button {
+    gap: 6px;
+    padding: 11px 9px;
+    font-size: 10px;
+  }
 }
 
 /* =========================================
