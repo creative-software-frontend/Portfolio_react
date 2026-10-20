@@ -1,303 +1,256 @@
+
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
-import beginnerAlgo from "../assets/beginners-algorithm_training.jpg";
-import basicCProg from "../assets/basic-c-programming_training.jpg";
+import dilouarPhoto from "../assets/dilouar-hossain.jpg";
+
+const modules = [
+  {
+    icon: "📈",
+    title: "Module 1: Introduction to Digital Marketing & AI",
+    topics: ["What is Digital Marketing?", "AI in Marketing & Benefits", "Types of AI: ML, NLP, Generative AI, Predictive Analytics"],
+  },
+  {
+    icon: "✍️",
+    title: "Module 2: AI in Content Creation & Copywriting",
+    topics: ["AI Tools: ChatGPT, Jasper, Copy.ai", "Prompt Engineering Basics", "Best Practices: Ethics, Originality, SEO"],
+  },
+  {
+    icon: "📱",
+    title: "Module 3: AI in Social Media Marketing",
+    topics: ["Smart Scheduling & Automation", "AI-powered Audience Insights", "AI Image & Video Tools: Canva AI, Lumen5, Pictory"],
+  },
+  {
+    icon: "📣",
+    title: "Module 4: Meta Paid Ads",
+    topics: ["AI Based Audience Targeting", "Re-marketing & Custom Audience", "Campaign Monitoring & Scaling"],
+  },
+  {
+    icon: "📣",
+    title: "Module 5: Google Paid Ads",
+    topics: ["High Quality Traffic (Ready-to-Buy Users)", "Budget Control & Transparent Reporting", "Predictive Performance Forecasting"],
+  },
+  {
+    icon: "🎬",
+    title: "Module 6: AI Based YouTube Video Optimization",
+    topics: ["YouTube AI Optimization Tools", "AI-Based Audience Targeting", "AI Caption & Script Optimization"],
+  },
+  {
+    icon: "🔍",
+    title: "Module 7: AI in SEO & SEM",
+    topics: ["AI Keyword Research: Ubersuggest, Frase, Semrush AI", "Content Optimization: SurferSEO, NeuronWriter", "Google & Meta Ads with AI Targeting"],
+  },
+  {
+    icon: "📧",
+    title: "Module 8: Email Marketing & Chatbots",
+    topics: ["AI Email Personalization", "Subject Line Optimization", "AI Chatbots: Tidio, ManyChat, Chatfuel"],
+  },
+  {
+    icon: "📊",
+    title: "Module 9: Analytics & Predictive Marketing with AI",
+    topics: ["AI in Google Analytics & Meta Insights", "Customer Segmentation & CLV Prediction", "A/B Testing with AI Insights"],
+  },
+  {
+    icon: "🎨",
+    title: "Module 10: AI Tools for Design & Video",
+    topics: ["Graphics: Canva AI, Adobe Firefly", "AI Video Editors: Runway ML, Pictory, Synthesia", "Voice-over & Avatar Tools"],
+  },
+  {
+    icon: "🏆",
+    title: "Module 11: Capstone Project & Certification",
+    topics: ["Complete Marketing Funnel Project using AI", "Peer Review & Instructor Feedback", "Certificate of Completion"],
+  },
+  {
+    icon: "💼",
+    title: "Module 12: Career Guideline",
+    topics: ["Discussion of what you can do as a digital marketer", "Difference between job and business", "Discussing the full benefits of doing business", "Job references and career guidance"],
+  },
+];
+
+const courseFees = [
+  ["ডোমেইন নাম (১ বছরের জন্য)", "2,000 ৳"],
+  ["হোস্টিং (১ বছরের জন্য)", "1,500 ৳"],
+  ["রেসপনসিভ ওয়েবসাইট", "25,000 ৳"],
+  ["মেটা বিজ্ঞাপন অ্যাকাউন্ট", "5,000 ৳"],
+  ["ইনভেস্টমেন্ট এর সুবিধা", "50,000 ৳"],
+];
+
+const gifts = [
+  ["ব্র্যান্ডিং সহ টিশার্ট", "500 ৳"],
+  ["প্রিন্টেড মাগ", "500 ৳"],
+  ["ব্র্যান্ডিং সহ ক্যাপ", "300 ৳"],
+  ["ক্যারিয়ার সম্পর্কিত ১০টি পিডিএফ বই", "10,000 ৳"],
+  ["প্রোডাক্ট সোর্সিং এর সুবিধা", "5,000 ৳"],
+];
 
 function Training() {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All Courses");
+  const [showPaymentHelp, setShowPaymentHelp] = useState(false);
 
-  const trainings = [
-    {
-      id: 1,
-      title: "Basic C Programming",
-      description:
-        "Learn programming fundamentals, variables, loops, functions, arrays and problem solving.",
-      year: "2020",
-      category: "Programming",
-      image: basicCProg,
-      level: "Beginner",
-      lessons: "Beginner friendly",
-      price: "Free",
-      rating: "4.9",
-    },
-    {
-      id: 2,
-      title: "Beginner's Algorithm",
-      description:
-        "Build logical thinking and learn essential algorithms and problem-solving techniques.",
-      year: "2026",
-      category: "Algorithms",
-      image: beginnerAlgo,
-      level: "Beginner",
-      lessons: "Beginner friendly",
-      price: "Free",
-      rating: "4.8",
-    },
-  ];
-
-  const categories = ["All Courses", "Programming", "Algorithms"];
-
-  const filteredTrainings = trainings.filter((training) => {
-    const matchesCategory =
-      activeCategory === "All Courses" ||
-      training.category === activeCategory;
-
-    const matchesSearch =
-      training.title.toLowerCase().includes(search.toLowerCase()) ||
-      training.description.toLowerCase().includes(search.toLowerCase());
-
-    return matchesCategory && matchesSearch;
-  });
+  const scrollToPayment = () => {
+    document.getElementById("training-payment")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <div className="training-page">
+    <div className="dm-training">
+      <header className="dm-hero">
+        <span className="dm-offer">✨ Limited Time Offer</span>
+        <h1>Digital Marketing <span>With AI</span></h1>
+        <p>স্মার্ট মার্কেটিং ও দ্রুত সফলতা, সবই সম্ভব AI-এর সাথে</p>
+      </header> 
+
       <main>
-        <section className="market-hero">
-          <div className="market-hero-content">
-
-            <span className="market-eyebrow">
-              LEARN SOMETHING NEW
-            </span>
-
-            <h1>
-              Build skills
-              <br />
-              <span>Shape your future.</span>
-            </h1>
-
-            <p>
-              Explore beginner-friendly programming and algorithm
-              training designed to help you learn step by step.
-            </p>
-
-            <button
-              className="market-hero-button"
-              onClick={() =>
-                document
-                  .getElementById("course-catalog")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Explore Courses <span>→</span>
-            </button>
+        <section className="dm-section dm-profile-section">
+          <div className="dm-section-heading">
+            <h2>👨‍🏫 কোর্সের বিস্তারিত</h2>
+            <p>১০+ বছরের অভিজ্ঞতা নিয়ে আপনার পাশে</p>
           </div>
 
-          <div className="market-hero-art">
-            <div className="market-floating-card market-card-top">
-              <span className="market-floating-icon">✦</span>
-              <div>
-                <strong>Learn by doing</strong>
-                <small>Build your foundation</small>
-              </div>
-            </div>
-
-            <div className="market-hero-illustration">
-              <div className="market-code-window">
-                <div className="market-window-dots">
-                  <i></i><i></i><i></i>
+          <div className="dm-profile-layout">
+            <article className="dm-trainer-card">
+              <img className="dm-trainer-photo" src={dilouarPhoto} alt="Engineer Dilouar Hossain" />
+              <div className="dm-trainer-info">
+                <div className="dm-badges">
+                  <span>✨ Expert Trainer</span>
+                  <span>🏆 10+ Years</span>
+                  <span>👥 5000+ Students</span>
+                  <span>📘 10 PDF Book</span>
+                  <span>🤖 AI Based Course</span>
+                  <span>💻 Giveaway Laptop</span>
                 </div>
-                <span className="market-code-muted">01</span>
-                <code>int main() {"{"}</code>
-                <code className="market-code-indent">
-                  printf("Hello!");
-                </code>
-                <code>{"}"}</code>
-                <div className="market-code-bottom">
-                  <span>●</span> Ready to learn
+                <div className="dm-stats">
+                  <div><strong>10+</strong><span>Years Experience</span></div>
+                  <div><strong>5000+</strong><span>Students Trained</span></div>
                 </div>
+                <h3>Engineer Dilouar Hossain</h3>
+                <p className="dm-trainer-role">Digital Marketing Trainer | 10+ Years Experience</p>
+                <p className="dm-trainer-bio">Founder at Zero Degree venture & Golden Life Business Ltd</p>
+                <button className="dm-gradient-button" onClick={() => setIsContactOpen(true)}>
+                  📞 ইন্সট্রাক্টরের সাথে কথা বলুন
+                </button>
               </div>
-              <div className="market-orbit market-orbit-one"></div>
-              <div className="market-orbit market-orbit-two"></div>
-              <span className="market-decoration market-star">✳</span>
-              <span className="market-decoration market-plus">+</span>
-            </div>
+            </article>
 
-            <div className="market-floating-card market-card-bottom">
-              <span className="market-check-icon">✓</span>
-              <div>
-                <strong>Start with the basics</strong>
-                <small>Progress at your own pace</small>
+            <aside className="dm-schedule-card">
+              <h3>🗓️ ক্লাসের সময়সূচী</h3>
+              <div className="dm-schedule-item">
+                <strong>🎯 Batch No-20251101</strong>
+                <span>Class Start: 01 November 2026</span>
               </div>
-            </div>
+              <div className="dm-schedule-item">
+                <strong>⏰ Class Time</strong>
+                <span>9PM to 11PM (Night)</span>
+                <span>Sunday, Tuesday, Thursday</span>
+              </div>
+              <div className="dm-schedule-item">
+                <strong>📚 Course Duration</strong>
+                <span>12 Weeks | Online</span>
+                <span>Beginner to Advanced</span>
+              </div>
+            </aside>
           </div>
         </section>
 
-        <section className="market-benefits">
-          <div>
-            <span className="market-benefit-icon">⌘</span>
-            <div>
-              <strong>Beginner friendly</strong>
-              <p>Start with the fundamentals</p>
-            </div>
+        <section className="dm-section">
+          <div className="dm-section-heading">
+            <h2>💰 কোর্স ফি ও সুবিধা</h2>
+            <p>একবার ইনভেস্ট, আজীবন সক্ষমতা</p>
           </div>
-          <div>
-            <span className="market-benefit-icon">◷</span>
-            <div>
-              <strong>Learn at your pace</strong>
-              <p>Build skills step by step</p>
-            </div>
+
+          <div className="dm-fee-layout">
+            <article className="dm-price-card">
+              <h3>💰 কোর্স ফি</h3>
+              <p>সীমিত সময়ের জন্য</p>
+              <div className="dm-price">৳ ৯,৯৯৯</div>
+              <p className="dm-discount-note">এককালীন পেমেন্টে <strong>৯০% ছাড়</strong></p>
+              <p className="dm-price-description">লাইফটাইম এক্সেস এবং আপডেটেড কোর্স কনটেন্ট</p>
+              <div className="dm-payment-logos">
+                <span>bkash</span><span>নগদ</span>
+              </div>
+              <button className="dm-enroll-button" onClick={scrollToPayment}>🚀 এখনই এনরোল করুন →</button>
+              <small>🔒100% Secure Payment | Support: 0949 866 933</small>
+            </article>
+
+            <article className="dm-benefits-card">
+              <div>
+                <h3>🎁 কোর্সে যা ফ্রি পাবেন</h3>
+                <ul>{courseFees.map(([name, price]) => <li key={name}><span>{name}</span><strong>{price}</strong></li>)}</ul>
+              </div>
+              <div>
+                <h3>🎯 বিশেষ গিফট প্যাক</h3>
+                <ul>{gifts.map(([name, price]) => <li key={name}><span>🎁 {name}</span><strong>{price}</strong></li>)}</ul>
+              </div>
+              <h3 className="dm-gift-total">💰 সর্বমোট গিফটের মূল্য: ১,০০,০০০</h3>
+            </article>
           </div>
-          <div>
-            <span className="market-benefit-icon">◇</span>
+
+          <article className="dm-laptop-banner">
             <div>
-              <strong>Practical knowledge</strong>
-              <p>Focus on real understanding</p>
+              <h2>লটারির <span>পুরস্কার</span></h2>
+              <p>সেরাদের জন্য আকর্ষণীয় পুরস্কার ল্যাপটপের মাধ্যমে দেওয়া হবে।</p>
+              <button onClick={scrollToPayment}>অংশগ্রহণ করুন</button>
             </div>
-          </div>
+            <div className="dm-laptop-art" aria-label="Laptop giveaway">💻<strong>ল্যাপটপ</strong></div>
+          </article>
         </section>
 
-        <section className="market-catalog" id="course-catalog">
-          <div className="market-section-heading">
-            <div>
-              <span className="market-section-label">
-                YOUR LEARNING JOURNEY
-              </span>
-              <h2>Explore training programs</h2>
-              <p>
-                Find the right place to start and grow your technical skills.
-              </p>
-            </div>
-
-            <span className="market-course-count">
-              {filteredTrainings.length}{" "}
-              {filteredTrainings.length === 1 ? "course" : "courses"}
-            </span>
+        <section className="dm-section dm-modules-section" id="training-modules">
+          <div className="dm-section-heading">
+            <h2>📚 কোর্স মডিউল</h2>
+            <p>AI-পাওয়ার্ড ডিজিটাল মার্কেটিং এর সম্পূর্ণ কারিকুলাম</p>
           </div>
 
-          <div className="market-toolbar">
-            <div className="market-search">
-              <span>⌕</span>
-              <input
-                type="text"
-                placeholder="Search courses..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                aria-label="Search courses"
-              />
-              {search && (
-                <button
-                  type="button"
-                  onClick={() => setSearch("")}
-                  aria-label="Clear search"
-                >
-                  ×
-                </button>
-              )}
-            </div>
+          <div className="dm-module-grid">
+            {modules.map((module) => (
+              <article className="dm-module-card" key={module.title}>
+                <span className="dm-module-icon">{module.icon}</span>
+                <h3>{module.title}</h3>
+                <ul>{module.topics.map((topic) => <li key={topic}>{topic}</li>)}</ul>
+              </article>
+            ))}
+          </div>
 
-            <div className="market-categories">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  className={
-                    activeCategory === category ? "active" : ""
-                  }
-                  onClick={() => setActiveCategory(category)}
-                >
-                  {category}
-                </button>
-              ))}
+          <button className="dm-gradient-button dm-all-modules" onClick={scrollToPayment}>
+            🚀 সম্পূর্ণ কারিকুলাম উন্মোচন করুন
+          </button>
+        </section>
+
+        <section className="dm-payment-section" id="training-payment">
+          <div className="dm-payment-panel">
+            <div className="dm-enroll-info">
+              <h2>🚀 এখনই এনরোল করুন</h2>
+              <p>বিস্তারিত জানতে কল করুন — <strong>0949 866 933</strong></p>
+              <div className="dm-enroll-actions">
+                <button onClick={() => setShowPaymentHelp(true)}>এনরোল করুন</button>
+                <button className="dm-whatsapp" onClick={() => setIsContactOpen(true)}>● WhatsApp</button>
+              </div>
+            </div>
+            <div className="dm-payment-info">
+              <h2>💰 কিভাবে Payment করবেন</h2>
+              <div className="dm-payment-options">
+                <button onClick={() => setShowPaymentHelp(true)}>bkash এ পেমেন্ট করুন</button>
+                <button onClick={() => setShowPaymentHelp(true)}>নগদ এ পেমেন্ট করুন</button>
+              </div>
+              <p>❓ পেমেন্ট নিয়ে সমস্যা হলে কল করুন: <strong>0949 866 933</strong></p>
             </div>
           </div>
 
-          {filteredTrainings.length > 0 ? (
-            <div className="market-course-grid">
-              {filteredTrainings.map((training) => (
-                <article className="market-course-card" key={training.id}>
-                  <div className="market-course-image">
-                    <img src={training.image} alt={training.title} />
-                    <span className="market-level">
-                      {training.level}
-                    </span>
-                    <button
-                      type="button"
-                      className="market-save-button"
-                      aria-label={`Contact about ${training.title}`}
-                      onClick={() => setIsContactOpen(true)}
-                    >
-                      ♡
-                    </button>
-                  </div>
-
-                  <div className="market-course-info">
-                    <div className="market-course-meta">
-                      <span>{training.category}</span>
-                      <span className="market-rating">
-                        ★ {training.rating}
-                      </span>
-                    </div>
-
-                    <h3>{training.title}</h3>
-                    <p className="market-course-description">
-                      {training.description}
-                    </p>
-
-                    <div className="market-course-details">
-                      <span>◷ {training.lessons}</span>
-                      <span>Updated {training.year}</span>
-                    </div>
-
-                    <div className="market-course-footer">
-                      <div>
-                        <small>Course access</small>
-                        <strong className="market-price">
-                          {training.price}
-                        </strong>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => setIsContactOpen(true)}
-                      >
-                        View Training <span>→</span>
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="market-empty-state">
-              <span>⌕</span>
-              <h3>No courses found</h3>
-              <p>Try another search term or select a different category.</p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearch("");
-                  setActiveCategory("All Courses");
-                }}
-              >
-                Show all courses
-              </button>
+          {showPaymentHelp && (
+            <div className="dm-payment-notice" role="status">
+              <p>পেমেন্টের সঠিক নম্বর ও নির্দেশনা নিশ্চিত করতে অনুগ্রহ করে 0949 866 933 নম্বরে যোগাযোগ করুন।</p>
+              <button onClick={() => setShowPaymentHelp(false)}>বন্ধ করুন</button>
             </div>
           )}
-        </section>
 
-        <section className="market-cta">
-          <div>
-            <span>HAVE A QUESTION?</span>
-            <h2>Ready to start learning?</h2>
-            <p>
-              Get in touch to learn more about the training programs
-              and find a suitable starting point.
-            </p>
+          <div className="dm-direct-contact">
+            <h3>📞 সরাসরি কথা বলুন</h3>
+            <p>📱 0949 866 933 <span>✉️ info@zerodegree.com.bd</span> 🌐 সময়: ৯টা - রাত ১১টা</p>
           </div>
-          <button
-            type="button"
-            onClick={() => setIsContactOpen(true)}
-          >
-            Contact Me <span>→</span>
-          </button>
         </section>
       </main>
 
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </div>
   );
 }
