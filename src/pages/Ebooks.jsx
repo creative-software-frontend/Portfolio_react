@@ -1,185 +1,146 @@
-import { useState } from "react";
 
+import { useState } from "react";
 import ContactModal from "../components/ContactModal";
-import beginnerAlgorithm from "../assets/beginners-algorithm.jpg";
-import basicCProgramming from "../assets/basic-c-programming.jpg";
+import communicationSkills from "../assets/communication-skills.png";
+import digitalMarketingAI from "../assets/digital-marketing-ai.png";
+import limitlessSuccess from "../assets/limitless-success.png";
+import timeManagement from "../assets/time-management.png";
+import softwareCareer from "../assets/software-engineering-career.png";
+import salesMarketing from "../assets/sales-and-marketing.png";
+
+const books = [
+  {
+    id: 1,
+    title: "AI in Digital Marketing",
+    description: "A guide to digital marketing with AI, featuring a focus on digital innovation and marketing.",
+    category: "Digital Marketing",
+    cover: digitalMarketingAI,
+    language: "English",
+  },
+  {
+    id: 2,
+    title: "Communication Skills",
+    description: "Explore effective communication for professional and personal life, with a focus on vision, action, and abundance.",
+    category: "Personal Development",
+    cover: communicationSkills,
+    language: "English",
+  },
+  {
+    id: 3,
+    title: "Limitless Success",
+    description: "A personal development book centered on vision, action, abundance, and success.",
+    category: "Personal Development",
+    cover: limitlessSuccess,
+    language: "English",
+  },
+  {
+    id: 4,
+    title: "Time Management Blueprint",
+    description: "A guide to prioritizing, executing tasks, and building better time-management habits.",
+    category: "Personal Development",
+    cover: timeManagement,
+    language: "English",
+  },
+  {
+    id: 5,
+    title: "সফটওয়্যার ইঞ্জিনিয়ার হিসেবে আপনার ক্যারিয়ার",
+    description: "A career guide for aspiring software engineers, focused on skills, growth, and a software engineering career roadmap.",
+    category: "Career",
+    cover: softwareCareer,
+    language: "বাংলা",
+  },
+  {
+    id: 6,
+     title: "সেলস এন্ড মার্কেটিং",
+  description:
+    "বিক্রয় কৌশল, মার্কেটিংয়ের মৌলিক ধারণা, গ্রাহকের চাহিদা বোঝা এবং কার্যকর মার্কেটিং পরিকল্পনা সম্পর্কে জানুন।",
+  category: "Digital Marketing",
+  cover: salesMarketing,
+  language: "বাংলা",
+  },
+];
+
+const categories = [
+  "All Books",
+  "Digital Marketing",
+  "Personal Development",
+  "Career",
+];
 
 function Ebooks() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All Books");
 
-  const books = [
-    {
-      id: 1,
-      title: "Beginner's Algorithm",
-      description:
-        "A beginner-friendly introduction to algorithms, logical thinking, problem-solving techniques, and essential algorithmic concepts.",
-      year: "2023",
-      category: "Algorithms",
-      type: "eBook",
-      cover: beginnerAlgorithm,
-      level: "Beginner",
-    },
-    {
-      id: 2,
-      title: "Basic C Programming",
-      description:
-        "Learn programming fundamentals, variables, data types, operators, conditions, loops, functions, arrays, and problem solving.",
-      year: "2020",
-      category: "Programming",
-      type: "eBook",
-      cover: basicCProgramming,
-      level: "Beginner",
-    },
-  ];
-
-  const categories = ["All Books", "Programming", "Algorithms"];
-
   const filteredBooks = books.filter((book) => {
     const matchesCategory =
-      activeCategory === "All Books" ||
-      book.category === activeCategory;
+      activeCategory === "All Books" || book.category === activeCategory;
 
     const matchesSearch =
-      book.title.toLowerCase().includes(search.toLowerCase()) ||
-      book.description.toLowerCase().includes(search.toLowerCase());
+      `${book.title} ${book.description} ${book.category} ${book.language}`
+        .toLowerCase()
+        .includes(search.toLowerCase());
 
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="ebooks-page">
+    <div className="ebooks-page bookstore-page">
       <main>
-        {/* Hero Section */}
-        <section className="ebook-market-hero">
-          <div className="ebook-market-hero-content">
-
-            <span className="ebook-market-eyebrow">
-              READ · LEARN · GROW
-            </span>
-
-            <h1>
-              Ideas worth
-              <br />
-              <span>reading and sharing.</span>
-            </h1>
-
+        <section className="bookstore-hero">
+          <div className="bookstore-hero-content">
+            <span className="bookstore-eyebrow">THE BOOK COLLECTION</span>
+            <h1>Find your next <span>great read.</span></h1>
             <p>
-              Explore my collection of beginner-friendly books on
-              programming and algorithms, created to make learning
-              technical concepts easier.
+              Explore books on programming, digital marketing,
+              communication, personal development, and career growth.
             </p>
-
             <button
               type="button"
-              className="ebook-market-hero-button"
+              className="bookstore-primary-button"
               onClick={() =>
-                document
-                  .getElementById("ebook-catalog")
+                document.getElementById("bookstore-catalog")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              Explore Books <span>→</span>
+              Browse Books <span>→</span>
             </button>
-
-            <div className="ebook-market-hero-note">
-              <span>✦</span> Resources for curious minds and new learners
+            <div className="bookstore-hero-note">
+              <span>✦</span> Read · Learn · Grow
             </div>
           </div>
 
-          <div className="ebook-market-hero-art">
-            <div className="ebook-market-book book-back">
-              <div className="ebook-market-book-spine"></div>
-              <span>THINK</span>
-              <strong>CREATE</strong>
-              <small>LEARN SOMETHING NEW</small>
-            </div>
-
-            <div className="ebook-market-book book-front">
-              <div className="ebook-market-book-top">THE LEARNING LIBRARY</div>
-              <div className="ebook-market-book-symbol">{"{ }"}</div>
-              <strong>Ideas into<br />Knowledge</strong>
-              <span>PROGRAMMING · LOGIC · GROWTH</span>
-            </div>
-
-            <div className="ebook-market-floating ebook-market-float-top">
-              <span>✧</span>
-              <div>
-                <strong>Keep learning</strong>
-                <small>One page at a time</small>
+          <div className="bookstore-hero-books">
+            {books.slice(0, 3).map((book) => (
+              <div className="bookstore-hero-cover" key={book.id}>
+                <img src={book.cover} alt={book.title} />
               </div>
-            </div>
-
-            <div className="ebook-market-floating ebook-market-float-bottom">
-              <span>✓</span>
-              <div>
-                <strong>Start with the basics</strong>
-                <small>Made for beginners</small>
-              </div>
-            </div>
-
-            <div className="ebook-market-orbit"></div>
+            ))}
           </div>
         </section>
 
-        {/* Benefits */}
-        <section className="ebook-market-benefits">
-          <div>
-            <span className="ebook-market-benefit-icon">▤</span>
+        <section className="bookstore-catalog" id="bookstore-catalog">
+          <div className="bookstore-heading">
             <div>
-              <strong>Beginner-friendly content</strong>
-              <p>Learn essential concepts clearly</p>
+              <span className="bookstore-section-label">OUR COLLECTION</span>
+              <h2>Explore all books</h2>
+              <p>Find a topic that interests you.</p>
             </div>
-          </div>
-
-          <div>
-            <span className="ebook-market-benefit-icon">⌘</span>
-            <div>
-              <strong>Technical subjects</strong>
-              <p>Programming and algorithms</p>
-            </div>
-          </div>
-
-          <div>
-            <span className="ebook-market-benefit-icon">✧</span>
-            <div>
-              <strong>Learn at your own pace</strong>
-              <p>Build your knowledge gradually</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Book Catalog */}
-        <section className="ebook-market-catalog" id="ebook-catalog">
-          <div className="ebook-market-section-heading">
-            <div>
-              <span className="ebook-market-section-label">
-                THE BOOK COLLECTION
-              </span>
-              <h2>Explore my eBooks</h2>
-              <p>
-                Find a book to support your next step in learning.
-              </p>
-            </div>
-
-            <span className="ebook-market-count">
-              {filteredBooks.length}{" "}
-              {filteredBooks.length === 1 ? "book" : "books"}
+            <span className="bookstore-total">
+              {filteredBooks.length} books
             </span>
           </div>
 
-          <div className="ebook-market-toolbar">
-            <div className="ebook-market-search">
+          <div className="bookstore-toolbar">
+            <div className="bookstore-search">
               <span>⌕</span>
               <input
-                type="text"
-                placeholder="Search books by title or topic..."
+                type="search"
+                placeholder="Search by book title or topic..."
                 aria-label="Search books"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
               />
-
               {search && (
                 <button
                   type="button"
@@ -191,14 +152,12 @@ function Ebooks() {
               )}
             </div>
 
-            <div className="ebook-market-categories">
+            <div className="bookstore-categories">
               {categories.map((category) => (
                 <button
                   type="button"
                   key={category}
-                  className={
-                    activeCategory === category ? "active" : ""
-                  }
+                  className={activeCategory === category ? "active" : ""}
                   onClick={() => setActiveCategory(category)}
                 >
                   {category}
@@ -208,44 +167,27 @@ function Ebooks() {
           </div>
 
           {filteredBooks.length > 0 ? (
-            <div className="ebook-market-grid">
+            <div className="bookstore-grid">
               {filteredBooks.map((book) => (
-                <article className="ebook-market-card" key={book.id}>
-                  <div className="ebook-market-cover">
-                    <img src={book.cover} alt={`${book.title} book cover`} />
-
-                    <span className="ebook-market-level">
-                      {book.level}
-                    </span>
-
-                    <span className="ebook-market-type">
-                      {book.type}
-                    </span>
+                <article className="bookstore-card" key={book.id}>
+                  <div className="bookstore-cover">
+                    <img src={book.cover} alt={`${book.title} cover`} />
+                    <span className="bookstore-language">{book.language}</span>
                   </div>
 
-                  <div className="ebook-market-info">
-                    <div className="ebook-market-meta">
-                      <span>{book.category}</span>
-                      <span className="ebook-market-year">
-                        Published {book.year}
-                      </span>
-                    </div>
-
+                  <div className="bookstore-card-content">
+                    <span className="bookstore-book-category">
+                      {book.category}
+                    </span>
                     <h3>{book.title}</h3>
-
                     <p>{book.description}</p>
-
-                    <div className="ebook-market-card-footer">
-                      <div>
-                        <small>Explore the book</small>
-                        <strong>Start reading</strong>
-                      </div>
-
+                    <div className="bookstore-card-footer">
+                      <span className="bookstore-book-type">eBook / Book</span>
                       <button
                         type="button"
                         onClick={() => setIsContactOpen(true)}
                       >
-                        Read Book <span>→</span>
+                        Inquire <span>→</span>
                       </button>
                     </div>
                   </div>
@@ -253,12 +195,9 @@ function Ebooks() {
               ))}
             </div>
           ) : (
-            <div className="ebook-market-empty">
-              <span>⌕</span>
+            <div className="bookstore-empty">
               <h3>No books found</h3>
-              <p>
-                Try another title or choose a different category.
-              </p>
+              <p>Try another search term or category.</p>
               <button
                 type="button"
                 onClick={() => {
@@ -272,29 +211,17 @@ function Ebooks() {
           )}
         </section>
 
-        {/* Writing Statement */}
-        <section className="ebook-market-cta">
-          <div className="ebook-market-cta-symbol">“</div>
-
-          <div className="ebook-market-cta-content">
-            <span>BEYOND TECHNOLOGY</span>
-            <h2>
-              Every great idea starts
-              <br />
-              with a willingness to learn.
-            </h2>
-            <p>
-              Writing is another way to share knowledge. Through these
-              books, I aim to make technical learning more approachable
-              for students and aspiring programmers.
-            </p>
+        <section className="bookstore-cta">
+          <div>
+            <span className="bookstore-section-label">HAVE A QUESTION?</span>
+            <h2>Interested in a book?</h2>
+            <p>Get in touch to ask about the available books.</p>
           </div>
-
           <button
             type="button"
             onClick={() => setIsContactOpen(true)}
           >
-            Get in Touch <span>→</span>
+            Contact Me <span>→</span>
           </button>
         </section>
       </main>
