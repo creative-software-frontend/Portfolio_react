@@ -1,11 +1,11 @@
-import zarinPhoto from "../assets/zarin-photo.png";
+import zarinPhoto from "../assets/photo.png";
 
 function Hero({ onTalkClick }) {
 return ( <section id="home" className="hero"> <div className="hero-content"> <div className="hero-badge"> <span></span>
-Information Technology Student · Frontend Developer </div>
+Building a Business Community for Employment |  16+ Years in ICT Industry </div>
 
     <h1>
-      Zarin <span>Tasnim</span>
+      Engineer <span> Dilouar Hossain</span>
     </h1>
 
     <p className="hero-description">

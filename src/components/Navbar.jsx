@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 
-const GITHUB_URL = "https://github.com/ZarinTasnim75";
+const GITHUB_URL = "https://github.com/dilouarbd";
 
 const sections = [
   ["home", "Home"],
@@ -54,7 +54,7 @@ function Navbar({ onTalkClick }) {
       <div className="navbar-container">
         {/* Name as logo */}
         <Link to="/" className="logo" onClick={closeMenu}>
-          Zarin Tasnim
+         Engineer Dilouar Hossain
         </Link>
 
         {/* Links ("open" class shows them on mobile) */}

@@ -1,14 +1,14 @@
-import zarinPhoto from "../assets/zarin-photo.png";
+import zarinPhoto from "../assets/photo.png";
 import linkedinCover from "../assets/ln-cover.jpg";
 
-const PROFILE_URL = "https://www.linkedin.com/in/zarin-tasnim-0a7a47354";
+const PROFILE_URL = "https://www.linkedin.com/in/dilouarbd";
 
 const MAX_POSTS = 2;
 
 const posts = [
   {
     id: "post-1",
-    url: "https://www.linkedin.com/in/zarin-tasnim-0a7a47354/recent-activity/all/",
+    url: "https://www.linkedin.com/in/dilouarbd/recent-activity/all/",
     date: "2026-09-20",
     text: "🚀 Another step forward in my frontend development journey — SunCart!Building projects has been one of the most effective ways for me to turn what I learn into practical experience...",
     image: null,
@@ -17,7 +17,7 @@ const posts = [
   },
   {
     id: "post-2",
-    url: "https://www.linkedin.com/in/zarin-tasnim-0a7a47354/recent-activity/all/",
+    url: "https://www.linkedin.com/in/dilouarbd/recent-activity/all/",
     date: "2026-08-30",
     text: "Starting my journey as a Frontend Developer Intern at Creative Software Bangladesh. Grateful for the opportunity to learn and grow!",
     image: null,
@@ -120,10 +120,10 @@ function LinkedInSidebar() {
           <img src={zarinPhoto} alt="Zarin Tasnim" />
         </div>
 
-        <h3>Zarin Tasnim</h3>
+        <h3>Engineer Dilouar Hossain</h3>
 
         <p className="linkedin-role">
-          Information Technology Student & Frontend Developer
+          Author | Business Consultant | Software Architect | Zero Degree Venture | Digital Marketing Trainer | Building a Business Community for Employment |  16+ Years in ICT Industry
         </p>
 
         <p className="linkedin-location">
@@ -133,11 +133,11 @@ function LinkedInSidebar() {
 
         <div className="linkedin-stats">
           <div>
-            <strong>52</strong>
+            <strong>29000+</strong>
             <span>Connections</span>
           </div>
           <div>
-            <strong>53</strong>
+            <strong>29000+</strong>
             <span>Followers</span>
           </div>
           <div>
@@ -177,7 +177,7 @@ function LinkedInSidebar() {
             <div className="linkedin-post-head">
               <img src={zarinPhoto} alt="" className="linkedin-post-avatar" />
               <div>
-                <strong>Zarin Tasnim</strong>
+                <strong>Engineer Dilouar Hossain</strong>
                 <span>{formatDate(post.date)}</span>
               </div>
               <span className="linkedin-post-logo">

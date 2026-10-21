@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const EMAIL = "zarintsm15@gmail.com";
+const EMAIL = "dilouarbd@gmail.com";
 
 /* ------------------------------------------------------------------
    SOCIAL LINKS — all icons always show in the footer.
@@ -11,7 +11,7 @@ const SOCIAL_LINKS = [
   {
     id: "linkedin",
     label: "LinkedIn",
-    url: "https://www.linkedin.com/in/zarin-tasnim-tsm15/",
+    url: "https://www.linkedin.com/in/dilouarbd",
     Icon: LinkedInIcon,
   },
   {
@@ -109,7 +109,7 @@ function Footer({ onTalkClick }) {
           {/* Brand & Bio */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
-              Zarin Tasnim
+              Engineer Dilouar Hossain
             </Link>
 
             <p className="footer-tagline">
@@ -191,7 +191,7 @@ function Footer({ onTalkClick }) {
 
         {/* Bottom Bar */}
         <div className="footer-bottom">
-          <p>© {currentYear} Zarin Tasnim. All rights reserved.</p>
+          <p>© {currentYear} Engineer Dilouar Hossain. All rights reserved.</p>
 
           <div className="footer-legal-links">
             <Link to="/privacy-policy">Privacy Policy</Link>
@@ -199,7 +199,7 @@ function Footer({ onTalkClick }) {
             <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
           </div>
 
-          <p className="footer-location">Based in Dhaka, Bangladesh</p>
+          <p className="footer-location">Develop by Zero Degree venture</p>
         </div>
 
 

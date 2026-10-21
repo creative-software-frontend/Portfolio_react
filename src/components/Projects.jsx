@@ -80,8 +80,8 @@ function Projects() {
       description:
         "Built an interactive learning platform with Google Gemini integration, featuring context-aware chat with history, follow-up suggestions, Better Auth, JWT, Google OAuth, and responsive dashboards.",
       tech: ["nextjs", "typescript", "node", "mongodb", "gemini"],
-      githubClient: "https://github.com/ZarinTasnim75/Studypilot-client",
-      githubServer: "https://github.com/ZarinTasnim75/Studypilot-server",
+      githubClient: "https://github.com/dilouarbd/Studypilot-client",
+      githubServer: "https://github.com/dilouarbd/Studypilot-server",
       liveDemo: "https://studypilot-client-orpin.vercel.app",
     },
     {
@@ -91,8 +91,8 @@ function Projects() {
       description:
         "Developed a role-based artwork marketplace for artists and buyers. Integrated Stripe payments, ImgBB API, Better Auth, and JWT with search, filtering, sorting, pagination, and protected dashboards.",
       tech: ["nextjs", "tailwind", "node", "mongodb", "stripe"],
-      githubClient: "https://github.com/ZarinTasnim75/ArtHub",
-      githubServer: "https://github.com/ZarinTasnim75/ArtHub-server",
+      githubClient: "https://github.com/dilouarbd/ArtHub",
+      githubServer: "https://github.com/dilouarbd/ArtHub-server",
       liveDemo: "https://arthub-server-omega.vercel.app",
     },
     {
@@ -102,8 +102,8 @@ function Projects() {
       description:
         "Designed a hospital management system with role-based access, doctor search, filtering, sorting, appointment booking, and responsive dashboards with protected routes and optimized API usage.",
       tech: ["nextjs", "typescript", "tailwind", "node", "mongodb"],
-      githubClient: "https://github.com/ZarinTasnim75/MediFlow",
-      githubServer: "https://github.com/ZarinTasnim75/MediFlow-Server",
+      githubClient: "https://github.com/dilouarbd/MediFlow",
+      githubServer: "https://github.com/dilouarbd/MediFlow-Server",
       liveDemo: "https://medi-flow-five-mu.vercel.app",
     },
   ];

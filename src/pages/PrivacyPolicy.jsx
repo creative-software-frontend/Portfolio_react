@@ -33,8 +33,8 @@ return ( <main className="legal-page"> <div className="legal-container"> <Link t
     <h2>Contact</h2>
     <p>
       For questions, email to : {" "}
-      <a href="mailto:zarintsm15@gmail.com">
-        zarintsm15@gmail.com
+      <a href="mailto:dilouarbd@gmail.com">
+        dilouarbd@gmail.com
       </a>.
     </p>
   </div>

@@ -7,7 +7,7 @@ return ( <main className="legal-page"> <div className="legal-container"> <Link t
     <p className="legal-updated">Last updated: October 15, 2026</p>
 
     <p>
-      Welcome to Zarin Tasnim's portfolio website. By accessing this
+      Welcome to Engineer Dilouar Hossain's portfolio website. By accessing this
       website, you agree to the terms outlined below. If you do not
       agree, please discontinue using the website.
     </p>
@@ -22,7 +22,7 @@ return ( <main className="legal-page"> <div className="legal-container"> <Link t
     <h2>2. Intellectual Property</h2>
     <p>
       Unless otherwise stated, the original text, design, and
-      portfolio content on this website belong to Zarin Tasnim.
+      portfolio content on this website belong to Engineer Dilouar Hossain.
       You may not reproduce or redistribute them for commercial
       purposes without permission. Third-party assets remain the
       property of their respective owners.
@@ -75,7 +75,7 @@ return ( <main className="legal-page"> <div className="legal-container"> <Link t
     <h2>9. Contact</h2>
     <p>
       For questions about these terms, email{" "}
-      <a href="mailto:zarintsm15@gmail.com">zarintsm15@gmail.com</a>.
+      <a href="mailto:dilouarbd@gmail.com">dilouarbd@gmail.com</a>.
     </p>
   </div>
 </main>
