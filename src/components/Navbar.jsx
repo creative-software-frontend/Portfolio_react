@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", icon: "in", url: "https://www.linkedin.com/" },
+  { label: "LinkedIn", icon: "in", url: "https://www.linkedin.com/in/dilouarbd/" },
   { label: "Twitter", icon: "𝕏", url: "https://twitter.com/" },
   { label: "Instagram", icon: "◎", url: "https://www.instagram.com/" },
   { label: "GitHub", icon: "github", url: GITHUB_URL },

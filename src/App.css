@@ -753,8 +753,8 @@ a {
 
 /* Badge Positioning */
 .badge-top-right {
-  top: -10px;
-  right: -20px;
+  top: -32px;
+  right: -1px; 
 }
 
 .badge-left {
