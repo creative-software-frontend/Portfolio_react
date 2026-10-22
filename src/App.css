@@ -557,11 +557,46 @@ a {
   max-width: 580px;
 }
 .hero-title {
-  font-size: 70px;
+  font-size: 30px;
   line-height: 1.1;
   font-weight: 700;
   color: #0a0a5f;
   margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 40px; /* Adjusted slightly so it fits in a single line without overflowing */
+  line-height: 1.2;
+  color: var(--color-black, #0f172a);
+  margin-bottom: 20px;
+  white-space: nowrap; /* Forces text onto a single line */
+}
+
+.hero h1 .hero-title {
+  color: var(--color-black, #0f172a); /* Or your preferred highlight color */
+}
+
+.hero-name{
+  font-size: 30px;
+}
+
+/* Adjust font size for smaller screens so the single line doesn't overflow */
+@media (max-width: 1200px) {
+  .hero h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 22px;
+  }
 }
 
 .wave-emoji {
@@ -687,8 +722,8 @@ a {
 }
 
 .circular-image-container {
-  width: 340px;
-  height: 340px;
+  width: 330px;
+  height: 330px;
   border-radius: 50%;
   padding: 10px;
   border: 2px solid var(--color-border, #e2e8f0);

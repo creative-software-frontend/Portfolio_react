@@ -28,12 +28,9 @@ function Hero({ onTalkClick }) {
     <section id="home" className="hero">
       <div className="hero-content">
         <h1 >
-          <span className="hero-title">
-          Mohammad </span>
-          <br />
-          Dilouar
-          <br />
-          Hossain <span className="wave-emoji">👋</span>
+          <span className="hero-title"> Mohammad </span> 
+          <span className="hero-name">Dilouar Hossain</span>
+          {/* <span className="wave-emoji">👋</span> */}
         </h1>
 
         <div className="typing-container">
