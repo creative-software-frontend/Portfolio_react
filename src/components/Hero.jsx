@@ -1,4 +1,4 @@
-import zarinPhoto from "../assets/photo.png";
+import profilePhoto from "../assets/photo.png";
 
 function Hero({ onTalkClick }) {
 return ( <section id="home" className="hero"> <div className="hero-content"> <div className="hero-badge"> <span></span>
@@ -30,7 +30,7 @@ Building a Business Community for Employment |  16+ Years in ICT Industry </div>
 
   <div className="hero-image-wrapper">
     <div className="hero-image">
-      <img src={zarinPhoto} alt="Zarin Tasnim" />
+      <img src={profilePhoto} alt="Zarin Tasnim" />
     </div>
 
     <div className="hero-decoration"></div>

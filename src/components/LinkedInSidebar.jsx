@@ -1,4 +1,4 @@
-import zarinPhoto from "../assets/photo.png";
+import profilePhoto from "../assets/photo.png";
 import linkedinCover from "../assets/ln-cover.jpg";
 
 const PROFILE_URL = "https://www.linkedin.com/in/dilouarbd";
@@ -117,7 +117,7 @@ function LinkedInSidebar() {
       {/* Profile */}
       <div className="linkedin-profile">
         <div className="linkedin-photo">
-          <img src={zarinPhoto} alt="Zarin Tasnim" />
+          <img src={profilePhoto} alt="profile Tasnim" />
         </div>
 
         <h3>Engineer Dilouar Hossain</h3>
@@ -175,7 +175,7 @@ function LinkedInSidebar() {
             className="linkedin-post-card"
           >
             <div className="linkedin-post-head">
-              <img src={zarinPhoto} alt="" className="linkedin-post-avatar" />
+              <img src={profilePhoto} alt="" className="linkedin-post-avatar" />
               <div>
                 <strong>Engineer Dilouar Hossain</strong>
                 <span>{formatDate(post.date)}</span>

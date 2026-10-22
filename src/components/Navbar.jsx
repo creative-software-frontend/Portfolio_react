@@ -1,30 +1,73 @@
 import { useState } from "react";
-import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import profilePhoto from "../assets/1 (3).png";
 
 const GITHUB_URL = "https://github.com/dilouarbd";
 
-const sections = [
-  ["home", "Home"],
-  ["about", "About"],
-  ["projects", "Projects"],
-  ["experience", "Experience"],
+const navItems = [
+  { label: "Home", id: "home", icon: "home", color: "#D99B16" },
+  { label: "Qualification", id: "experience", icon: "graduation", color: "#A855F7" },
+  { label: "Skills", id: "skills", icon: "code", color: "#10B981" },
+  { label: "Projects", id: "projects", icon: "briefcase", color: "#F59E0B" },
+  { label: "All Projects", id: "projects", icon: "list", color: "#3B82F6" },
 ];
 
-const pages = [
-  ["/ebooks", "Ebook"],
-  ["/training", "Training"],
+const socialLinks = [
+  { label: "LinkedIn", icon: "in", url: "https://www.linkedin.com/" },
+  { label: "Twitter", icon: "𝕏", url: "https://twitter.com/" },
+  { label: "Instagram", icon: "◎", url: "https://www.instagram.com/" },
+  { label: "GitHub", icon: "github", url: GITHUB_URL },
+  { label: "YouTube", icon: "▶", url: "https://www.youtube.com/" },
 ];
 
-function GithubIcon() {
+function NavIcon({ type, color }) {
+  const common = {
+    width: 21,
+    height: 21,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: color,
+    strokeWidth: 2.3,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  const paths = {
+    home: <><path d="m3 10 9-7 9 7" /><path d="M5 9v12h5v-7h4v7h5V9" /></>,
+    graduation: <><path d="m2 9 10-6 10 6-10 6L2 9Z" /><path d="M6 12v5c4 3 8 3 12 0v-5" /><path d="M22 9v7" /></>,
+    code: <><path d="m8 5-7 7 7 7" /><path d="m16 5 7 7-7 7" /></>,
+    briefcase: <><rect x="3" y="7" width="18" height="14" rx="2" /><path d="M8 7V4h8v3" /></>,
+    list: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M8 4v16M3 9h18M3 14h18" /></>,
+  };
+
+  return <svg {...common}>{paths[type]}</svg>;
+}
+
+function SocialIcon({ type }) {
+  if (type === "in") {
+    return <span className="social-letter linkedin-letter">in</span>;
+  }
+
+  if (type === "𝕏") {
+    return <span className="social-letter">{type}</span>;
+  }
+
+  if (type === "◎") {
+    return <span className="social-letter instagram-letter">{type}</span>;
+  }
+
+  if (type === "github") {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" />
+    </svg>
+  );
+}
+
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
     </svg>
   );
 }
@@ -36,85 +79,89 @@ function Navbar({ onTalkClick }) {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const scrollToSection = (sectionId) => {
+  const [activeNav, setActiveNav] = useState("Home");
+
+  const scrollToSection = (id, label) => {
     closeMenu();
+    setActiveNav(label);
 
     if (pathname !== "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
-    } else {
-      document.getElementById(sectionId)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      navigate("/", { state: { scrollTo: id } });
+      return;
     }
+
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        {/* Name as logo */}
-        <Link to="/" className="logo" onClick={closeMenu}>
-         Engineer Dilouar Hossain
+    <nav className="navbar reference-navbar">
+      <div className="navbar-container reference-navbar-container">
+        <Link to="/" className="reference-brand" onClick={() => {
+          closeMenu();
+          if (pathname === "/") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}>
+          <img src={profilePhoto} alt="Profile" className="brand-photo" />
         </Link>
 
-        {/* Links ("open" class shows them on mobile) */}
-        <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          {/* Landing page sections */}
-          {sections.map(([id, label]) => (
-            <button key={id} type="button" onClick={() => scrollToSection(id)}>
-              {label}
+        <div className={`reference-nav-links ${isMenuOpen ? "open" : ""}`}>
+          {navItems.map((item, index) => (
+            <button
+              key={`${item.label}-${index}`}
+              type="button"
+              className={`reference-nav-item ${activeNav === item.label ? "active" : ""
+                }`}
+              onClick={() => scrollToSection(item.id, item.label)}
+            >
+              <NavIcon type={item.icon} color={item.color} />
+              <span>{item.label}</span>
             </button>
           ))}
 
-          {/* Separate pages */}
-          {pages.map(([path, label]) => (
-            <NavLink
-              key={path}
-              to={path}
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `nav-page-link ${isActive ? "active" : ""}`
-              }
+          <button
+            type="button"
+            className="reference-nav-item say-hello-item"
+            onClick={() => {
+              closeMenu();
+              onTalkClick?.();
+            }}
+          >
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="2.3" strokeLinejoin="round" aria-hidden="true">
+              <path d="M4 4v16l16-8L4 4Z" />
+            </svg>
+            <span>Say Hello</span>
+          </button>
+        </div>
+
+        <div className="reference-socials">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="reference-social-link"
+              aria-label={social.label}
+              title={social.label}
             >
-              {label}
-            </NavLink>
+              <SocialIcon type={social.icon} />
+            </a>
           ))}
         </div>
 
-        {/* Right side actions */}
-        <div className="nav-actions">
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-github"
-            aria-label="GitHub profile"
-          >
-            <GithubIcon />
-          </a>
-
-          <button
-            type="button"
-            className="nav-button"
-            onClick={() => {
-              closeMenu();
-              onTalkClick();
-            }}
-          >
-            Let's Talk
-          </button>
-
-          {/* Hamburger (visible only under 900px via CSS) */}
-          <button
-            type="button"
-            className="menu-toggle"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? "✕" : "☰"}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="menu-toggle reference-menu-toggle"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? "✕" : "☰"}
+        </button>
       </div>
     </nav>
   );
