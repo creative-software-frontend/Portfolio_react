@@ -93,11 +93,11 @@ function ContactModal({ isOpen, onClose }) {
               <option value="" disabled>
                 Select a purpose
               </option>
-              <option value="Project Collaboration">
-                Project Collaboration
-              </option>
+              <option value="Project Collaboration"> Project Collaboration </option>
               <option value="Job Opportunity">Job Opportunity</option>
               <option value="Freelance Work">Freelance Work</option>
+              <option value="Ebook">Ebook</option>
+              <option value="Training">Training</option>
               <option value="Other">Other</option>
             </select>
           </div>
