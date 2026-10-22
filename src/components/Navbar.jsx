@@ -6,10 +6,10 @@ const GITHUB_URL = "https://github.com/dilouarbd";
 
 const navItems = [
   { label: "Home", id: "home", icon: "home", color: "#D99B16" },
-  { label: "Qualification", id: "experience", icon: "graduation", color: "#A855F7" },
+  { label: "About", id: "about", icon: "graduation", color: "#A855F7" },
   { label: "Skills", id: "skills", icon: "code", color: "#10B981" },
   { label: "Projects", id: "projects", icon: "briefcase", color: "#F59E0B" },
-  { label: "All Projects", id: "projects", icon: "list", color: "#3B82F6" },
+  { label: "Experience", id: "experience", icon: "list", color: "#3B82F6" },
 ];
 
 const socialLinks = [
