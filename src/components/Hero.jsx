@@ -1,43 +1,100 @@
-import zarinPhoto from "../assets/photo.png";
+import { useState, useEffect } from "react";
+import profilePhoto from "../assets/photo.png";
+
+const roles = [
+  "Web Designer",
+  "Frontend Developer",
+  "Software Engineer",
+  "ICT Specialist",
+];
 
 function Hero({ onTalkClick }) {
-return ( <section id="home" className="hero"> <div className="hero-content"> <div className="hero-badge"> <span></span>
-Building a Business Community for Employment |  16+ Years in ICT Industry </div>
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
-    <h1>
-      Engineer <span> Dilouar Hossain</span>
-    </h1>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+        setFade(true);
+      }, 300); // duration matching text transition
+    }, 2500);
 
-    <p className="hero-description">
-      I build modern, responsive and user-friendly web experiences
-      while exploring technology, creativity and new ideas.
-    </p>
+    return () => clearInterval(interval);
+  }, []);
 
-    <div className="hero-buttons">
-      <a href="#projects" className="primary-button">
-        View My Work
-      </a>
+  return (
+    <section id="home" className="hero">
+      <div className="hero-content">
+        <h1 >
+          <span className="hero-title"> Mohammad </span> 
+          <span className="hero-name">Dilouar Hossain</span>
+          {/* <span className="wave-emoji">👋</span> */}
+        </h1>
 
-      <button
-        type="button"
-        className="secondary-button"
-        onClick={onTalkClick}
-      >
-        Contact Me
-      </button>
-    </div>
-  </div>
+        <div className="typing-container">
+          <span className="typing-static">— I am a </span>
+          <span className={`typing-dynamic ${fade ? "fade-in" : "fade-out"}`}>
+            {roles[roleIndex]}
+          </span>
+        </div>
 
-  <div className="hero-image-wrapper">
-    <div className="hero-image">
-      <img src={zarinPhoto} alt="Zarin Tasnim" />
-    </div>
+        <p className="hero-description">
+          🚀 Turning ideas into <strong>Stunning Websites</strong> 💻
+          <br />
+          <span className="sub-description">
+            | Available for projects and collaborations 🌟
+          </span>
+        </p>
 
-    <div className="hero-decoration"></div>
-  </div>
-</section>
+        <div className="hero-buttons">
+          <button
+            type="button"
+            className="primary-button say-hello-btn"
+            onClick={onTalkClick}
+          >
+            Say Hello <span className="btn-icon">✈</span>
+          </button>
 
-);
+          <a href="/cv.pdf" download className="secondary-button download-cv-btn">
+            Download CV <span className="btn-icon">⤓</span>
+          </a>
+        </div>
+      </div>
+
+      <div className="hero-image-wrapper">
+        <div className="circular-image-container">
+          <img src={profilePhoto} alt="Mohammad Dilouar Hossain" className="circular-photo" />
+
+          {/* Floating Badges */}
+          <div className="badge badge-top-right">
+            <span className="badge-icon">✓</span>
+            <div className="badge-text">
+              <strong>125+</strong>
+              <small>PROBLEM SOLVED</small>
+            </div>
+          </div>
+
+          <div className="badge badge-left">
+            <span className="badge-icon">💼</span>
+            <div className="badge-text">
+              <strong>B.Sc. CSE</strong>
+              <small>EDUCATION</small>
+            </div>
+          </div>
+
+          <div className="badge badge-bottom-right">
+            <span className="badge-icon">🚀</span>
+            <div className="badge-text">
+              <strong>7+</strong>
+              <small>PROJECTS COMPLETED</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Hero;
