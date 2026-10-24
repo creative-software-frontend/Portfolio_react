@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link,NavLink, useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "../assets/1 (3).png";
 
 const GITHUB_URL = "https://github.com/dilouarbd";
@@ -12,6 +12,11 @@ const navItems = [
   { label: "Experience", id: "experience", icon: "list", color: "#3B82F6" },
 ];
 
+const pages = [
+  { label: "Ebooks", path: "/ebooks" },
+  { label: "Training", path: "/training" },
+];
+
 const socialLinks = [
   { label: "LinkedIn", icon: "in", url: "https://www.linkedin.com/in/dilouarbd/" },
   { label: "Twitter", icon: "𝕏", url: "https://twitter.com/" },
@@ -20,7 +25,7 @@ const socialLinks = [
   { label: "YouTube", icon: "▶", url: "https://www.youtube.com/" },
 ];
 
-function NavIcon({ type, color }) {
+function NavIcon({ type, color }) { 
   const common = {
     width: 21,
     height: 21,

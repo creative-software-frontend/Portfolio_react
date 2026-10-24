@@ -30,7 +30,6 @@ function Hero({ onTalkClick }) {
         <h1 >
           <span className="hero-title"> Mohammad </span> 
           <span className="hero-name">Dilouar Hossain</span>
-          {/* <span className="wave-emoji">👋</span> */}
         </h1>
 
         <div className="typing-container">
