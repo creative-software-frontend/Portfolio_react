@@ -266,16 +266,16 @@ a {
   align-items: center;
   gap: 16px;
 }
-
 .navbar-brand {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  margin-left: 24px;     
 }
 
 .brand-photo {
-  width: 48px;
-  height: 48px;
+  width: 78px;          
+  height: 78px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
@@ -375,7 +375,6 @@ a {
   line-height: 1;
 }
 .linkedin-letter  { font-size: 16px; }
-.instagram-letter { font-size: 21px; font-weight: 500; }
 
 /* hamburger (hidden on desktop) */
 .menu-toggle {
@@ -437,7 +436,6 @@ a {
   .navbar-socials { gap: 4px; }
   .social-link  { width: 28px; height: 28px; }
   .social-letter { font-size: 15px; }
-  .instagram-letter { font-size: 19px; }
   .menu-toggle  { width: 34px; height: 34px; font-size: 18px; }
 }
 

@@ -18,10 +18,10 @@ const pages = [
 
 const socialLinks = [
   { label: "LinkedIn", icon: "in", url: "https://www.linkedin.com/in/dilouarbd/" },
-  { label: "Twitter", icon: "𝕏", url: "https://twitter.com/" },
-  { label: "Instagram", icon: "◎", url: "https://www.instagram.com/" },
+  { label: "Twitter", icon: "𝕏", url: "https://x.com/Dilouarbd" },
+  { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/dilouarbd" },
   { label: "GitHub", icon: "github", url: GITHUB_URL },
-  { label: "YouTube", icon: "▶", url: "https://www.youtube.com/" },
+  { label: "YouTube", icon: "▶", url: "https://www.youtube.com/dilouarbd" },
 ];
 
 function NavIcon({ type, color }) {
@@ -51,8 +51,25 @@ function NavIcon({ type, color }) {
 function SocialIcon({ type }) {
   if (type === "in") return <span className="social-letter linkedin-letter">in</span>;
   if (type === "𝕏") return <span className="social-letter">{type}</span>;
-  if (type === "◎") return <span className="social-letter instagram-letter">{type}</span>;
-
+if (type === "instagram") {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="19"
+      height="19"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
   if (type === "github") {
     return (
       <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
