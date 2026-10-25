@@ -1,12 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const EMAIL = "dilouarbd@gmail.com";
-
-/* ------------------------------------------------------------------
-   SOCIAL LINKS — all icons always show in the footer.
-   Replace each url with your real profile link when you have it.
-   To add another network later, add one line here + one icon below.
-   ------------------------------------------------------------------ */
 const SOCIAL_LINKS = [
   {
     id: "linkedin",
@@ -17,19 +10,19 @@ const SOCIAL_LINKS = [
   {
     id: "youtube",
     label: "YouTube",
-    url: "https://www.youtube.com/@your-channel", // replace
+    url: "https://www.youtube.com/dilouarbd", 
     Icon: YouTubeIcon,
   },
   {
     id: "instagram",
     label: "Instagram",
-    url: "https://www.instagram.com/your-username", // replace
+    url: "https://www.instagram.com/dilouarbd", 
     Icon: InstagramIcon,
   },
   {
     id: "x",
     label: "X (Twitter)",
-    url: "https://x.com/your-username", // replace
+    url: "https://x.com/Dilouarbd", 
     Icon: XIcon,
   },
 ];
@@ -65,15 +58,6 @@ function XIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m3 7 9 6 9-6" />
     </svg>
   );
 }
@@ -116,12 +100,6 @@ function Footer({ onTalkClick }) {
               Full Stack Developer passionate about building responsive,
               modern, and user-friendly web applications.
             </p>
-
-            {/* Email as text */}
-            <a href={`mailto:${EMAIL}`} className="footer-email">
-              <MailIcon />
-              {EMAIL}
-            </a>
           </div>
 
           {/* Quick Links */}
