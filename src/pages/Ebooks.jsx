@@ -7,7 +7,7 @@ import limitlessSuccess from "../assets/limitless-success.png";
 import timeManagement from "../assets/time-management.png";
 import softwareCareer from "../assets/software-engineering-career.png";
 import salesMarketing from "../assets/sales-and-marketing.png";
-
+const WHATSAPP_URL = "https://wa.me/8801978866933";
 const books = [
   {
     id: 1,
@@ -51,12 +51,12 @@ const books = [
   },
   {
     id: 6,
-     title: "সেলস এন্ড মার্কেটিং",
-  description:
-    "বিক্রয় কৌশল, মার্কেটিংয়ের মৌলিক ধারণা, গ্রাহকের চাহিদা বোঝা এবং কার্যকর মার্কেটিং পরিকল্পনা সম্পর্কে জানুন।",
-  category: "Digital Marketing",
-  cover: salesMarketing,
-  language: "বাংলা",
+    title: "সেলস এন্ড মার্কেটিং",
+    description:
+      "বিক্রয় কৌশল, মার্কেটিংয়ের মৌলিক ধারণা, গ্রাহকের চাহিদা বোঝা এবং কার্যকর মার্কেটিং পরিকল্পনা সম্পর্কে জানুন।",
+    category: "Digital Marketing",
+    cover: salesMarketing,
+    language: "বাংলা",
   },
 ];
 
@@ -217,12 +217,15 @@ function Ebooks() {
             <h2>Interested in a book?</h2>
             <p>Get in touch to ask about the available books.</p>
           </div>
-          <button
-            type="button"
-            onClick={() => setIsContactOpen(true)}
+
+          <a
+            className="dm-gradient-button"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Contact Me <span>→</span>
-          </button>
+          </a>
         </section>
       </main>
 
