@@ -197,7 +197,16 @@ function Training() {
             <div>
               <h2>লটারির <span>পুরস্কার</span></h2>
               <p>সেরাদের জন্য আকর্ষণীয় পুরস্কার ল্যাপটপের মাধ্যমে দেওয়া হবে।</p>
-              <button onClick={scrollToPayment}>অংশগ্রহণ করুন</button>
+
+              <button type="button" className="enroll-button">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  অংশগ্রহণ করুন
+                </a>
+              </button>
             </div>
             <img className="dm-laptop-img" src={laptopPic} alt="Laptop giveaway" />
           </article>
@@ -230,7 +239,14 @@ function Training() {
               <h2>🚀 এখনই এনরোল করুন</h2>
               <p>বিস্তারিত জানতে কল করুন — <strong>0949 866 933</strong></p>
               <div className="dm-enroll-actions">
-                <button onClick={() => setShowPaymentHelp(true)}>এনরোল করুন</button>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="enroll-button"
+                >
+                  এনরোল করুন
+                </a>
                 <a
                   className="dm-whatsapp"
                   href={WHATSAPP_URL}
