@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
 import dilouarPhoto from "../assets/dilouar-hossain.jpg";
+import laptopPic from "../assets/laptop.png";
 
 const modules = [
   {
@@ -82,6 +83,8 @@ const gifts = [
   ["প্রোডাক্ট সোর্সিং এর সুবিধা", "5,000 ৳"],
 ];
 
+const WHATSAPP_URL = "https://wa.me/8801978866933";
+
 function Training() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [showPaymentHelp, setShowPaymentHelp] = useState(false);
@@ -98,7 +101,7 @@ function Training() {
         <span className="dm-offer">✨ Limited Time Offer</span>
         <h1>Digital Marketing <span>With AI</span></h1>
         <p>স্মার্ট মার্কেটিং ও দ্রুত সফলতা, সবই সম্ভব AI-এর সাথে</p>
-      </header> 
+      </header>
 
       <main>
         <section className="dm-section dm-profile-section">
@@ -126,9 +129,14 @@ function Training() {
                 <h3>Engineer Dilouar Hossain</h3>
                 <p className="dm-trainer-role">Digital Marketing Trainer | 10+ Years Experience</p>
                 <p className="dm-trainer-bio">Founder at Zero Degree venture & Golden Life Business Ltd</p>
-                <button className="dm-gradient-button" onClick={() => setIsContactOpen(true)}>
+                <a
+                  className="dm-gradient-button"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   📞 ইন্সট্রাক্টরের সাথে কথা বলুন
-                </button>
+                </a>
               </div>
             </article>
 
@@ -191,7 +199,7 @@ function Training() {
               <p>সেরাদের জন্য আকর্ষণীয় পুরস্কার ল্যাপটপের মাধ্যমে দেওয়া হবে।</p>
               <button onClick={scrollToPayment}>অংশগ্রহণ করুন</button>
             </div>
-            <div className="dm-laptop-art" aria-label="Laptop giveaway">💻<strong>ল্যাপটপ</strong></div>
+            <img className="dm-laptop-img" src={laptopPic} alt="Laptop giveaway" />
           </article>
         </section>
 
@@ -223,8 +231,14 @@ function Training() {
               <p>বিস্তারিত জানতে কল করুন — <strong>0949 866 933</strong></p>
               <div className="dm-enroll-actions">
                 <button onClick={() => setShowPaymentHelp(true)}>এনরোল করুন</button>
-                <button className="dm-whatsapp" onClick={() => setIsContactOpen(true)}>● WhatsApp</button>
-              </div>
+                <a
+                  className="dm-whatsapp"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ● WhatsApp
+                </a> </div>
             </div>
             <div className="dm-payment-info">
               <h2>💰 কিভাবে Payment করবেন</h2>
