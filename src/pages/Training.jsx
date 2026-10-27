@@ -3,6 +3,10 @@ import { useState } from "react";
 import ContactModal from "../components/ContactModal";
 import dilouarPhoto from "../assets/dilouar-hossain.jpg";
 import laptopPic from "../assets/laptop.png";
+import BkashPaymentModal from "../components/BkashPaymentModal";
+import bkashLogo from "../assets/bkash.jpg";
+import nagadLogo from "../assets/nagad.png";
+import NagadPaymentModal from "../components/NagadPayment";
 
 const modules = [
   {
@@ -87,7 +91,8 @@ const WHATSAPP_URL = "https://wa.me/8801978866933";
 
 function Training() {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [showPaymentHelp, setShowPaymentHelp] = useState(false);
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [isNagadPaymentOpen, setIsNagadPaymentOpen] = useState(false);
 
   const scrollToPayment = () => {
     document.getElementById("training-payment")?.scrollIntoView({
@@ -174,7 +179,18 @@ function Training() {
               <p className="dm-discount-note">এককালীন পেমেন্টে <strong>৯০% ছাড়</strong></p>
               <p className="dm-price-description">লাইফটাইম এক্সেস এবং আপডেটেড কোর্স কনটেন্ট</p>
               <div className="dm-payment-logos">
-                <span>bkash</span><span>নগদ</span>
+                <button type="button" onClick={() => setIsPaymentOpen(true)}>
+                  <img src={bkashLogo} alt="Pay with bKash" />
+                </button>
+
+                <button
+                  type="button"
+                  className="dm-payment-logo-button"
+                  onClick={() => setIsNagadPaymentOpen(true)}
+                  aria-label="Open Nagad payment"
+                >
+                  <img src={nagadLogo} alt="Nagad" />
+                </button>
               </div>
               <button className="dm-enroll-button" onClick={scrollToPayment}>🚀 এখনই এনরোল করুন →</button>
               <small>🔒100% Secure Payment | Support: 0949 866 933</small>
@@ -259,18 +275,51 @@ function Training() {
             <div className="dm-payment-info">
               <h2>💰 কিভাবে Payment করবেন</h2>
               <div className="dm-payment-options">
-                <button onClick={() => setShowPaymentHelp(true)}>bkash এ পেমেন্ট করুন</button>
-                <button onClick={() => setShowPaymentHelp(true)}>নগদ এ পেমেন্ট করুন</button>
+                <button
+                  type="button"
+                  className="pay-btn pay-bkash"
+                  onClick={() => setIsPaymentOpen(true)}
+                >
+                  <span className="pay-logo">
+                    <img src={bkashLogo} alt="bKash" />
+                  </span>
+                  <span className="pay-text">এ পেমেন্ট করুন</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="pay-btn pay-nagad"
+                  onClick={() => setIsNagadPaymentOpen(true)}
+                >
+                  <span className="pay-logo">
+                    <img src={nagadLogo} alt="Nagad" />
+                  </span>
+                  <span className="pay-text">Nagad এ পেমেন্ট করুন</span>
+                </button>
               </div>
               <p>❓ পেমেন্ট নিয়ে সমস্যা হলে কল করুন: <strong>0949 866 933</strong></p>
             </div>
           </div>
+          {isPaymentOpen && (
+            <BkashPaymentModal
+              isOpen={isPaymentOpen}
+              onClose={() => setIsPaymentOpen(false)}
+              onNagadClick={() => {
+                setIsPaymentOpen(false);
+                setIsNagadPaymentOpen(true);
+              }}
+            />
+          )}
 
-          {showPaymentHelp && (
-            <div className="dm-payment-notice" role="status">
-              <p>পেমেন্টের সঠিক নম্বর ও নির্দেশনা নিশ্চিত করতে অনুগ্রহ করে 0949 866 933 নম্বরে যোগাযোগ করুন।</p>
-              <button onClick={() => setShowPaymentHelp(false)}>বন্ধ করুন</button>
-            </div>
+          {isNagadPaymentOpen && (
+            <NagadPaymentModal
+              isOpen={isNagadPaymentOpen}
+              onClose={() => setIsNagadPaymentOpen(false)}
+              onBkashClick={() => {
+                setIsNagadPaymentOpen(false);
+                setIsPaymentOpen(true);
+              }}
+            />
           )}
 
           <div className="dm-direct-contact">
