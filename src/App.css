@@ -439,12 +439,6 @@ a {
   .menu-toggle  { width: 34px; height: 34px; font-size: 18px; }
 }
 
-@media (max-width: 380px) {
-  .navbar-socials a:nth-child(2),
-  .navbar-socials a:nth-child(3),
-  .navbar-socials a:nth-child(5) { display: none; }
-}
-
 /* =====================================================================
    HERO
    ===================================================================== */
@@ -3191,14 +3185,36 @@ a {
   line-height: 1.6;
 }
 
-.dm-gradient-button,
+.dm-gradient-button {
+  border: 0;
+  border-radius: 7px;
+  padding: 12px 17px;
+  color: #fff;
+  background: linear-gradient(135deg, #21214D, #1f8f86);   /* navy to teal */
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(33, 33, 77, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.dm-gradient-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 10px 22px rgba(33, 33, 77, 0.32);
+}
+
 .dm-enroll-button {
   border: 0;
   border-radius: 7px;
   padding: 12px 17px;
-  color: var(--dm-primary);
-  background: var(--dm-teal);
+  color: #fff;
+  background: linear-gradient(135deg, #4bd8e8, #750eba);   /* navy to teal */
   font-weight: 700;
+  box-shadow: 0 6px 16px rgba(33, 33, 77, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.dm-enroll-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 10px 22px rgba(252, 251, 250, 0.198);
 }
 
 .dm-trainer-info .dm-gradient-button {
@@ -4696,7 +4712,7 @@ text-align: center;
   display: block;
   width: auto;
   max-width: 100%;
-  height: 230px;
+  height: 330px;
   object-fit: contain;
   background: none;
   filter: drop-shadow(0 8px 10px rgba(20, 20, 58, 0.22));
