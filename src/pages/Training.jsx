@@ -88,6 +88,8 @@ const gifts = [
 ];
 
 const WHATSAPP_URL = "https://wa.me/8801978866933";
+const ENROLL_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform";
 
 function Training() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -192,7 +194,14 @@ function Training() {
                   <img src={nagadLogo} alt="Nagad" />
                 </button>
               </div>
-              <button className="dm-enroll-button" onClick={scrollToPayment}>🚀 এখনই এনরোল করুন →</button>
+              <a
+  className="dm-enroll-button"
+  href={ENROLL_FORM_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  🚀 এখনই এনরোল করুন →
+</a>
               <small>🔒100% Secure Payment | Support: 0949 866 933</small>
             </article>
 
