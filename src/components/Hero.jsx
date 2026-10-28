@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import profilePhoto from "../assets/photo.png";
 
 const roles = [
-  "Web Designer",
-  "Frontend Developer",
-  "Software Engineer",
+  "Author",
+  "Software Architect",
+  "Business Consultant",
+  "Digital Marketing Trainer",
   "ICT Specialist",
 ];
 
@@ -41,11 +42,9 @@ function Hero({ onTalkClick }) {
         </div>
 
         <p className="hero-description">
-          🚀 Turning ideas into <strong>Stunning Websites</strong> 💻
+          🚀 Available for projects and  <strong>collaborations🌟</strong> 
           <br />
-          <span className="sub-description">
-            | Available for projects and collaborations 🌟
-          </span>
+         
         </p>
 
         <div className="hero-buttons">
