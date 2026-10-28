@@ -9,54 +9,30 @@ function About() {
         <div className="about-heading">
           <p className="about-small-title">Who am I?</p>
 
-          <h2>
-            An IT Student <span>Building With Technology</span>
-          </h2>
+          <h3>
+           a technology-driven entrepreneur, digital marketing trainer, <span> a better future through innovation and collaboration.</span>
+          </h3>
         </div>
 
         <div className="about-text">
           <p>
-            I am an Information Technology student at Jahangirnagar University
-            with a strong interest in frontend development and modern web
-            technologies.
+           Dilouar Hossain is a technology enthusiast, digital marketing trainer, creative entrepreneur, 
+           and business visionary who is passionate about building a better future through technology, 
+           innovation, skill development, and entrepreneurship.
           </p>
 
           <p>
-            I enjoy turning ideas into clean, responsive and user-friendly
-            websites. I work mainly with React, Next.js, TypeScript and
-            Tailwind CSS, while also exploring backend development and
-            full-stack technologies.
+            My vision is not limited to building individual businesses. I aspire to create an integrated ecosystem where technology, skilled human resources, 
+            business collaboration, and innovation work together to generate opportunities and sustainable growth.
           </p>
 
           <p>
-            Alongside technology, I am interested in learning, leadership and
-            creative activities. My goal is to keep improving my skills and
-            build technology that is useful, accessible and meaningful.
+            My vision for Golden Life is to develop a connected business ecosystem that empowers young entrepreneurs and creates opportunities through collaboration.
           </p>
         </div>
       </div>
 
-      <div className="about-highlights">
-        <div className="about-highlight">
-          <strong>7</strong>
-          <span>Full Stack Projects</span>
-        </div>
-
-        <div className="about-highlight">
-          <strong>Real Life</strong>
-          <span>Problem Solving</span>
-        </div>
-
-        <div className="about-highlight">
-          <strong>IT</strong>
-          <span>Student</span>
-        </div>
-
-        <div className="about-highlight">
-          <strong>Web</strong>
-          <span>Developer</span>
-        </div>
-      </div>
+  
     </section>
   );
 }

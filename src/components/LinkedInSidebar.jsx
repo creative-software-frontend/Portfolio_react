@@ -10,58 +10,59 @@ const posts = [
     id: "post-1",
     url: "https://www.linkedin.com/in/dilouarbd/recent-activity/all/",
     date: "2026-09-20",
-    text: "🚀 Another step forward in my frontend development journey — SunCart!Building projects has been one of the most effective ways for me to turn what I learn into practical experience...",
+    text: "🚀 A long-term vision for bringing entrepreneurs, businesses, and business opportunities together through an organized platform designed to support collaboration, economic participation and sustainable growth. — SunCart!Building projects has been one of the most effective ways for me to turn what I learn into practical experience.",
     image: null,
     likes: 24,
-    comments: 3,
+    comments: 58,
   },
   {
     id: "post-2",
     url: "https://www.linkedin.com/in/dilouarbd/recent-activity/all/",
     date: "2026-08-30",
-    text: "Starting my journey as a Frontend Developer Intern at Creative Software Bangladesh. Grateful for the opportunity to learn and grow!",
+    text: "Learn how to use modern AI tools to create content, design promotional graphics, understand digital advertising, and develop practical marketing skills.",
     image: null,
     likes: 41,
-    comments: 7,
+    comments: 25,
   },
 ];
 
 const services = [
   {
-    title: "Frontend Development",
-    text: "Building modern and responsive web interfaces.",
+    title: "Golden Life Business Platform",
+    text: "A long-term vision for bringing entrepreneurs, businesses, and business opportunities together through an organized platform designed to support collaboration, economic participation, and sustainable growth.",
   },
   {
-    title: "React & Next.js",
-    text: "Creating user-friendly applications with modern tools.",
+    title: "Zero Degree Venture ",
+    text: "A creative initiative associated with design, media,Invest and digital services.",
   },
   {
-    title: "UI Development",
-    text: "Turning ideas and designs into functional interfaces.",
+    title: "Future Lab Institute",
+    text: "A skill-development and training initiative focused on helping people learn about modern technology and develop practical capabilities.",
+  },
+  {
+    title: "Creative Software",
+    text: "The beginning of my journey into software, digital technology, creative ideas, and technical solutions.",
   },
 ];
 
 
 const ebooks = [
   {
-    title: "Beginner's Algorithm",
-    text: "Learn algorithm fundamentals and build problem-solving skills.",
+    title: "AI in Digital Marketing",
+    text: "A guide to digital marketing with AI, featuring a focus on digital innovation and marketing.",
   },
   {
-    title: "Basic C Programming",
-    text: "Explore C programming basics, syntax, and core concepts.",
+    title: "Communication Skills",
+    text: "Explore effective communication for professional and personal life, with a focus on vision, action and abundance.",
   },
 ];
 
 const training = [
   {
-    title: "Frontend Development",
-    text: "Learn to build responsive websites with modern frontend tools.",
+    title: "Digital Marketing with AI",
+    text: "Digital Marketing with Ai is the use of artificial intelligence to plan, create, automate, analyze, and optimize digital marketing activities. It helps businesses understand customers, produce engaging content, improve advertising performance, and make data-driven decisions more efficiently.",
   },
-  {
-    title: "Programming Fundamentals",
-    text: "Strengthen logical thinking and programming skills.",
-  },
+ 
 ];
 
 
@@ -133,16 +134,16 @@ function LinkedInSidebar() {
 
         <div className="linkedin-stats">
           <div>
-            <strong>29000+</strong>
-            <span>Connections</span>
+            <strong>29.3K+</strong>
+            <span> Connections</span>
           </div>
           <div>
-            <strong>29000+</strong>
+            <strong>29.4k+</strong>
             <span>Followers</span>
           </div>
           <div>
-            <strong>Web</strong>
-            <span>Developer</span>
+            <strong>2.2k+</strong>
+            <span>Subcriber</span>
           </div>
         </div>
 

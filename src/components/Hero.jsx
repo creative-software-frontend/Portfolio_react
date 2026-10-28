@@ -69,7 +69,7 @@ function Hero({ onTalkClick }) {
           <div className="badge badge-top-right">
             <span className="badge-icon">✓</span>
             <div className="badge-text">
-              <strong>125+</strong>
+              <strong>100K+</strong>
               <small>PROBLEM SOLVED</small>
             </div>
           </div>
@@ -77,7 +77,7 @@ function Hero({ onTalkClick }) {
           <div className="badge badge-left">
             <span className="badge-icon">💼</span>
             <div className="badge-text">
-              <strong>B.Sc. CSE</strong>
+              <strong>B.Sc in CSE</strong>
               <small>EDUCATION</small>
             </div>
           </div>
@@ -85,7 +85,7 @@ function Hero({ onTalkClick }) {
           <div className="badge badge-bottom-right">
             <span className="badge-icon">🚀</span>
             <div className="badge-text">
-              <strong>7+</strong>
+              <strong>50+</strong>
               <small>PROJECTS COMPLETED</small>
             </div>
           </div>

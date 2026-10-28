@@ -25,7 +25,7 @@ function Home() {
         <Hero onTalkClick={onTalkClick} />
         <About />
         <Journey />
-        <Skills />
+       { /*<Skills />*/}
         <Projects />
         <Experience />
       </main>
