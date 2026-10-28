@@ -2,6 +2,11 @@
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
 import dilouarPhoto from "../assets/dilouar-hossain.jpg";
+import laptopPic from "../assets/laptop.png";
+import BkashPaymentModal from "../components/BkashPaymentModal";
+import bkashLogo from "../assets/bkash.jpg";
+import nagadLogo from "../assets/nagad.png";
+import NagadPaymentModal from "../components/NagadPayment";
 
 const modules = [
   {
@@ -82,9 +87,14 @@ const gifts = [
   ["প্রোডাক্ট সোর্সিং এর সুবিধা", "5,000 ৳"],
 ];
 
+const WHATSAPP_URL = "https://wa.me/8801978866933";
+const ENROLL_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform";
+
 function Training() {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [showPaymentHelp, setShowPaymentHelp] = useState(false);
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [isNagadPaymentOpen, setIsNagadPaymentOpen] = useState(false);
 
   const scrollToPayment = () => {
     document.getElementById("training-payment")?.scrollIntoView({
@@ -98,7 +108,7 @@ function Training() {
         <span className="dm-offer">✨ Limited Time Offer</span>
         <h1>Digital Marketing <span>With AI</span></h1>
         <p>স্মার্ট মার্কেটিং ও দ্রুত সফলতা, সবই সম্ভব AI-এর সাথে</p>
-      </header> 
+      </header>
 
       <main>
         <section className="dm-section dm-profile-section">
@@ -126,9 +136,14 @@ function Training() {
                 <h3>Engineer Dilouar Hossain</h3>
                 <p className="dm-trainer-role">Digital Marketing Trainer | 10+ Years Experience</p>
                 <p className="dm-trainer-bio">Founder at Zero Degree venture & Golden Life Business Ltd</p>
-                <button className="dm-gradient-button" onClick={() => setIsContactOpen(true)}>
+                <a
+                  className="dm-gradient-button"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   📞 ইন্সট্রাক্টরের সাথে কথা বলুন
-                </button>
+                </a>
               </div>
             </article>
 
@@ -166,9 +181,27 @@ function Training() {
               <p className="dm-discount-note">এককালীন পেমেন্টে <strong>৯০% ছাড়</strong></p>
               <p className="dm-price-description">লাইফটাইম এক্সেস এবং আপডেটেড কোর্স কনটেন্ট</p>
               <div className="dm-payment-logos">
-                <span>bkash</span><span>নগদ</span>
+                <button type="button" onClick={() => setIsPaymentOpen(true)}>
+                  <img src={bkashLogo} alt="Pay with bKash" />
+                </button>
+
+                <button
+                  type="button"
+                  className="dm-payment-logo-button"
+                  onClick={() => setIsNagadPaymentOpen(true)}
+                  aria-label="Open Nagad payment"
+                >
+                  <img src={nagadLogo} alt="Nagad" />
+                </button>
               </div>
-              <button className="dm-enroll-button" onClick={scrollToPayment}>🚀 এখনই এনরোল করুন →</button>
+              <a
+  className="dm-enroll-button"
+  href={ENROLL_FORM_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  🚀 এখনই এনরোল করুন →
+</a>
               <small>🔒100% Secure Payment | Support: 0949 866 933</small>
             </article>
 
@@ -189,9 +222,18 @@ function Training() {
             <div>
               <h2>লটারির <span>পুরস্কার</span></h2>
               <p>সেরাদের জন্য আকর্ষণীয় পুরস্কার ল্যাপটপের মাধ্যমে দেওয়া হবে।</p>
-              <button onClick={scrollToPayment}>অংশগ্রহণ করুন</button>
+
+              <button type="button" className="enroll-button">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  অংশগ্রহণ করুন
+                </a>
+              </button>
             </div>
-            <div className="dm-laptop-art" aria-label="Laptop giveaway">💻<strong>ল্যাপটপ</strong></div>
+            <img className="dm-laptop-img" src={laptopPic} alt="Laptop giveaway" />
           </article>
         </section>
 
@@ -222,25 +264,71 @@ function Training() {
               <h2>🚀 এখনই এনরোল করুন</h2>
               <p>বিস্তারিত জানতে কল করুন — <strong>0949 866 933</strong></p>
               <div className="dm-enroll-actions">
-                <button onClick={() => setShowPaymentHelp(true)}>এনরোল করুন</button>
-                <button className="dm-whatsapp" onClick={() => setIsContactOpen(true)}>● WhatsApp</button>
-              </div>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScU1PUUmjNosTOnnQmg4pCF9z6ifH7h2aJoMwIHYtxTr-KPuA/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="enroll-button"
+                >
+                  এনরোল করুন
+                </a>
+                <a
+                  className="dm-whatsapp"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ● WhatsApp
+                </a> </div>
             </div>
             <div className="dm-payment-info">
               <h2>💰 কিভাবে Payment করবেন</h2>
               <div className="dm-payment-options">
-                <button onClick={() => setShowPaymentHelp(true)}>bkash এ পেমেন্ট করুন</button>
-                <button onClick={() => setShowPaymentHelp(true)}>নগদ এ পেমেন্ট করুন</button>
+                <button
+                  type="button"
+                  className="pay-btn pay-bkash"
+                  onClick={() => setIsPaymentOpen(true)}
+                >
+                  <span className="pay-logo">
+                    <img src={bkashLogo} alt="bKash" />
+                  </span>
+                  <span className="pay-text">এ পেমেন্ট করুন</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="pay-btn pay-nagad"
+                  onClick={() => setIsNagadPaymentOpen(true)}
+                >
+                  <span className="pay-logo">
+                    <img src={nagadLogo} alt="Nagad" />
+                  </span>
+                  <span className="pay-text">Nagad এ পেমেন্ট করুন</span>
+                </button>
               </div>
               <p>❓ পেমেন্ট নিয়ে সমস্যা হলে কল করুন: <strong>0949 866 933</strong></p>
             </div>
           </div>
+          {isPaymentOpen && (
+            <BkashPaymentModal
+              isOpen={isPaymentOpen}
+              onClose={() => setIsPaymentOpen(false)}
+              onNagadClick={() => {
+                setIsPaymentOpen(false);
+                setIsNagadPaymentOpen(true);
+              }}
+            />
+          )}
 
-          {showPaymentHelp && (
-            <div className="dm-payment-notice" role="status">
-              <p>পেমেন্টের সঠিক নম্বর ও নির্দেশনা নিশ্চিত করতে অনুগ্রহ করে 0949 866 933 নম্বরে যোগাযোগ করুন।</p>
-              <button onClick={() => setShowPaymentHelp(false)}>বন্ধ করুন</button>
-            </div>
+          {isNagadPaymentOpen && (
+            <NagadPaymentModal
+              isOpen={isNagadPaymentOpen}
+              onClose={() => setIsNagadPaymentOpen(false)}
+              onBkashClick={() => {
+                setIsNagadPaymentOpen(false);
+                setIsPaymentOpen(true);
+              }}
+            />
           )}
 
           <div className="dm-direct-contact">
