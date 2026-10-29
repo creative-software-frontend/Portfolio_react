@@ -112,7 +112,7 @@ function Projects() {
     <section id="projects" className="projects-section">
       <div className="projects-container">
         <div className="projects-ribbon">
-          <span>MY WORK</span>
+          <span>PROJECTS</span>
         </div>
 
         <div className="projects-header">

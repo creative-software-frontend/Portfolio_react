@@ -25,9 +25,9 @@ function Home() {
         <Hero onTalkClick={onTalkClick} />
         <About />
         <Journey />
-       { /*<Skills />*/}
-        <Projects />
-        <Experience />
+       <Skills />
+       {/* <Projects />*/}
+         <Experience />
       </main>
       {/* Mobile-only tab on the right edge */}
       <button

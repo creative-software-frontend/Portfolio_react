@@ -86,7 +86,7 @@ function Hero({ onTalkClick }) {
             <span className="badge-icon">🚀</span>
             <div className="badge-text">
               <strong>50+</strong>
-              <small>PROJECTS COMPLETED</small>
+              <small>PROJECTS DESIGN</small>
             </div>
           </div>
         </div>
