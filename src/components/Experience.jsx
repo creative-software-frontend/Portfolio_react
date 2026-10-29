@@ -32,7 +32,7 @@ function Experience() {
   return (
     <section id="experience" className="experience-section">
       <div className="experience-ribbon">
-        <span>EXPERIENCE</span>
+        <span>ACHIEVEMENTS</span>
       </div>
 
       <div className="experience-content">
@@ -40,7 +40,7 @@ function Experience() {
           <p>Where I Am Growing Professionally</p>
 
           <h2>
-            My <span>Professional Experience</span>
+            MY <span> ACHIEVEMENTS</span>
           </h2>
         </div>
 

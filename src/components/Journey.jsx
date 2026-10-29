@@ -6,7 +6,7 @@ function Journey() {
   return (
     <section id="journey" className="journey-section">
       <div className="journey-ribbon">
-        <span>MY JOURNEY</span>
+        <span>PROFESSIONAL JOURNEY</span>
       </div>
 
       <div className="journey-header">
@@ -24,16 +24,54 @@ function Journey() {
             <div className="journey-dot"></div>
 
             <div className="journey-card">
-              <span className="journey-year">2023 — Present</span>
+              <span className="journey-year">Aug 2026 - Present</span>
 
-              <h3>Undergraduate in Information Technology</h3>
+              <h2>Chairman</h2>
 
-              <h4>Jahangirnagar University</h4>
+              <h3>Golden Life Business Platform</h3>
 
               <p>
-                Started my undergraduate journey in Information Technology,
-                building a strong foundation in programming, problem solving,
-                computer science and technology.
+                Golden Life is a purpose-driven socio-economic initiative designed to empower youth through entrepreneurship, technology, and ethical business practices. It operates as a holistic ecosystem that combines a social movement with a practical digital business platform—creating real opportunities for sustainable income and long-term growth.
+              <br /> 
+            At its core, Golden Life focuses on Youth Economic Empowerment by enabling individuals and institutions to start, manage, and scale real businesses using modern digital tools. Rather than promoting commission-based or speculative models, Golden Life emphasizes transparency, skill development, and value-driven enterprise.
+              </p>
+            </div>
+          </div>
+        <div className="journey-item">
+            <div className="journey-dot"></div>
+
+            <div className="journey-card">
+              <span className="journey-year">September 2025  — Present</span>
+
+              <h2>Business Consultant</h2>
+
+              <h3>0°  - Digital Marketing Venture</h3>
+
+              <p>
+              Development • Marketing • Investment • Supply Chain <br /><br />
+
+        Digital Marketing Venture is focused on creating business opportunities through digital innovation, technology, strategic marketing, investment initiatives, and supply chain solutions.
+      <br />
+      Our vision is to help entrepreneurs, startups, and established businesses grow through modern digital strategies, professional web development, creative branding, and technology-driven business solutions.
+
+    By integrating digital marketing with web development, investment planning, and supply chain management, we aim to build a connected business ecosystem that supports innovation, operational efficiency, and sustainable growth
+              </p>
+            </div>
+          </div>
+          <div className="journey-item">
+            <div className="journey-dot"></div>
+
+            <div className="journey-card">
+              <span className="journey-year">January 2020 — Present</span>
+
+              <h2>Principal Trainer</h2>
+
+              <h3>Future Lab Institute</h3>
+
+              <p>
+                Future Lab Institute was established with a vision to empower individuals through technology-focused training, practical learning, and modern skill development.
+                The institute aims to bridge the gap between knowledge and practical application by encouraging continuous learning, innovation, creativity, and professional growth.
+               <br /> My vision for Future Lab Institute is to create learning opportunities that help individuals strengthen their capabilities, explore new possibilities, and build a more promising future through technology and education.
               </p>
             </div>
           </div>
@@ -42,35 +80,16 @@ function Journey() {
             <div className="journey-dot"></div>
 
             <div className="journey-card">
-              <span className="journey-year">December 2025</span>
+              <span className="journey-year">November 2015 — Present</span>
 
-              <h3>Started Learning Full Stack Development</h3>
+              <h2>Founder & CEO</h2>
 
-              <h4>Web Development Journey</h4>
-
-              <p>
-                Started focusing on full stack web development and began
-                working with technologies such as React, Next.js, TypeScript,
-                Node.js, Express.js and MongoDB.
-              </p>
-            </div>
-          </div>
-
-          <div className="journey-item">
-            <div className="journey-dot"></div>
-
-            <div className="journey-card">
-              <span className="journey-year">October 2026 — Present</span>
-
-              <h3>Frontend Developer</h3>
-
-              <h4>Creative Software</h4>
+              <h3>Creative Software Bangladesh</h3>
 
               <p>
-                Currently working as a Frontend Developer, applying my
-                development skills to build modern, responsive and
-                user-friendly web experiences.
-              </p>
+               Creative Software represents an important beginning in my professional journey in technology, software development, and digital innovation.
+                <br />My vision is to transform creative ideas into practical digital solutions that help businesses improve efficiency, simplify operations, and embrace modern technology. Through software development, digital transformation, and innovative IT services, Creative Software focuses on solving real-world problems and creating new opportunities for businesses and individuals.
+             </p>
             </div>
           </div>
 

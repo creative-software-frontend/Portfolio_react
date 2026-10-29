@@ -114,7 +114,7 @@ function Skills() {
     <section id="skills" className="skills-section">
       <div className="skills-container">
         <div className="skills-ribbon">
-          <span>MY SKILLS</span>
+          <span>EXPERTISE & SERVICES</span>
         </div>
 
         <div className="skills-header">
