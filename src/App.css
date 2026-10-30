@@ -4136,17 +4136,16 @@ a {
 }
 
 .footer {
-  --footer-bg: #14143a; /* solid, so the wave fill matches the footer exactly */
+  --footer-bg: #14143a;
   --footer-wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24' preserveAspectRatio='none'%3E%3Cpath d='M0 12 Q40 2 80 12 T160 12 V24 H0 Z' fill='black'/%3E%3C/svg%3E");
   background: var(--footer-bg);
   color: var(--footer-text);
   padding: 64px 20px 24px;
   font-family: var(--font-main, inherit);
   position: relative;
-  overflow: visible; /* the waves sit above the footer's top edge */
+  overflow: visible; 
 }
 
-/* gradient wave (the colorful border) */
 .footer::before,
 .footer::after {
   content: "";
@@ -4154,7 +4153,7 @@ a {
   left: 0;
   right: 0;
   height: 24px;
-    -webkit-mask: var(--footer-wave-mask) repeat-x 0 0 / 160px 24px;
+  -webkit-mask: var(--footer-wave-mask) repeat-x 0 0 / 160px 24px;
   mask: var(--footer-wave-mask) repeat-x 0 0 / 160px 24px;
 }
 
@@ -4163,7 +4162,6 @@ a {
   background: var(--footer-top-line);
 }
 
-/* dark wave, shifted down 5px so the gradient shows as a band above it */
 .footer::after {
   top: -18px;
   background: var(--footer-bg);
