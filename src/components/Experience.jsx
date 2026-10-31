@@ -1,75 +1,88 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-const dev = (name) =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${name}/${name}-original.svg`;
-
-const experienceTech = [
-  { name: "React", logo: dev("react") },
-  { name: "Next.js", logo: dev("nextjs") },
-  { name: "TypeScript", logo: dev("typescript") },
-  { name: "Tailwind CSS", logo: dev("tailwindcss") },
+// Put your images in /public/achievements/ and list them here.
+const photos = [
+  { src: "/src/assets/achievement/sales-and-marketing.png", alt: "Achievement 1" },
+  { src: "/src/assets/achievement/software-engineering-career.png", alt: "Achievement 2" },
+  { src: "/src/assets/achievement/time-management.png", alt: "Achievement 3" },
+  { src: "/src/assets/achievement/UpdatedImage.png", alt: "Achievement 4" },
 ];
 
-function TechLogo({ tech }) {
-  const [failed, setFailed] = useState(false);
- if (failed) {
-    return <span className="exp-tech-fallback">{tech.name}</span>;
-  }
-
+function Arrow({ dir }) {
   return (
-    <img
-      className="exp-tech-logo"
-      src={tech.logo}
-      alt={tech.name}
-      title={tech.name}
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={dir === "left" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"} />
+    </svg>
   );
 }
 
 function Experience() {
+  const [page, setPage] = useState(0);
+  const touchX = useRef(null);
+  const last = photos.length - 1;
+
+  const next = () => setPage((p) => Math.min(p + 1, last));
+  const prev = () => setPage((p) => Math.max(p - 1, 0));
+
+  const onKeyDown = (e) => {
+    if (e.key === "ArrowRight") next();
+    if (e.key === "ArrowLeft") prev();
+  };
+
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+    touchX.current = null;
+  };
+
   return (
     <section id="experience" className="experience-section">
       <div className="experience-ribbon">
         <span>ACHIEVEMENTS</span>
       </div>
 
-      <div className="experience-content">
-        <div className="experience-header">
-          <p>Where I Am Growing Professionally</p>
-
-          <h2>
-            MY <span> ACHIEVEMENTS</span>
-          </h2>
+      <div className="pb-wrap">
+        <div
+          className="pb-frame"
+          tabIndex={0}
+          role="group"
+          aria-label="Achievements gallery"
+          onKeyDown={onKeyDown}
+          onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+          onTouchEnd={onTouchEnd}
+          onClick={next}
+        >
+          {photos.map((photo, i) => (
+            <div
+              key={photo.src}
+              className={`pb-leaf ${i < page ? "gone" : ""}`}
+              style={{ zIndex: photos.length - i }}
+              aria-hidden={i !== page}
+            >
+              <div className="pb-front">
+                <img src={photo.src} alt={photo.alt} loading="lazy" draggable="false" />
+              </div>
+              <div className="pb-back" />
+            </div>
+          ))}
         </div>
 
-        <div className="experience-card">
-          <div className="experience-top">
-            <div>
-              <span className="experience-status">CURRENTLY WORKING</span>
+        <div className="pb-controls">
+          <button type="button" onClick={prev} disabled={page === 0} aria-label="Previous photo">
+            <Arrow dir="left" />
+          </button>
 
-              <h3>Frontend Developer Intern</h3>
-
-              <h4>Creative Software Bangladesh</h4>
-            </div>
-
-            <span className="experience-date">2026 — Present</span>
-          </div>
-
-          <div className="experience-divider"></div>
-
-          <p className="experience-description">
-            Currently working as a Frontend Developer Intern, gaining
-            practical experience in building modern, responsive and
-            user-friendly web interfaces.
-          </p>
-
-          <div className="experience-skills">
-            {experienceTech.map((tech) => (
-              <TechLogo key={tech.name} tech={tech} />
+          <div className="pb-dots">
+            {photos.map((p, i) => (
+              <span key={p.src} className={i === page ? "on" : ""} />
             ))}
           </div>
+
+          <button type="button" onClick={next} disabled={page === last} aria-label="Next photo">
+            <Arrow dir="right" />
+          </button>
         </div>
       </div>
     </section>
