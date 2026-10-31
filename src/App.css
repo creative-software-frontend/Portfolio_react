@@ -2070,12 +2070,13 @@ a {
   padding: 40px 50px;
   background: var(--color-surface);
   scroll-margin-top: 75px;
-  overflow-x: clip;               /* the turning page swings out to the left */
 }
 
 /* ==================== PAGE-TURN GALLERY ==================== */
 .pb-wrap {
-  width: min(100%, 440px);        /* size of the picture holder: change this */
+  position: relative;
+  z-index: 5;
+  width: min(100%, 440px);
   margin: 45px auto 0;
 }
 
@@ -2220,7 +2221,7 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pb-frame { --flip-time: 0.01s; }
+  .pb-frame { --flip-time: 0.6s; }
 }
 
 /* ==========================================
