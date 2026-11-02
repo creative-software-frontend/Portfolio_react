@@ -7,8 +7,8 @@ const photos = [
   { src: "/src/assets/UpdatedImage.png", alt: "Achievement 4" },
 ];
 
-const SHOW_MS = 2000; // how long each photo stays
-const FLIP_MS = 1100; // must match the CSS transition time
+const SHOW_MS = 2000; 
+const FLIP_MS = 1100; 
 
 function Experience() {
   const n = photos.length;
