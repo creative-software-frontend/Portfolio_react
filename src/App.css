@@ -1225,7 +1225,8 @@ a {
 }
 
 .journey-timeline-wrapper.expanded {
-  max-height: 2000px;
+  max-height: none;
+  overflow: visible;
 }
 
 .journey-fade-overlay {
