@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import salesImg from "../assets/sales-and-marketing.png";
 import careerImg from "../assets/software-engineering-career.png";
 import timeImg from "../assets/time-management.png";
@@ -12,12 +11,28 @@ const photos = [
   { src: updatedImg, alt: "Achievement 4" },
 ];
 
-const SHOW_MS = 2000; 
-const FLIP_MS = 1100; 
+const SHOW_MS = 3000;
+const FLIP_MS = 1200; 
+const STRIPS = 1;    
+
+function Strip({ k, src, root }) {
+  if (k >= STRIPS) return null;
+  const pos = `${(k / (STRIPS - 1)) * 100}% 0`;
+  return (
+    <div className={root ? "pb-strip pb-leaf-root" : "pb-strip"}>
+      <div
+        className="pb-face pb-front"
+        style={{ backgroundImage: `url(${src})`, backgroundPosition: pos }}
+      />
+      <div className="pb-face pb-back" />
+      <Strip k={k + 1} src={src} />
+    </div>
+  );
+}
 
 function Experience() {
   const n = photos.length;
-  const [page, setPage] = useState(0); 
+  const [page, setPage] = useState(0);
   const [instant, setInstant] = useState(false);
 
   useEffect(() => {
@@ -52,21 +67,18 @@ function Experience() {
           role="group"
           aria-label="Achievements gallery"
         >
-          <div className="pb-stage">
-            <div className="pb-under">
-              <img src={photos[0].src} alt="" draggable="false" />
-            </div>
+          <div className="pb-book" style={{ "--n": STRIPS }}>
+            <img className="pb-under" src={photos[0].src} alt="" draggable="false" />
 
             {photos.map((photo, i) => (
               <div
-                key={photo.src}
+                key={i}
                 className={`pb-leaf ${i < page ? "gone" : ""}`}
                 style={{ zIndex: n - i + 1 }}
+                role="img"
+                aria-label={photo.alt}
               >
-                <div className="pb-front">
-                  <img src={photo.src} alt={photo.alt} draggable="false" />
-                </div>
-                <div className="pb-back" />
+                <Strip k={0} src={photo.src} root />
               </div>
             ))}
           </div>
