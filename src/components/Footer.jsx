@@ -80,8 +80,7 @@ function Footer({ onTalkClick }) {
   const navSections = [
     ["home", "Home"],
     ["about", "About"],
-    ["projects", "Projects"],
-    ["experience", "Experience"],
+    ["experience", "Achievements"],
   ];
 
   return (
@@ -123,23 +122,21 @@ function Footer({ onTalkClick }) {
           <div className="footer-links-group">
             <h4 className="footer-heading">Resources</h4>
             <ul className="footer-links">
-              <li>
-                <Link to="/ebooks">Ebook</Link>
-              </li>
-              <li>
-                <Link to="/training">Training</Link>
-              </li>
-
-              <li>
-                <button
-                  type="button"
-                  onClick={onTalkClick}
-                  className="footer-contact-link"
-                >
-                  Contact Me
-                </button>
-              </li>
-            </ul>
+  <li>
+    <Link to="/ebooks">Ebook</Link>
+  </li>
+  <li>
+    <Link to="/training">Training</Link>
+  </li>
+  <li>
+    <Link to="/gallery">Gallery</Link>
+  </li>
+  <li>
+    <button type="button" onClick={onTalkClick} className="footer-contact-link">
+      Contact Me
+    </button>
+  </li>
+</ul>
           </div>
 
           {/* Social icons */}

@@ -7,13 +7,13 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Journey from "./components/Journey";
 import Skills from "./components/Skills";
-import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import LinkedInSidebar from "./components/LinkedInSidebar";
 import Ebooks from "./pages/Ebooks";
 import Training from "./pages/Training";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import Gallery from "./components/Gallery";
 
 function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -62,6 +62,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Route>
       </Routes>
     </BrowserRouter>
