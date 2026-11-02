@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import profilePhoto from "../assets/photo.png";
+import cv from "../assets/cv.pdf";
 
 const roles = [
   "Author",
@@ -19,7 +20,7 @@ function Hero({ onTalkClick }) {
       setTimeout(() => {
         setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
         setFade(true);
-      }, 300); // duration matching text transition
+      }, 300); 
     }, 2500);
 
     return () => clearInterval(interval);
@@ -55,9 +56,9 @@ function Hero({ onTalkClick }) {
             Say Hello <span className="btn-icon">✈</span>
           </button>
 
-          <a href="/cv.pdf" download className="secondary-button download-cv-btn">
-            Download CV <span className="btn-icon">⤓</span>
-          </a>
+          <a href={cv} download="Dilouar-Hossain-CV.pdf" className="secondary-button download-cv-btn">
+  Download CV <span className="btn-icon">⤓</span>
+</a>
         </div>
       </div>
 
