@@ -27,7 +27,6 @@ const SOCIAL_LINKS = [
   },
 ];
 
-/* ---------- Icons (all 20px, colored by CSS via currentColor) ---------- */
 function LinkedInIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

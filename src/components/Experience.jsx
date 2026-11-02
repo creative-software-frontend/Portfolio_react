@@ -1,73 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const dev = (name) =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${name}/${name}-original.svg`;
-
-const experienceTech = [
-  { name: "React", logo: dev("react") },
-  { name: "Next.js", logo: dev("nextjs") },
-  { name: "TypeScript", logo: dev("typescript") },
-  { name: "Tailwind CSS", logo: dev("tailwindcss") },
+const photos = [
+  { src: "/src/assets/sales-and-marketing.png", alt: "Achievement 1" },
+  { src: "/src/assets/software-engineering-career.png", alt: "Achievement 2" },
+  { src: "/src/assets/time-management.png", alt: "Achievement 3" },
+  { src: "/src/assets/UpdatedImage.png", alt: "Achievement 4" },
 ];
 
-function TechLogo({ tech }) {
-  const [failed, setFailed] = useState(false);
- if (failed) {
-    return <span className="exp-tech-fallback">{tech.name}</span>;
-  }
-
-  return (
-    <img
-      className="exp-tech-logo"
-      src={tech.logo}
-      alt={tech.name}
-      title={tech.name}
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
-  );
-}
+const SHOW_MS = 2000; // how long each photo stays
+const FLIP_MS = 1100; // must match the CSS transition time
 
 function Experience() {
+  const n = photos.length;
+  const [page, setPage] = useState(0); // 0..n (n = last photo has turned away)
+  const [instant, setInstant] = useState(false);
+
+  // auto-flip; after the last photo, silently reset to the first
+  useEffect(() => {
+    if (page < n) {
+      const t = setTimeout(() => setPage(page + 1), SHOW_MS);
+      return () => clearTimeout(t);
+    }
+    const t = setTimeout(() => {
+      setInstant(true);
+      setPage(0);
+    }, FLIP_MS + 50);
+    return () => clearTimeout(t);
+  }, [page, n]);
+
+  // turn animations back on after the silent reset
+  useEffect(() => {
+    if (!instant) return;
+    const id = requestAnimationFrame(() =>
+      requestAnimationFrame(() => setInstant(false))
+    );
+    return () => cancelAnimationFrame(id);
+  }, [instant]);
+
   return (
     <section id="experience" className="experience-section">
       <div className="experience-ribbon">
         <span>ACHIEVEMENTS</span>
       </div>
 
-      <div className="experience-content">
-        <div className="experience-header">
-          <p>Where I Am Growing Professionally</p>
-
-          <h2>
-            MY <span> ACHIEVEMENTS</span>
-          </h2>
-        </div>
-
-        <div className="experience-card">
-          <div className="experience-top">
-            <div>
-              <span className="experience-status">CURRENTLY WORKING</span>
-
-              <h3>Frontend Developer Intern</h3>
-
-              <h4>Creative Software Bangladesh</h4>
+      <div className="pb-wrap">
+        <div
+          className={`pb-frame ${instant ? "instant" : ""}`}
+          role="group"
+          aria-label="Achievements gallery"
+        >
+          <div className="pb-stage">
+            {/* underneath: shows the first photo when the last one turns away */}
+            <div className="pb-under">
+              <img src={photos[0].src} alt="" draggable="false" />
             </div>
 
-            <span className="experience-date">2026 — Present</span>
-          </div>
-
-          <div className="experience-divider"></div>
-
-          <p className="experience-description">
-            Currently working as a Frontend Developer Intern, gaining
-            practical experience in building modern, responsive and
-            user-friendly web interfaces.
-          </p>
-
-          <div className="experience-skills">
-            {experienceTech.map((tech) => (
-              <TechLogo key={tech.name} tech={tech} />
+            {photos.map((photo, i) => (
+              <div
+                key={photo.src}
+                className={`pb-leaf ${i < page ? "gone" : ""}`}
+                style={{ zIndex: n - i + 1 }}
+              >
+                <div className="pb-front">
+                  <img src={photo.src} alt={photo.alt} draggable="false" />
+                </div>
+                <div className="pb-back" />
+              </div>
             ))}
           </div>
         </div>
