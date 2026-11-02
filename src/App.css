@@ -2072,164 +2072,79 @@ a {
   scroll-margin-top: 75px;
 }
 
-/* ==================== PAGE-TURN GALLERY ==================== */
 .pb-wrap {
-  position: relative;
-  z-index: 5;
-  width: min(100%, 480px);
-  margin: 25px auto 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
+/* the visible container: everything is clipped to this box */
 .pb-frame {
-  --flip-time: 1.1s;
   position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: min(480px, 100%);      /* smaller: change this to resize */
+  aspect-ratio: 4 / 3;          /* match your images */
+  overflow: hidden;             /* keeps the flip inside the container */
   border-radius: 10px;
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  perspective: 1600px;
-  overflow: hidden;             
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-.pb-under {
+.pb-stage {
   position: absolute;
   inset: 0;
-  z-index: 0;
-}
-.pb-under img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  perspective: 1200px;
 }
 
-.pb-frame.instant .pb-leaf,
-.pb-frame.instant .pb-leaf.gone,
-.pb-frame.instant .pb-front::before {
-  transition: none !important;
-}
-
+.pb-under,
 .pb-leaf {
   position: absolute;
   inset: 0;
-  transform-origin: left center; 
+}
+
+.pb-under {
+  z-index: 1;
+}
+
+.pb-leaf {
+  --tilt: 0.45;                 /* diagonal amount: 0 = straight, 1 = steep */
+  transform-origin: left center;
   transform-style: preserve-3d;
-  transition:
-    transform var(--flip-time) cubic-bezier(0.645, 0.045, 0.355, 1),
-    visibility 0s;
+  transition: transform 1.1s cubic-bezier(0.645, 0.045, 0.355, 1),
+              opacity 0.2s linear;
 }
 
 .pb-leaf.gone {
-  transform: rotateY(-180deg);
-  visibility: hidden;
+  transform: rotate3d(var(--tilt), 1, 0, -180deg);
+  opacity: 0;
   pointer-events: none;
-  transition:
-    transform var(--flip-time) cubic-bezier(0.645, 0.045, 0.355, 1),
-    visibility 0s linear var(--flip-time);
+  transition: transform 1.1s cubic-bezier(0.645, 0.045, 0.355, 1),
+              opacity 0.3s linear 0.8s;
+}
+
+/* silent reset after the last photo */
+.pb-frame.instant .pb-leaf,
+.pb-frame.instant .pb-leaf.gone {
+  transition: none;
 }
 
 .pb-front,
 .pb-back {
   position: absolute;
   inset: 0;
-  border-radius: 10px;
-  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-.pb-front img {
+.pb-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #f1ede2, #d9d3c2);
+}
+
+.pb-front img,
+.pb-under img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* soft shadow along the spine */
-.pb-front::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 10%);
-}
-
-/* page darkens slightly as it turns away from the light */
-.pb-front::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: #000;
-  opacity: 0;
-  transition: opacity var(--flip-time) ease;
-}
-.pb-leaf.gone .pb-front::before {
-  opacity: 0.35;
-}
-
-/* paper back, seen while the page is mid-turn */
-.pb-back {
-  transform: rotateY(180deg);
-  background: linear-gradient(to left, #e9e9ee, #d4d4dc);
-}
-
-/* ---------- controls ---------- */
-.pb-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 26px;
-}
-
-.pb-controls button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-primary);
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.pb-controls button:hover:not(:disabled) {
-  background: var(--color-primary);
-  color: var(--color-white);
-  transform: translateY(-2px);
-}
-
-.pb-controls button:disabled { opacity: 0.35; cursor: default; }
-
-.pb-controls button:focus-visible,
-.pb-frame:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-}
-
-.pb-dots { display: flex; gap: 8px; }
-
-.pb-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-border);
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.pb-dots span.on {
-  background: var(--color-primary);
-  transform: scale(1.25);
 }
 
 @media (max-width: 600px) {
