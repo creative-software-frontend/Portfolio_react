@@ -1,17 +1,48 @@
 import { useEffect, useState } from "react";
 import salesImg from "../assets/achievement/1 (4).jpeg";
-import careerImg from "../assets/achievement/3.jpg";
+import progImg from "../assets/achievement/3.jpg";
 import timeImg from "../assets/achievement/FB_IMG_1509003226633.jpg";
 
 const photos = [
-  { src: salesImg, alt: "Achievement 1" },
-  { src: careerImg, alt: "Achievement 2" },
-  { src: timeImg, alt: "Achievement 3" },
+  
+  {
+    src: salesImg,
+    alt: "Achievement 2",
+    title: "My achievement",
+    year: "20XX",
+    org: "Organizer name",
+    desc: "A short line about what you did and what it meant.",
+    tags: ["Tag 1", "Tag 2"],
+  },
+  {
+    src: progImg,
+    alt: "Achievement 1",
+    title: "Programming Contest Champion",
+    year: "2016",
+    org: "CSE Festival, Dept. of CSE",
+    desc: "Won the programming contest with my team and received the champion trophy.",
+    tags: ["Programming", "Champion"],
+  },
+  {
+    src: timeImg,
+    alt: "Achievement 3",
+    title: "My new achievement",
+    year: "20XX",
+    org: "Organizer name",
+    desc: "A short line about what you did and what it meant.",
+    tags: ["Tag 1", "Tag 2"],
+  },
 ];
 
-const SHOW_MS = 3000; // how long each photo stays
-const FLIP_MS = 1200; // must match the 1.2s in the CSS
-const STRIPS = 3;    // 1 = flat flip, 8-12 = curved page
+const stats = [
+  { value: "3+", label: "Awards" },
+  { value: "2016", label: "First Win" },
+  { value: "10+", label: "Contests" }, 
+];
+
+const SHOW_MS = 3000; 
+const FLIP_MS = 1200; 
+const STRIPS = 3;   
 
 function Strip({ k, src, root }) {
   if (k >= STRIPS) return null;
@@ -55,22 +86,40 @@ function Experience() {
       </div>
 
       <div className="pb-wrap">
-        <div className="pb-frame" role="group" aria-label="Achievements gallery">
-          <div className="pb-book" style={{ "--n": STRIPS }}>
-            {/* underneath: the next photo */}
-            <img className="pb-under" src={photos[next].src} alt="" draggable="false" />
-
-            {/* the page that turns away: the current photo */}
-            <div
-              className={`pb-leaf ${flipping ? "flipping" : ""}`}
-              role="img"
-              aria-label={photos[current].alt}
-            >
-              <Strip k={0} src={photos[current].src} root />
-            </div>
-          </div>
-        </div>
+  <div className="pb-frame" role="group" aria-label="Achievements gallery">
+    <div className="pb-book" style={{ "--n": STRIPS }}>
+      <img className="pb-under" src={photos[next].src} alt="" draggable="false" />
+      <div
+        className={`pb-leaf ${flipping ? "flipping" : ""}`}
+        role="img"
+        aria-label={photos[current].alt}
+      >
+        <Strip k={0} src={photos[current].src} root />
       </div>
+    </div>
+  </div>
+
+  <div className="pb-info" key={current}>
+    <span className="pb-year">{photos[current].year}</span>
+    <h3>{photos[current].title}</h3>
+    <h4>{photos[current].org}</h4>
+    <p>{photos[current].desc}</p>
+    <div className="pb-tags">
+      {photos[current].tags.map((t) => (
+        <span key={t}>{t}</span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<div className="pb-stats">
+  {stats.map((s) => (
+    <div key={s.label}>
+      <strong>{s.value}</strong>
+      <span>{s.label}</span>
+    </div>
+  ))}
+</div>
     </section>
   );
 }
