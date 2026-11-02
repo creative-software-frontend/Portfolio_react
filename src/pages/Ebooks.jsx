@@ -1,12 +1,12 @@
 
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
-import communicationSkills from "../assets/communication-skills.png";
-import digitalMarketingAI from "../assets/digital-marketing-ai.png";
-import limitlessSuccess from "../assets/limitless-success.png";
-import timeManagement from "../assets/time-management.png";
-import softwareCareer from "../assets/software-engineering-career.png";
-import salesMarketing from "../assets/sales-and-marketing.png";
+import communicationSkills from "../assets/book/communication-skills.png";
+import digitalMarketingAI from "../assets/book/digital-marketing-ai.png";
+import limitlessSuccess from "../assets/book/limitless-success.png";
+import timeManagement from "../assets/book/time-management.png";
+import softwareCareer from "../assets/book/software-engineering-career.png";
+import salesMarketing from "../assets/book/sales-and-marketing.png";
 const WHATSAPP_URL = "https://wa.me/8801978866933";
 const books = [
   {
