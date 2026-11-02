@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
 import communicationSkills from "../assets/book/communication-skills.png";
@@ -7,7 +6,9 @@ import limitlessSuccess from "../assets/book/limitless-success.png";
 import timeManagement from "../assets/book/time-management.png";
 import softwareCareer from "../assets/book/software-engineering-career.png";
 import salesMarketing from "../assets/book/sales-and-marketing.png";
+
 const WHATSAPP_URL = "https://wa.me/8801978866933";
+
 const books = [
   {
     id: 1,
