@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 
+import salesImg from "../assets/sales-and-marketing.png";
+import careerImg from "../assets/software-engineering-career.png";
+import timeImg from "../assets/time-management.png";
+import updatedImg from "../assets/UpdatedImage.png";
+
 const photos = [
-  { src: "/src/assets/sales-and-marketing.png", alt: "Achievement 1" },
-  { src: "/src/assets/software-engineering-career.png", alt: "Achievement 2" },
-  { src: "/src/assets/time-management.png", alt: "Achievement 3" },
-  { src: "/src/assets/UpdatedImage.png", alt: "Achievement 4" },
+  { src: salesImg, alt: "Achievement 1" },
+  { src: careerImg, alt: "Achievement 2" },
+  { src: timeImg, alt: "Achievement 3" },
+  { src: updatedImg, alt: "Achievement 4" },
 ];
 
 const SHOW_MS = 2000; 
@@ -12,10 +17,9 @@ const FLIP_MS = 1100;
 
 function Experience() {
   const n = photos.length;
-  const [page, setPage] = useState(0); // 0..n (n = last photo has turned away)
+  const [page, setPage] = useState(0); 
   const [instant, setInstant] = useState(false);
 
-  // auto-flip; after the last photo, silently reset to the first
   useEffect(() => {
     if (page < n) {
       const t = setTimeout(() => setPage(page + 1), SHOW_MS);
@@ -28,7 +32,6 @@ function Experience() {
     return () => clearTimeout(t);
   }, [page, n]);
 
-  // turn animations back on after the silent reset
   useEffect(() => {
     if (!instant) return;
     const id = requestAnimationFrame(() =>
@@ -50,7 +53,6 @@ function Experience() {
           aria-label="Achievements gallery"
         >
           <div className="pb-stage">
-            {/* underneath: shows the first photo when the last one turns away */}
             <div className="pb-under">
               <img src={photos[0].src} alt="" draggable="false" />
             </div>

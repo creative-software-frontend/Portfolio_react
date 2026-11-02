@@ -2078,12 +2078,11 @@ a {
   margin-top: 30px;
 }
 
-/* the visible container: everything is clipped to this box */
 .pb-frame {
   position: relative;
-  width: min(480px, 100%);      /* smaller: change this to resize */
-  aspect-ratio: 4 / 3;          /* match your images */
-  overflow: hidden;             /* keeps the flip inside the container */
+  width: min(480px, 100%);      
+  aspect-ratio: 4 / 3;          
+  overflow: hidden;             
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
@@ -2105,7 +2104,7 @@ a {
 }
 
 .pb-leaf {
-  --tilt: 0.45;                 /* diagonal amount: 0 = straight, 1 = steep */
+  --tilt: 0.45;               
   transform-origin: left center;
   transform-style: preserve-3d;
   transition: transform 1.1s cubic-bezier(0.645, 0.045, 0.355, 1),
