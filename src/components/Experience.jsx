@@ -1,29 +1,25 @@
 import { useEffect, useState } from "react";
-import salesImg from "../assets/sales-and-marketing.png";
-import careerImg from "../assets/software-engineering-career.png";
-import timeImg from "../assets/time-management.png";
-import updatedImg from "../assets/UpdatedImage.png";
+import salesImg from "../assets/achievement/1 (4).jpeg";
+import careerImg from "../assets/achievement/3.jpg";
+import timeImg from "../assets/achievement/FB_IMG_1509003226633.jpg";
 
 const photos = [
   { src: salesImg, alt: "Achievement 1" },
   { src: careerImg, alt: "Achievement 2" },
   { src: timeImg, alt: "Achievement 3" },
-  { src: updatedImg, alt: "Achievement 4" },
 ];
 
-const SHOW_MS = 3000;
-const FLIP_MS = 1200; 
-const STRIPS = 1;    
+const SHOW_MS = 3000; // how long each photo stays
+const FLIP_MS = 1200; // must match the 1.2s in the CSS
+const STRIPS = 3;    // 1 = flat flip, 8-12 = curved page
 
 function Strip({ k, src, root }) {
   if (k >= STRIPS) return null;
-  const pos = `${(k / (STRIPS - 1)) * 100}% 0`;
   return (
     <div className={root ? "pb-strip pb-leaf-root" : "pb-strip"}>
-      <div
-        className="pb-face pb-front"
-        style={{ backgroundImage: `url(${src})`, backgroundPosition: pos }}
-      />
+      <div className="pb-face pb-front">
+        <img src={src} alt="" draggable="false" style={{ left: `${-k * 100}%` }} />
+      </div>
       <div className="pb-face pb-back" />
       <Strip k={k + 1} src={src} />
     </div>
@@ -32,28 +28,25 @@ function Strip({ k, src, root }) {
 
 function Experience() {
   const n = photos.length;
-  const [page, setPage] = useState(0);
-  const [instant, setInstant] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [flipping, setFlipping] = useState(false);
+  const next = (current + 1) % n;
 
+  // hold the current photo, then start the flip
   useEffect(() => {
-    if (page < n) {
-      const t = setTimeout(() => setPage(page + 1), SHOW_MS);
-      return () => clearTimeout(t);
-    }
-    const t = setTimeout(() => {
-      setInstant(true);
-      setPage(0);
-    }, FLIP_MS + 50);
+    const t = setTimeout(() => setFlipping(true), SHOW_MS);
     return () => clearTimeout(t);
-  }, [page, n]);
+  }, [current]);
 
+  // when the flip ends, move to the next photo and put the page back flat
   useEffect(() => {
-    if (!instant) return;
-    const id = requestAnimationFrame(() =>
-      requestAnimationFrame(() => setInstant(false))
-    );
-    return () => cancelAnimationFrame(id);
-  }, [instant]);
+    if (!flipping) return;
+    const t = setTimeout(() => {
+      setCurrent((c) => (c + 1) % n);
+      setFlipping(false);
+    }, FLIP_MS);
+    return () => clearTimeout(t);
+  }, [flipping, n]);
 
   return (
     <section id="experience" className="experience-section">
@@ -62,25 +55,19 @@ function Experience() {
       </div>
 
       <div className="pb-wrap">
-        <div
-          className={`pb-frame ${instant ? "instant" : ""}`}
-          role="group"
-          aria-label="Achievements gallery"
-        >
+        <div className="pb-frame" role="group" aria-label="Achievements gallery">
           <div className="pb-book" style={{ "--n": STRIPS }}>
-            <img className="pb-under" src={photos[0].src} alt="" draggable="false" />
+            {/* underneath: the next photo */}
+            <img className="pb-under" src={photos[next].src} alt="" draggable="false" />
 
-            {photos.map((photo, i) => (
-              <div
-                key={i}
-                className={`pb-leaf ${i < page ? "gone" : ""}`}
-                style={{ zIndex: n - i + 1 }}
-                role="img"
-                aria-label={photo.alt}
-              >
-                <Strip k={0} src={photo.src} root />
-              </div>
-            ))}
+            {/* the page that turns away: the current photo */}
+            <div
+              className={`pb-leaf ${flipping ? "flipping" : ""}`}
+              role="img"
+              aria-label={photos[current].alt}
+            >
+              <Strip k={0} src={photos[current].src} root />
+            </div>
           </div>
         </div>
       </div>

@@ -2080,15 +2080,15 @@ a {
 }
 
 .pb-frame {
-  width: min(520px, 100%);
-  padding: 30px 0;              
-  overflow: hidden;
+  width: min(420px, 100%);
+  padding: 30px 0;
+  overflow: hidden;              /* the flip never leaves the container */
 }
 
 .pb-book {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;           
+  aspect-ratio: 4 / 3;
   perspective: 1800px;
   border-radius: 6px;
 }
@@ -2105,6 +2105,7 @@ a {
 .pb-leaf {
   position: absolute;
   inset: 0;
+  z-index: 2;
   transform-style: preserve-3d;
   pointer-events: none;
 }
@@ -2122,20 +2123,21 @@ a {
 .pb-leaf-root {
   left: 0;
   width: calc(100% / var(--n));
+}
+
+/* flipping: transitions exist ONLY in this state, so the reset is always instant */
+.pb-leaf.flipping .pb-leaf-root {
+  transform: rotateY(-180deg);
   transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.pb-leaf.gone .pb-leaf-root {
-  transform: rotateY(-180deg);
-}
-
-.pb-leaf.gone .pb-strip:not(.pb-leaf-root) {
+.pb-leaf.flipping .pb-strip:not(.pb-leaf-root) {
   animation: pb-bend 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
 
 @keyframes pb-bend {
   0%   { transform: rotateY(0deg); }
-  50%  { transform: rotateY(5deg); } 
+  50%  { transform: rotateY(2deg); }
   100% { transform: rotateY(0deg); }
 }
 
@@ -2147,8 +2149,17 @@ a {
 }
 
 .pb-front {
-  background-size: calc(var(--n) * 100%) 100%;
-  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.pb-front img {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: calc(var(--n) * 100%);   /* full photo width, each strip shows its slice */
+  max-width: none;                /* stops a global img { max-width: 100% } from breaking it */
+  height: 100%;
+  object-fit: cover;
 }
 
 .pb-front::after {
@@ -2157,23 +2168,16 @@ a {
   inset: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
   opacity: 0;
-  transition: opacity 1.2s ease-in;
 }
 
-.pb-leaf.gone .pb-front::after {
+.pb-leaf.flipping .pb-front::after {
   opacity: 1;
+  transition: opacity 1.2s ease-in;
 }
 
 .pb-back {
   transform: rotateY(180deg);
   background: linear-gradient(to left, #e9e3d2, #f6f2e6);
-}
-
-.pb-frame.instant .pb-leaf-root,
-.pb-frame.instant .pb-strip,
-.pb-frame.instant .pb-front::after {
-  transition: none !important;
-  animation: none !important;
 }
 
 @media (max-width: 600px) {
