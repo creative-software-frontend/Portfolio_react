@@ -2077,7 +2077,7 @@ a {
   position: relative;
   z-index: 5;
   width: min(100%, 480px);
-  margin: 26px auto 0;
+  margin: 25px auto 0;
 }
 
 .pb-frame {
