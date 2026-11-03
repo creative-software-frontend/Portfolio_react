@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import salesImg from "../assets/achievement/1 (4).jpeg";
-import progImg from "../assets/achievement/3.jpg";
-import timeImg from "../assets/achievement/FB_IMG_1509003226633.jpg";
+import salesImg from "../assets/achievement/1.jpg";
+import progImg from "../assets/achievement/2.jpg";
+import timeImg from "../assets/achievement/3.jpg";
 
 const photos = [
 
