@@ -7,8 +7,7 @@ const roles = [
   "Software Architect",
   "Business Consultant",
   "Digital Marketing Trainer",
-  "ICT Specialist",
-];
+  "ICT Specialist", ];
 
 function Hero({ onTalkClick }) {
   const [roleIndex, setRoleIndex] = useState(0);
