@@ -95,8 +95,7 @@ function Footer({ onTalkClick }) {
             </Link>
 
             <p className="footer-tagline">
-              Full Stack Developer passionate about building responsive,
-              modern, and user-friendly web applications.
+              Dilouar Hossain is a technology enthusiast, digital marketing trainer, creative entrepreneur, and business visionary who is passionate about building a better future through technology, innovation, skill development, and entrepreneurship.
             </p>
           </div>
 
