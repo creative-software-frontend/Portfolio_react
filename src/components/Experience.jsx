@@ -63,13 +63,11 @@ function Experience() {
   const [flipping, setFlipping] = useState(false);
   const next = (current + 1) % n;
 
-  // hold the current photo, then start the flip
   useEffect(() => {
     const t = setTimeout(() => setFlipping(true), SHOW_MS);
     return () => clearTimeout(t);
   }, [current]);
 
-  // when the flip ends, move to the next photo and put the page back flat
   useEffect(() => {
     if (!flipping) return;
     const t = setTimeout(() => {
@@ -84,7 +82,7 @@ function Experience() {
       <div className="experience-ribbon">
         <span>ACHIEVEMENTS</span>
       </div>
-      
+
       <div className="pb-stats">
         {stats.map((s) => (
           <div key={s.label}>

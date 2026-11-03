@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import profilePhoto from "../assets/photo.png";
-import cv from "../assets/cv.pdf";
+import cv from "../assets/Dilouar-Hossain-CV.pdf";
 
 const roles = [
   "Author",
