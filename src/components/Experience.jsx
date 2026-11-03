@@ -4,7 +4,7 @@ import progImg from "../assets/achievement/3.jpg";
 import timeImg from "../assets/achievement/FB_IMG_1509003226633.jpg";
 
 const photos = [
-  
+
   {
     src: salesImg,
     alt: "Achievement 2",
@@ -37,12 +37,12 @@ const photos = [
 const stats = [
   { value: "3+", label: "Awards" },
   { value: "2016", label: "First Win" },
-  { value: "10+", label: "Contests" }, 
+  { value: "10+", label: "Contests" },
 ];
 
-const SHOW_MS = 3000; 
-const FLIP_MS = 1200; 
-const STRIPS = 3;   
+const SHOW_MS = 3000;
+const FLIP_MS = 1200;
+const STRIPS = 3;
 
 function Strip({ k, src, root }) {
   if (k >= STRIPS) return null;
@@ -84,42 +84,44 @@ function Experience() {
       <div className="experience-ribbon">
         <span>ACHIEVEMENTS</span>
       </div>
+      
+      <div className="pb-stats">
+        {stats.map((s) => (
+          <div key={s.label}>
+            <strong>{s.value}</strong>
+            <span>{s.label}</span>
+          </div>
+        ))}
+      </div>
 
       <div className="pb-wrap">
-  <div className="pb-frame" role="group" aria-label="Achievements gallery">
-    <div className="pb-book" style={{ "--n": STRIPS }}>
-      <img className="pb-under" src={photos[next].src} alt="" draggable="false" />
-      <div
-        className={`pb-leaf ${flipping ? "flipping" : ""}`}
-        role="img"
-        aria-label={photos[current].alt}
-      >
-        <Strip k={0} src={photos[current].src} root />
+        <div className="pb-frame" role="group" aria-label="Achievements gallery">
+          <div className="pb-book" style={{ "--n": STRIPS }}>
+            <img className="pb-under" src={photos[next].src} alt="" draggable="false" />
+            <div
+              className={`pb-leaf ${flipping ? "flipping" : ""}`}
+              role="img"
+              aria-label={photos[current].alt}
+            >
+              <Strip k={0} src={photos[current].src} root />
+            </div>
+          </div>
+        </div>
+
+        <div className="pb-info" key={current}>
+          <span className="pb-year">{photos[current].year}</span>
+          <h3>{photos[current].title}</h3>
+          <h4>{photos[current].org}</h4>
+          <p>{photos[current].desc}</p>
+          <div className="pb-tags">
+            {photos[current].tags.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div className="pb-info" key={current}>
-    <span className="pb-year">{photos[current].year}</span>
-    <h3>{photos[current].title}</h3>
-    <h4>{photos[current].org}</h4>
-    <p>{photos[current].desc}</p>
-    <div className="pb-tags">
-      {photos[current].tags.map((t) => (
-        <span key={t}>{t}</span>
-      ))}
-    </div>
-  </div>
-</div>
-
-<div className="pb-stats">
-  {stats.map((s) => (
-    <div key={s.label}>
-      <strong>{s.value}</strong>
-      <span>{s.label}</span>
-    </div>
-  ))}
-</div>
+      
     </section>
   );
 }
