@@ -29,7 +29,7 @@ function Hero({ onTalkClick }) {
     <section id="home" className="hero">
       <div className="hero-content">
         <h1 >
-          <span className="hero-title"> Mohammad </span> 
+          <span className="hero-title"> Engineer </span> 
           <span className="hero-name">Dilouar Hossain</span>
         </h1>
 
@@ -63,7 +63,7 @@ function Hero({ onTalkClick }) {
 
       <div className="hero-image-wrapper">
         <div className="circular-image-container">
-          <img src={profilePhoto} alt="Mohammad Dilouar Hossain" className="circular-photo" />
+          <img src={profilePhoto} alt="Engineer Dilouar Hossain" className="circular-photo" />
 
           {/* Floating Badges */}
           <div className="badge badge-top-right">
