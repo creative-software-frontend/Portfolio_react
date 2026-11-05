@@ -7,13 +7,25 @@ const modules = import.meta.glob("../assets/photo/*.{png,jpg,jpeg,webp}", {
 
 // key = the file name without extension (1.jpg -> "1")
 const details = {
-  1: { title: "13 Jan, 2025", place: "Dhanmondi, Dhaka" },
-  2: { title: "05 May,2024", place: "Narayanganj" },
-  3: { title: "14 July, 2023", place: "Savar, Dhaka" },
-  4: { title: "06 August, 2025", place: "Agargaon, Dhaka" },
-  5: { title: "20 August, 2025", place: "Motijheel , Dhaka" },
-  6: { title: "01 October, 2025", place: "Mirpur, Dhaka" },
-  7: { title: "03 November, 2021", place: "Uttara, Dhaka" },
+  1: { title: "09-12-2015", place: "Hotel Sonargaon, Dhaka" },
+  2: { title: "06-10-2017", place: "Thakurgaon" },
+  3: { title: "01-10-2017", place: "Brahmanbaria" },
+  4: { title: "12-06-2017", place: "BCFCC, Agargaon, Dhaka" },
+  5: { title: "06-12-2017", place: "BCFCC, Agargaon, Dhaka" },
+  6: { title: "08-12-2017", place: "BCFCC, Agargaon, Dhaka" },
+  7: { title: "16-12-2017", place: "Faramgate Dhaka" },
+  8: { title: "22-09-2017", place: "Dhaka" },
+  9: { title: "19-05-2019", place: "Dhaka" },
+  10: { title: "17-11-2017", place: "Jaflong, Sylhet" },
+  11: { title: "07-11-2020", place: "Dhaka" },
+  12: { title: "24-10-2020", place: "Dhaka" },
+  13: { title: "20-11-2019", place: "Dhaka" },
+  14: { title: "06-02-2020", place: "Chattogram" },
+  15: { title: "14-01-2021", place: "Patanga, Chattogram" },
+  16: { title: "14-01-2021", place: "Saint Martin, Coxbazar" },
+  17: { title: "05-08-20207", place: "Sylhet" },
+  
+
 };
 
 const images = Object.entries(modules)
